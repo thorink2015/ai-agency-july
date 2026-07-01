@@ -1,0 +1,200 @@
+/* ============================================================================
+   AI Appointment Agency — Design Tokens (CSS Custom Properties)
+   Generated from tokens/design-tokens.json — the single source of truth.
+   All colour roles below are WCAG 2.2 contrast-validated.
+   Consume these variables; never hardcode hex/px in components.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand ---- */
+  --color-brand-50:  #EEF2FF;
+  --color-brand-100: #E0E7FF;
+  --color-brand-200: #C7D2FE;
+  --color-brand-300: #A5B4FC;
+  --color-brand-400: #818CF8;
+  --color-brand-500: #6366F1;
+  --color-brand-600: #4F46E5; /* PRIMARY */
+  --color-brand-700: #4338CA; /* primary hover */
+  --color-brand-800: #3730A3;
+  --color-brand-900: #312E81;
+
+  /* ---- Accent (teal) — INK text only, never white on 500 ---- */
+  --color-accent-400: #22D3EE;
+  --color-accent-500: #06B6D4;
+  --color-accent-600: #0891B2;
+  --color-accent-700: #0E7490; /* white-text-safe teal */
+
+  /* ---- Neutrals ---- */
+  --color-white:     #FFFFFF;
+  --color-neutral-50:  #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8; /* disabled/hint ONLY */
+  --color-neutral-500: #64748B; /* min muted text / min interactive border */
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
+  --color-ink:         #0B1120;
+
+  /* ---- Semantic ---- */
+  --color-success:        #16A34A;
+  --color-success-strong: #15803D;
+  --color-warning:        #D97706;
+  --color-danger:         #DC2626;
+  --color-info:           #2563EB;
+
+  /* ---- Roles (semantic aliases — prefer these in components) ---- */
+  --text:              var(--color-ink);
+  --text-secondary:    var(--color-neutral-600);
+  --text-muted:        var(--color-neutral-500);
+  --text-on-dark:      var(--color-white);
+  --text-muted-on-dark: var(--color-neutral-300);
+  --link:              var(--color-brand-600);
+  --link-hover:        var(--color-brand-700);
+  --bg:                var(--color-white);
+  --bg-subtle:         var(--color-neutral-50);
+  --bg-dark:           var(--color-ink);
+  --border:            var(--color-neutral-200);
+  --border-interactive: var(--color-neutral-500);
+  --focus-ring:        var(--color-brand-600);
+  --cta-bg:            var(--color-brand-600);
+  --cta-bg-hover:      var(--color-brand-700);
+  --cta-text:          var(--color-white);
+
+  /* ---- Typography ---- */
+  --font-display: 'Sora', 'Sora Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body:    'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  --fluid-h1: clamp(2.25rem, 1.4rem + 4.25vw, 4.5rem);
+  --fluid-h2: clamp(1.875rem, 1.3rem + 2.9vw, 3rem);
+  --fluid-h3: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+  --fluid-lead: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+
+  --ls-tighter: -0.02em;
+  --ls-tight: -0.01em;
+  --ls-normal: 0em;
+  --ls-wide: 0.02em;
+
+  --measure-prose: 68ch;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ---- Radii ---- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ---- Shadows ---- */
+  --shadow-xs: 0 1px 2px 0 rgb(11 17 32 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(11 17 32 / 0.08), 0 1px 2px -1px rgb(11 17 32 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(11 17 32 / 0.08), 0 2px 4px -2px rgb(11 17 32 / 0.08);
+  --shadow-lg: 0 10px 15px -3px rgb(11 17 32 / 0.10), 0 4px 6px -4px rgb(11 17 32 / 0.10);
+  --shadow-xl: 0 20px 25px -5px rgb(11 17 32 / 0.12), 0 8px 10px -6px rgb(11 17 32 / 0.12);
+  --shadow-focus: 0 0 0 3px rgb(79 70 229 / 0.45);
+
+  /* ---- Layout ---- */
+  --container-content: 1200px;
+  --container-wide: 1440px;
+  --gutter: clamp(1rem, 5vw, 2rem);
+
+  /* ---- z-index ---- */
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-overlay: 1200;
+  --z-modal: 1300;
+  --z-toast: 1400;
+  --z-tooltip: 1500;
+
+  /* ---- Motion ---- */
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 500ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---- Targets ---- */
+  --target-min: 44px;
+  --target-spacing: 8px;
+
+  /* ---- Opacity ---- */
+  --opacity-disabled: 0.5;
+  --opacity-muted: 0.7;
+  --opacity-backdrop: 0.6;
+}
+
+/* Optional dark-first section scoping. Apply .surface-dark to invert text roles
+   on dark sections without redefining component internals. */
+.surface-dark {
+  --text: var(--color-white);
+  --text-secondary: var(--color-neutral-300);
+  --text-muted: var(--color-neutral-400);
+  --link: var(--color-brand-300);
+  --link-hover: var(--color-brand-200);
+  --bg: var(--color-ink);
+  --border: rgb(255 255 255 / 0.12);
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+/* Respect user motion preference globally. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base focus-visible treatment — never remove focus outlines. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
