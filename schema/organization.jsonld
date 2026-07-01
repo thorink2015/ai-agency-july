@@ -1,0 +1,70 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://{{DOMAIN}}/#organization",
+  "name": "{{BRAND_NAME}}",
+  "legalName": "{{LEGAL_ENTITY}}",
+  "url": "https://{{DOMAIN}}/",
+  "logo": {
+    "@type": "ImageObject",
+    "@id": "https://{{DOMAIN}}/#logo",
+    "url": "https://{{DOMAIN}}/assets/brand/logo-512.png",
+    "contentUrl": "https://{{DOMAIN}}/assets/brand/logo-512.png",
+    "width": 512,
+    "height": 512,
+    "caption": "{{BRAND_NAME}}"
+  },
+  "image": {
+    "@id": "https://{{DOMAIN}}/#logo"
+  },
+  "description": "AI appointment-setting and lead-response agency. We deploy and manage AI chat, SMS, and web assistants that answer, qualify, and book leads in seconds, 24/7, with human support on call.",
+  "slogan": "Never miss a lead.",
+  "email": "{{EMAIL}}",
+  "telephone": "{{PHONE}}",
+  "foundingDate": "2024",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ADDRESS}}",
+    "addressLocality": "{{CITY}}",
+    "addressRegion": "{{REGION}}",
+    "postalCode": "{{POSTAL}}",
+    "addressCountry": "{{COUNTRY}}"
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "{{PHONE}}",
+      "email": "{{EMAIL}}",
+      "contactType": "sales",
+      "areaServed": "{{COUNTRY}}",
+      "availableLanguage": ["en"]
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "{{PHONE}}",
+      "email": "{{EMAIL}}",
+      "contactType": "customer support",
+      "areaServed": "{{COUNTRY}}",
+      "availableLanguage": ["en"]
+    }
+  ],
+  "sameAs": [
+    "{{SOCIAL_LINKEDIN}}",
+    "{{SOCIAL_FACEBOOK}}",
+    "{{SOCIAL_INSTAGRAM}}",
+    "{{SOCIAL_X}}",
+    "{{SOCIAL_YOUTUBE}}"
+  ],
+  "vatID": "{{VAT_ID}}",
+  "iso6523Code": "{{ISO6523_CODE}}",
+  "duns": "{{DUNS}}",
+  "leiCode": "{{LEI_CODE}}",
+  "naics": "{{NAICS}}",
+  "knowsAbout": [
+    "AI appointment setting",
+    "Lead response automation",
+    "Speed to lead",
+    "Conversational AI",
+    "SMS and chat assistants"
+  ]
+}

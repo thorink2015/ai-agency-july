@@ -1,0 +1,90 @@
+<!-- =========================================================================
+  <head> META TEMPLATE — {{BRAND_NAME}}
+  Copy into the <head> of every page. Replace {{...}} placeholders and the
+  PER-PAGE values marked "PAGE:". Order matters — charset & viewport FIRST,
+  then resource hints (preconnect/preload) BEFORE render-blocking CSS/JS so the
+  browser discovers them early. See docs/seo/technical-seo.md and
+  docs/performance/performance-budget.md.
+
+  RULES (2026):
+   - <title> <= ~60 chars / ~600px desktop. Front-load the primary keyword in
+     the first ~30 chars. Include {{BRAND_NAME}} (Google still ranks on the HTML
+     title even when it rewrites the displayed link).
+   - meta description <= ~155 chars. Unique per page, accurate, compelling.
+   - Exactly ONE canonical, self-referencing, absolute https URL, early in head.
+   - OG/Twitter image = 1200x630 (1.91:1), absolute URL. twitter:card =
+     summary_large_image.
+   - theme-color MUST be literal hex (#4F46E5 = --color-brand-600). background
+     matches --color-neutral-ink #0B1120 (used by the manifest splash).
+========================================================================== -->
+
+<!-- 1. ENCODING + VIEWPORT (must be within first 1024 bytes) -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- 2. RESOURCE HINTS (place BEFORE CSS/JS; cap preconnect at ~4-6 origins) -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<!-- Preload the critical, subset, WOFF2 fonts (display + body). crossorigin required. -->
+<link rel="preload" href="/fonts/sora-var.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+<!-- Preload the LCP image (hero). Match its responsive srcset. NEVER lazy-load the LCP image. -->
+<link rel="preload" as="image" href="/img/hero-960.avif" type="image/avif"
+      imagesrcset="/img/hero-640.avif 640w, /img/hero-960.avif 960w, /img/hero-1440.avif 1440w"
+      imagesizes="(max-width: 768px) 100vw, 960px" fetchpriority="high" />
+
+<!-- 3. TITLE + DESCRIPTION (PAGE-SPECIFIC — rewrite for every page) -->
+<title>PAGE: Never Miss a Lead — AI Booking 24/7 | {{BRAND_NAME}}</title>
+<meta name="description" content="PAGE: AI that answers, qualifies, and books your inbound leads in seconds, 24/7 — done-for-you setup with human support on call. Book a call." />
+
+<!-- 4. CANONICAL (self-referencing, absolute, https, single, early) -->
+<link rel="canonical" href="https://{{DOMAIN}}/PAGE-path/" />
+
+<!-- 5. ROBOTS (default is index,follow — omit or set explicitly). To exclude a
+     crawlable page from the index, use noindex HERE (never robots.txt Disallow). -->
+<meta name="robots" content="index,follow,max-image-preview:large" />
+
+<!-- 6. THEME + APP -->
+<meta name="theme-color" content="#4F46E5" />
+<meta name="color-scheme" content="light dark" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- 7. FAVICON / ICONS -->
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<!-- 180x180 recommended for apple-touch-icon; no <link> sizes attr needed. -->
+
+<!-- 8. OPEN GRAPH (Facebook, LinkedIn, Slack, iMessage, etc.) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="{{BRAND_NAME}}" />
+<meta property="og:title" content="PAGE: Never Miss a Lead — AI Booking 24/7 | {{BRAND_NAME}}" />
+<meta property="og:description" content="PAGE: AI that answers, qualifies, and books your inbound leads in seconds, 24/7 — with human support on call when it matters." />
+<meta property="og:url" content="https://{{DOMAIN}}/PAGE-path/" />
+<meta property="og:image" content="https://{{DOMAIN}}/img/og/PAGE-og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="PAGE: describe the OG image in plain words" />
+<meta property="og:locale" content="en_US" />
+
+<!-- 9. TWITTER / X CARD -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PAGE: Never Miss a Lead — AI Booking 24/7 | {{BRAND_NAME}}" />
+<meta name="twitter:description" content="PAGE: AI that answers, qualifies, and books your inbound leads in seconds, 24/7." />
+<meta name="twitter:image" content="https://{{DOMAIN}}/img/og/PAGE-og.png" />
+<meta name="twitter:image:alt" content="PAGE: describe the image" />
+<!-- <meta name="twitter:site" content="{{SOCIAL_X_HANDLE}}" /> -->
+
+<!-- 10. CRITICAL CSS (inline above-the-fold), then non-blocking full stylesheet -->
+<!-- <style>/* inlined critical CSS from tokens.css + above-the-fold rules */</style> -->
+<link rel="stylesheet" href="/css/site.css" />
+
+<!-- 11. STRUCTURED DATA (JSON-LD) — include the right schema per page. Keep NAP
+     identical to the site, llms.txt, and Google Business Profile.
+     Sources: schema/organization.jsonld, schema/website.jsonld,
+     schema/localbusiness.jsonld, schema/service.jsonld, schema/faqpage.jsonld,
+     schema/breadcrumb.jsonld, schema/review.jsonld. See schema/README.md.
+     Home/global: Organization + WebSite. Local: LocalBusiness (specific subtype).
+     Service pages: Service. FAQ blocks: FAQPage. Every page: BreadcrumbList. -->
+<!-- <script type="application/ld+json"> ...paste from schema/*.jsonld... </script> -->

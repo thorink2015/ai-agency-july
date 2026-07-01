@@ -1,0 +1,68 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://{{DOMAIN}}/#localbusiness",
+  "name": "{{BRAND_NAME}}",
+  "legalName": "{{LEGAL_ENTITY}}",
+  "url": "https://{{DOMAIN}}/",
+  "description": "Done-for-you AI appointment-setting and lead-response agency. We set up and manage AI assistants that answer, qualify, and book your leads in seconds, 24/7.",
+  "image": "https://{{DOMAIN}}/assets/brand/storefront-1200x800.jpg",
+  "logo": "https://{{DOMAIN}}/assets/brand/logo-512.png",
+  "telephone": "{{PHONE}}",
+  "email": "{{EMAIL}}",
+  "priceRange": "$$",
+  "currenciesAccepted": "USD",
+  "paymentAccepted": "Credit Card, ACH, Invoice",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ADDRESS}}",
+    "addressLocality": "{{CITY}}",
+    "addressRegion": "{{REGION}}",
+    "postalCode": "{{POSTAL}}",
+    "addressCountry": "{{COUNTRY}}"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "{{LATITUDE}}",
+    "longitude": "{{LONGITUDE}}"
+  },
+  "hasMap": "https://www.google.com/maps?q={{LATITUDE}},{{LONGITUDE}}",
+  "areaServed": {
+    "@type": "Country",
+    "name": "{{COUNTRY}}"
+  },
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "{{LATITUDE}}",
+      "longitude": "{{LONGITUDE}}"
+    },
+    "geoRadius": "500000"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59",
+      "description": "AI assistants operate 24/7; human support available during business hours."
+    }
+  ],
+  "parentOrganization": {
+    "@id": "https://{{DOMAIN}}/#organization"
+  },
+  "sameAs": [
+    "{{SOCIAL_LINKEDIN}}",
+    "{{SOCIAL_FACEBOOK}}",
+    "{{SOCIAL_INSTAGRAM}}",
+    "{{SOCIAL_X}}",
+    "{{SOCIAL_YOUTUBE}}"
+  ]
+}

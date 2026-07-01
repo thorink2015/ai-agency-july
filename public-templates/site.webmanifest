@@ -1,0 +1,55 @@
+{
+  "name": "{{BRAND_NAME}} — AI Lead Response & Appointment Setting",
+  "short_name": "{{BRAND_NAME}}",
+  "description": "AI that answers, qualifies, and books your inbound leads in seconds, 24/7 — with human support on call when it matters.",
+  "id": "/",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
+  "lang": "en",
+  "dir": "ltr",
+  "theme_color": "#4F46E5",
+  "background_color": "#0B1120",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book a call",
+      "short_name": "Book",
+      "url": "/contact/?utm_source=pwa_shortcut",
+      "description": "Talk to us about setting up AI lead response"
+    },
+    {
+      "name": "Pricing",
+      "short_name": "Pricing",
+      "url": "/pricing/?utm_source=pwa_shortcut"
+    }
+  ]
+}

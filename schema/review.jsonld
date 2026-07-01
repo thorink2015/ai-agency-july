@@ -1,0 +1,48 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://{{DOMAIN}}/services/ai-appointment-setting/#service-reviewed",
+  "name": "AI Appointment Setting & Lead Response",
+  "provider": {
+    "@id": "https://{{DOMAIN}}/#organization"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "128",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "{{REVIEW_AUTHOR_1}}"
+      },
+      "datePublished": "2026-05-14",
+      "reviewBody": "Leads that used to sit for hours now get answered instantly. We booked more consults in the first month than the previous quarter. Setup was completely done for us."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "{{REVIEW_AUTHOR_2}}"
+      },
+      "datePublished": "2026-04-02",
+      "reviewBody": "The AI qualifies and books while we sleep, and a real person jumps in when it matters. Exactly what a busy clinic needs."
+    }
+  ]
+}

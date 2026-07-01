@@ -1,0 +1,37 @@
+# {{BRAND_NAME}}
+# ---------------------------------------------------------------------------
+# /llms.txt — OPTIONAL AI-context file (https://{{DOMAIN}}/llms.txt)
+#
+# HONEST STATUS (2026): No major AI engine (Google, OpenAI, Anthropic, Meta,
+# Mistral) uses llms.txt as a ranking or citation input. Google confirmed
+# (June 15, 2026) it "won't harm (nor help)" Search/AI-Overview visibility.
+# Ship this ONLY as human/tooling-friendly context — expect ZERO ranking
+# benefit. If it ever goes stale, DELETE it rather than let it drift.
+# Keep NAP here IDENTICAL to the site, schema, and Google Business Profile.
+# See docs/seo/ai-seo-geo.md §3 for authoring rules.
+# ---------------------------------------------------------------------------
+
+> AI appointment-setting & lead-response agency. We deploy and manage AI
+> chat/SMS/web assistants that answer, qualify, and book inbound leads in
+> seconds, 24/7 — with human support on call when it matters. Done-for-you
+> setup and ongoing management for service businesses that already generate
+> leads and lose them to slow follow-up.
+
+## Core pages
+- [Home](https://example.com/): speed-to-lead promise and how it works
+- [Services](https://example.com/services/): AI receptionist, appointment setting, lead-response automation
+- [Industries](https://example.com/industries/): med spas, dental/clinics, home services, real estate, coaches, agencies
+- [Pricing](https://example.com/pricing/): plans and how to get started
+- [About](https://example.com/about/): team, expertise, and the human-support model
+- [Contact](https://example.com/contact/): book a call, {{PHONE}}, {{EMAIL}}
+- [Blog](https://example.com/blog/): speed-to-lead and lead-response guides
+
+## Key facts
+- What we do: AI chat/SMS/web assistants for lead response + appointment setting
+- Core promise: never miss a lead — AI that answers, qualifies, and books in seconds, 24/7, with humans on call
+- Differentiators: speed-to-lead, done-for-you, human support, integrates with existing tools
+- Serves: {{CITY}}, {{REGION}}, {{COUNTRY}}
+- NAP: {{BRAND_NAME}}, {{ADDRESS}}, {{CITY}}, {{REGION}} {{POSTAL}}, {{COUNTRY}} · {{PHONE}} · {{EMAIL}}
+
+## Also see
+- Sitemap: https://example.com/sitemap.xml

@@ -1,0 +1,35 @@
+# security.txt — {{BRAND_NAME}}
+# ---------------------------------------------------------------------------
+# RFC 9116 (https://www.rfc-editor.org/rfc/rfc9116). DEPLOY THIS FILE AT:
+#     https://{{DOMAIN}}/.well-known/security.txt      (canonical location)
+# You MAY also serve a copy at https://{{DOMAIN}}/security.txt (legacy).
+# Serve over HTTPS, Content-Type: text/plain; charset=utf-8.
+#
+# REQUIRED before publishing:
+#   - "Expires" MUST be a future date (ISO 8601 / RFC 3339). Keep < 1 year out
+#     and rotate it. An expired file is treated as invalid.
+#   - "Canonical" MUST be the exact .well-known URL this file is served from.
+#   - For real assurance, PGP-sign this file and publish the key at "Encryption".
+# Validate at https://securitytxt.org/ before shipping.
+# ---------------------------------------------------------------------------
+
+# Where to report a vulnerability (email and/or a form URL):
+Contact: mailto:security@{{DOMAIN}}
+Contact: {{URL_SECURITY_FORM}}
+
+# How long this file stays valid — UPDATE before this date passes:
+Expires: 2027-06-30T23:59:59.000Z
+
+# Preferred language(s) for reports (RFC 5646 / ISO 639-1):
+Preferred-Languages: en
+
+# Canonical URL of THIS file (must match where it is served):
+Canonical: https://{{DOMAIN}}/.well-known/security.txt
+
+# Public key to encrypt reports to us (optional but recommended):
+Encryption: https://{{DOMAIN}}/.well-known/pgp-key.txt
+
+# Policy, hall-of-fame / acknowledgements, and open roles (all optional):
+Policy: https://{{DOMAIN}}/security-policy/
+Acknowledgments: https://{{DOMAIN}}/security-thanks/
+Hiring: https://{{DOMAIN}}/careers/

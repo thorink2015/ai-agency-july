@@ -1,0 +1,36 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://{{DOMAIN}}/faq/#faqpage",
+  "url": "https://{{DOMAIN}}/faq/",
+  "inLanguage": "en-US",
+  "isPartOf": {
+    "@id": "https://{{DOMAIN}}/#website"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How fast does the AI respond to a new lead?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your AI assistant replies in seconds, 24/7 — typically under 60 seconds from the moment a lead comes in. It answers questions, qualifies the lead, and books the appointment on your calendar without waiting for a human, so you never lose a lead to slow follow-up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you set everything up for me, or do I have to configure it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is fully done-for-you. We deploy and configure the AI assistant across chat, SMS, and web, integrate it with your existing CRM and calendar, write and test the conversation flows, and then manage and optimize it for you on an ongoing basis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when the AI cannot handle a conversation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI hands off to a human when a conversation needs judgment or escalation. We keep humans on call during business hours to step in, and every conversation is monitored so nothing important slips through."
+      }
+    }
+  ]
+}
