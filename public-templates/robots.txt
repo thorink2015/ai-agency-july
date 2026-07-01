@@ -1,0 +1,41 @@
+# robots.txt — {{BRAND_NAME}}  (https://{{DOMAIN}}/robots.txt)
+# ---------------------------------------------------------------------------
+# Strategy: allow all crawling by default. Do NOT use Disallow to hide pages
+# from the INDEX — a Disallowed URL can still be indexed without a snippet.
+# To keep a page out of the index, leave it crawlable and add
+#   <meta name="robots" content="noindex,follow">  (or X-Robots-Tag header).
+# See docs/seo/technical-seo.md §"robots.txt strategy".
+# Google ignores this file beyond 500 KiB. Keep it tiny.
+# ---------------------------------------------------------------------------
+
+User-agent: *
+Allow: /
+
+# Block only true infinite/duplicate crawl traps (never index-control).
+# Uncomment/adjust to match your stack. These must NOT be pages you want ranked.
+# Disallow: /*?*sort=
+# Disallow: /*?*filter=
+# Disallow: /cart
+# Disallow: /checkout
+# Disallow: /account
+# Disallow: /search
+# Disallow: /*?*utm_        # tracking-param duplicates (canonical handles these too)
+
+# Do not block CSS/JS/images — Google needs them to render the mobile page.
+# (Historically some sites blocked /assets or /_next — do NOT.)
+
+# AI / answer-engine crawlers: allowed by default (we WANT AI-answer visibility).
+# To opt a specific bot OUT, add its block below. Leave allowed unless there's a reason.
+# User-agent: GPTBot
+# Allow: /
+# User-agent: PerplexityBot
+# Allow: /
+# User-agent: Google-Extended       # controls Gemini/Vertex training, NOT Search
+# Allow: /
+
+# Sitemap index (absolute URL, https, canonical host). Keep in sync with sitemap.
+Sitemap: https://{{DOMAIN}}/sitemap.xml
+
+# Optional AI-context file (informational only; not a ranking signal).
+# See docs/seo/ (llms.txt) — do not expect ranking benefit.
+# LLM-Context: https://{{DOMAIN}}/llms.txt

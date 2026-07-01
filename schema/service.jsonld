@@ -1,0 +1,68 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://{{DOMAIN}}/services/ai-appointment-setting/#service",
+  "name": "AI Appointment Setting & Lead Response",
+  "serviceType": "AI appointment setting and lead-response management",
+  "description": "Done-for-you setup and ongoing management of AI chat, SMS, and web assistants that instantly answer, qualify, and book your inbound leads 24/7 — with human support on call when it matters.",
+  "url": "https://{{DOMAIN}}/services/ai-appointment-setting/",
+  "category": "Marketing & Sales Automation",
+  "provider": {
+    "@id": "https://{{DOMAIN}}/#organization"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "{{COUNTRY}}"
+  },
+  "audience": {
+    "@type": "BusinessAudience",
+    "name": "Service-industry SMBs that generate or buy leads (med spas, dental, home services, real estate, coaches, clinics, agencies)"
+  },
+  "termsOfService": "https://{{DOMAIN}}/terms/",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI Lead-Response Plans",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Done-For-You Setup",
+        "description": "Full deployment of your AI assistant across chat, SMS, and web, integrated with your existing CRM and calendar.",
+        "priceCurrency": "USD",
+        "price": "{{SETUP_PRICE}}",
+        "availability": "https://schema.org/InStock",
+        "url": "https://{{DOMAIN}}/pricing/",
+        "category": "Setup"
+      },
+      {
+        "@type": "Offer",
+        "name": "Managed Monthly Plan",
+        "description": "Ongoing management, monitoring, optimization, and human support for your AI lead-response system.",
+        "priceCurrency": "USD",
+        "price": "{{MONTHLY_PRICE}}",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "{{MONTHLY_PRICE}}",
+          "priceCurrency": "USD",
+          "unitText": "MONTH",
+          "billingIncrement": 1
+        },
+        "availability": "https://schema.org/InStock",
+        "url": "https://{{DOMAIN}}/pricing/",
+        "category": "Subscription"
+      }
+    ]
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "{{MONTHLY_PRICE}}",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "{{MONTHLY_PRICE}}",
+      "priceCurrency": "USD",
+      "unitText": "MONTH"
+    },
+    "availability": "https://schema.org/InStock",
+    "url": "https://{{DOMAIN}}/pricing/"
+  }
+}

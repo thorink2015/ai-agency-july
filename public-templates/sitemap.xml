@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap INDEX template for {{BRAND_NAME}}  (https://{{DOMAIN}}/sitemap.xml)
+  ===========================================================================
+  This is the index that robots.txt points to. It references child sitemaps
+  by section so each stays small and independently regenerable.
+
+  RULES (see docs/seo/technical-seo.md, "XML sitemaps"):
+   * Per file: 50,000 URLs max AND 50 MB uncompressed max. Split and index beyond that.
+   * The index itself: 50,000 child sitemaps max, 50 MB max.
+   * Include ONLY canonical, indexable, 200-OK URLs (self-canonical).
+     NEVER include noindex, redirected, 404, or robots-blocked URLs.
+   * <loc> must be absolute, https, and match the canonical host EXACTLY
+     (trailing-slash style consistent with the rest of the site).
+   * <lastmod> must be a REAL last-modified date (W3C/ISO 8601). Do not fake it
+     or set it to "now" on every build; Google distrusts inaccurate lastmod.
+   * For a small marketing site you may collapse these into ONE sitemap.xml
+     (a flat <urlset>) instead of an index. Use the index once you exceed a
+     few hundred URLs or want per-section regeneration.
+  ===========================================================================
+-->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <sitemap>
+    <loc>https://{{DOMAIN}}/sitemaps/sitemap-core.xml</loc>
+    <lastmod>2026-07-01</lastmod>
+  </sitemap>
+
+  <sitemap>
+    <loc>https://{{DOMAIN}}/sitemaps/sitemap-services.xml</loc>
+    <lastmod>2026-07-01</lastmod>
+  </sitemap>
+
+  <sitemap>
+    <loc>https://{{DOMAIN}}/sitemaps/sitemap-industries.xml</loc>
+    <lastmod>2026-07-01</lastmod>
+  </sitemap>
+
+  <sitemap>
+    <loc>https://{{DOMAIN}}/sitemaps/sitemap-locations.xml</loc>
+    <lastmod>2026-07-01</lastmod>
+  </sitemap>
+
+  <sitemap>
+    <loc>https://{{DOMAIN}}/sitemaps/sitemap-blog.xml</loc>
+    <lastmod>2026-07-01</lastmod>
+  </sitemap>
+
+</sitemapindex>
+
+<!--
+  ===========================================================================
+  CHILD SITEMAP template (e.g. /sitemaps/sitemap-core.xml): copy into its own
+  file. A <urlset>, NOT a <sitemapindex>. <changefreq> and <priority> are
+  optional and largely ignored by Google; <lastmod> is the one that matters.
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <url>
+        <loc>https://{{DOMAIN}}/</loc>
+        <lastmod>2026-07-01</lastmod>
+      </url>
+      <url>
+        <loc>https://{{DOMAIN}}/pricing/</loc>
+        <lastmod>2026-07-01</lastmod>
+      </url>
+      <url>
+        <loc>https://{{DOMAIN}}/about/</loc>
+        <lastmod>2026-07-01</lastmod>
+      </url>
+      <url>
+        <loc>https://{{DOMAIN}}/contact/</loc>
+        <lastmod>2026-07-01</lastmod>
+      </url>
+    </urlset>
+  ===========================================================================
+-->

@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://{{DOMAIN}}/#website",
+  "url": "https://{{DOMAIN}}/",
+  "name": "{{BRAND_NAME}}",
+  "description": "AI that answers, qualifies, and books your leads in seconds — 24/7, with humans on call when it matters.",
+  "inLanguage": "en-US",
+  "publisher": {
+    "@id": "https://{{DOMAIN}}/#organization"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://{{DOMAIN}}/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}

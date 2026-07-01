@@ -1,0 +1,27 @@
+# humans.txt — {{BRAND_NAME}}  (https://{{DOMAIN}}/humans.txt)
+# The humans behind this site. Plain text, informational only.
+# Format: https://humanstxt.org/  — safe to ship, no ranking impact.
+# ---------------------------------------------------------------------------
+
+/* TEAM */
+    Company: {{BRAND_NAME}} ({{LEGAL_ENTITY}})
+    Contact: {{EMAIL}}
+    Phone: {{PHONE}}
+    Location: {{CITY}}, {{REGION}}, {{COUNTRY}}
+    Social: {{SOCIAL_LINKEDIN}}
+
+/* WHAT WE DO */
+    AI appointment-setting & lead-response agency. We deploy and manage AI
+    chat/SMS/web assistants that answer, qualify, and book inbound leads in
+    seconds, 24/7 — with human support on call when it matters.
+
+/* THANKS */
+    To every SMB owner and ops lead who refuses to lose a lead to slow follow-up.
+
+/* SITE */
+    Last update: 2026-07-01
+    Language: English
+    Doctype: HTML5
+    Standards: WCAG 2.2 AA, Core Web Vitals (LCP <= 2.5s, INP <= 200ms, CLS <= 0.1)
+    Components: Design tokens (single source of truth), semantic HTML, JSON-LD
+    Fonts: Sora (display), Inter (body), JetBrains Mono (mono)

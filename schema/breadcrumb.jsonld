@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://{{DOMAIN}}/services/ai-appointment-setting/#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://{{DOMAIN}}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://{{DOMAIN}}/services/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Appointment Setting",
+      "item": "https://{{DOMAIN}}/services/ai-appointment-setting/"
+    }
+  ]
+}
