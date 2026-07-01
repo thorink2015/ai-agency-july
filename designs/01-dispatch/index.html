@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dispatch — Answer First, Win More</title>
+<meta name="description" content="We answer every inquiry within seconds so speed is never the reason you lost the lead. Instant AI response with real human oversight. More booked, showed-up appointments in 30 days, or we work for free.">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#0B0C0E;
+  --panel:#101215;
+  --panel-2:#15181C;
+  --ink:#F2F3F0;
+  --ink-dim:#A9ADB0;
+  --ink-faint:#71767A;
+  --accent:#C5F82A;
+  --accent-ink:#0B0C0E;
+  --line:rgba(242,243,240,0.12);
+  --line-strong:rgba(242,243,240,0.22);
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --grot:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --maxw:1200px;
+  --pad:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--canvas);
+  color:var(--ink);
+  font-family:var(--grot);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;font-family:var(--grot);font-weight:600;line-height:1.05;letter-spacing:-0.02em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button{font-family:inherit}
+
+/* skip link */
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--accent);color:var(--accent-ink);padding:12px 18px;font-family:var(--mono);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em}
+.skip:focus{left:12px;top:12px}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* mono micro-labels */
+.mono{font-family:var(--mono)}
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-faint)}
+.eyebrow .idx{color:var(--accent)}
+.tick{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+/* section frame */
+section{border-top:1px solid var(--line)}
+.sec-pad{padding-top:clamp(56px,8vw,104px);padding-bottom:clamp(56px,8vw,104px)}
+.sec-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.sec-head h2{font-size:clamp(28px,5vw,48px)}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(11,12,14,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hbar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:0.04em}
+.brand .dot{width:12px;height:12px;background:var(--accent);display:inline-block}
+.brand .sub{color:var(--ink-faint);font-weight:400}
+.nav-desk{display:none;align-items:center;gap:6px}
+.nav-desk a{font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--ink-dim);padding:10px 12px;min-height:44px;display:flex;align-items:center}
+.nav-desk a:hover{color:var(--ink)}
+.hcta{display:none}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--mono);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;
+  padding:14px 20px;min-height:48px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);
+  cursor:pointer;transition:transform .12s ease,background .12s ease;
+}
+.btn:hover{background:#d4ff45}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn.sm{padding:11px 16px;min-height:44px;font-size:12px}
+.btn.block{width:100%}
+
+/* hamburger */
+.burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:48px;height:48px;background:transparent;border:1px solid var(--line-strong);cursor:pointer;padding:0}
+.burger span{width:20px;height:2px;background:var(--ink);margin:0 auto;transition:.2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;border-top:1px solid var(--line);background:var(--panel)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:flex;align-items:center;min-height:52px;padding:0 var(--pad);font-family:var(--mono);font-size:14px;letter-spacing:0.04em;color:var(--ink-dim);border-bottom:1px solid var(--line)}
+.nav-mobile a:hover{color:var(--ink)}
+
+@media(min-width:960px){
+  .nav-desk{display:flex}
+  .hcta{display:inline-flex}
+  .burger{display:none}
+}
+
+/* HERO */
+.hero{position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.5;-webkit-mask-image:radial-gradient(120% 80% at 20% 0%,#000 30%,transparent 75%);mask-image:radial-gradient(120% 80% at 20% 0%,#000 30%,transparent 75%);pointer-events:none}
+.hero-inner{position:relative;padding-top:clamp(48px,7vw,88px);padding-bottom:clamp(56px,8vw,104px)}
+.readout{display:inline-flex;align-items:center;gap:14px;border:1px solid var(--line-strong);padding:8px 14px;margin-bottom:28px;background:var(--panel)}
+.readout .lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint)}
+.readout .val{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--accent);font-variant-numeric:tabular-nums}
+.readout .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+.hero h1{font-size:clamp(34px,7.2vw,76px);font-weight:700;letter-spacing:-0.03em;max-width:15ch}
+.hero h1 .hl{color:var(--accent)}
+.hero .sub{margin-top:24px;font-size:clamp(16px,2.1vw,20px);color:var(--ink-dim);max-width:56ch;line-height:1.55}
+.strip{display:flex;flex-wrap:wrap;gap:0;margin-top:32px;border:1px solid var(--line)}
+.strip .cell{flex:1 1 180px;padding:14px 18px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink);border-right:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.strip .cell:last-child{border-right:0}
+.strip .cell::before{content:"";width:6px;height:6px;background:var(--accent);flex:0 0 auto}
+.guarantee{margin-top:28px;display:flex;gap:12px;align-items:flex-start;font-family:var(--mono);font-size:13px;letter-spacing:0.02em;color:var(--ink);border-left:2px solid var(--accent);padding:6px 0 6px 14px;max-width:60ch}
+.hero-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.link-demo{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--ink-dim);background:transparent;border:0;cursor:pointer;padding:12px 4px;min-height:44px}
+.link-demo:hover{color:var(--accent)}
+.link-demo .play{width:26px;height:26px;border:1px solid var(--line-strong);border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.link-demo:hover .play{border-color:var(--accent)}
+
+/* WHAT YOU GET (sec2) */
+.grid-3{display:grid;grid-template-columns:1fr;border:1px solid var(--line)}
+.grid-3 .item{padding:clamp(24px,4vw,36px);border-bottom:1px solid var(--line)}
+.grid-3 .item:last-child{border-bottom:0}
+.item .num{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:0.1em}
+.item h3{font-size:clamp(19px,2.4vw,24px);margin:14px 0 10px}
+.item p{color:var(--ink-dim);max-width:44ch}
+@media(min-width:820px){
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-3 .item{border-bottom:0;border-right:1px solid var(--line)}
+  .grid-3 .item:last-child{border-right:0}
+}
+
+/* HOW IT WORKS (sec3) */
+.steps{border:1px solid var(--line)}
+.step{display:grid;grid-template-columns:1fr;gap:8px 28px;padding:clamp(22px,3.5vw,34px);border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step .sidx{font-family:var(--mono);font-weight:700;font-size:clamp(28px,6vw,54px);color:var(--accent);line-height:1;letter-spacing:-0.02em}
+.step .sbody h3{font-size:clamp(19px,2.6vw,26px);margin-bottom:10px}
+.step .sbody p{color:var(--ink-dim);max-width:70ch}
+@media(min-width:720px){
+  .step{grid-template-columns:120px 1fr;align-items:start}
+}
+
+/* WHY SPEED WINS — telemetry dashboard (sec4) */
+.telemetry{border:1px solid var(--line-strong);background:var(--panel)}
+.tel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint)}
+.tel-top .dots{display:flex;gap:6px}
+.tel-top .dots i{width:8px;height:8px;border-radius:50%;background:var(--line-strong);display:inline-block}
+.tel-top .dots i:first-child{background:var(--accent)}
+.tel-grid{display:grid;grid-template-columns:1fr}
+.tel-cell{padding:clamp(26px,4vw,40px);border-bottom:1px solid var(--line);position:relative}
+.tel-cell:last-child{border-bottom:0}
+.tel-cell .fig{font-family:var(--mono);font-weight:700;font-size:clamp(48px,10vw,92px);line-height:0.92;letter-spacing:-0.03em;color:var(--accent);font-variant-numeric:tabular-nums}
+.tel-cell .desc{margin-top:16px;color:var(--ink);font-size:clamp(15px,1.9vw,18px);max-width:34ch}
+.tel-cell .src{margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.02em;line-height:1.5}
+.tel-cell .bars{position:absolute;right:16px;top:16px;display:flex;gap:3px;align-items:flex-end;height:34px;opacity:.5}
+.tel-cell .bars span{width:4px;background:var(--line-strong);display:block}
+@media(min-width:820px){
+  .tel-grid{grid-template-columns:repeat(3,1fr)}
+  .tel-cell{border-bottom:0;border-right:1px solid var(--line)}
+  .tel-cell:last-child{border-right:0}
+}
+
+/* WHO WE HELP (sec5) */
+.verticals{border:1px solid var(--line);display:grid;grid-template-columns:1fr}
+.vrow{display:grid;grid-template-columns:1fr;gap:6px 24px;padding:clamp(20px,3vw,28px);border-bottom:1px solid var(--line)}
+.vrow:last-child{border-bottom:0}
+.vrow .vidx{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:0.1em}
+.vrow h3{font-size:clamp(17px,2.2vw,21px)}
+.vrow p{color:var(--ink-dim);max-width:60ch}
+@media(min-width:720px){
+  .vrow{grid-template-columns:64px 300px 1fr;align-items:baseline}
+}
+
+/* TESTIMONIALS (sec6) */
+.badge-ph{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);border:1px solid var(--line-strong);padding:6px 10px}
+.tgrid{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line)}
+.tcell{padding:clamp(22px,3vw,30px);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:18px}
+.tcell:last-child{border-bottom:0}
+.logo-ph{width:100%;height:56px;border:1px dashed var(--line-strong);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint)}
+.tcell blockquote{margin:0;font-size:clamp(15px,1.9vw,18px);color:var(--ink);line-height:1.5}
+.tcell cite{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--ink-dim);letter-spacing:0.02em}
+@media(min-width:720px){
+  .tgrid{grid-template-columns:repeat(2,1fr)}
+  .tcell{border-right:1px solid var(--line)}
+  .tcell:nth-child(2n){border-right:0}
+  .tcell:nth-last-child(-n+2){border-bottom:0}
+}
+@media(min-width:1024px){
+  .tgrid{grid-template-columns:repeat(3,1fr)}
+  .tcell:nth-child(2n){border-right:1px solid var(--line)}
+  .tcell:nth-child(3n){border-right:0}
+  .tcell:nth-last-child(-n+3){border-bottom:0}
+}
+
+/* PRICING (sec7) */
+.toggle-row{display:flex;align-items:center;gap:14px;margin-bottom:clamp(28px,4vw,40px);flex-wrap:wrap}
+.billtog{display:inline-flex;border:1px solid var(--line-strong);padding:4px;background:var(--panel)}
+.billtog button{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;padding:10px 16px;min-height:44px;background:transparent;color:var(--ink-dim);border:0;cursor:pointer}
+.billtog button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.tog-note{font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:0.02em}
+.plans{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:820px){.plans{grid-template-columns:1fr 1fr}}
+.plan{border:1px solid var(--line);background:var(--panel);padding:clamp(24px,3.5vw,34px);display:flex;flex-direction:column}
+.plan.feature{border-color:var(--accent)}
+.plan .ptag{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.plan .pname{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink)}
+.plan .pflag{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-ink);background:var(--accent);padding:4px 8px;font-weight:700}
+.plan .price{margin:18px 0 4px;font-family:var(--mono);font-weight:700;font-size:clamp(30px,5vw,44px);letter-spacing:-0.02em;color:var(--accent);font-variant-numeric:tabular-nums}
+.plan .price .per{font-size:16px;color:var(--ink-dim);font-weight:500}
+.plan .pnote{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-bottom:18px}
+.plan ul li{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);color:var(--ink-dim);font-size:15px}
+.plan ul li::before{content:"→";color:var(--accent);font-family:var(--mono);flex:0 0 auto}
+.include{border:1px solid var(--line);background:var(--panel-2);padding:clamp(24px,3.5vw,34px);margin-top:16px}
+.include h3, .addons h3, .agencies h3, .enterprise h3{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:16px}
+.include ul{columns:1}
+.include ul li{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);color:var(--ink-dim);font-size:15px}
+.include ul li::before{content:"✓";color:var(--accent);font-family:var(--mono);flex:0 0 auto}
+@media(min-width:720px){.include ul{columns:2;column-gap:40px}.include ul li{break-inside:avoid}}
+.two-col{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+@media(min-width:820px){.two-col{grid-template-columns:1fr 1fr}}
+.addons,.agencies,.enterprise{border:1px solid var(--line);background:var(--panel);padding:clamp(24px,3.5vw,34px)}
+.addons ul li,.agencies ul li{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);color:var(--ink-dim);font-size:15px}
+.addons ul li::before,.agencies ul li::before{content:"+";color:var(--accent);font-family:var(--mono);flex:0 0 auto}
+.agencies .tiers{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.agencies .tier{font-family:var(--mono);font-size:14px;color:var(--ink)}
+.agencies .tier b{color:var(--accent);font-weight:700}
+.enterprise .ep{color:var(--ink-dim);margin-bottom:16px;max-width:60ch}
+.enterprise ul li{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);color:var(--ink-dim);font-size:15px}
+.enterprise ul li::before{content:"→";color:var(--accent);font-family:var(--mono);flex:0 0 auto}
+.enterprise .ecta{margin-top:20px}
+
+/* VOICE AI (sec8) */
+.voice{border:1px solid var(--line-strong);background:linear-gradient(180deg,var(--panel),var(--canvas));padding:clamp(28px,4vw,52px)}
+.voice h2{font-size:clamp(24px,4vw,40px);max-width:20ch;margin-bottom:20px}
+.voice .vp{color:var(--ink-dim);max-width:72ch;font-size:clamp(15px,1.9vw,18px);line-height:1.6}
+.voice .wave{display:flex;gap:4px;align-items:center;height:40px;margin:26px 0}
+.voice .wave span{width:4px;background:var(--accent);opacity:.8;display:block}
+.voice .vcta{margin-top:8px}
+
+/* WHAT WE DON'T DO (sec9) */
+.dont{border:1px solid var(--line)}
+.dont .drow{display:grid;grid-template-columns:1fr;gap:6px 20px;padding:clamp(20px,3vw,28px);border-bottom:1px solid var(--line)}
+.dont .drow:last-child{border-bottom:0}
+.dont .dno{font-family:var(--mono);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);display:flex;align-items:center;gap:8px}
+.dont .dno .x{color:var(--accent)}
+.dont .drow p{color:var(--ink-dim);max-width:70ch}
+.dont .drow p b{color:var(--ink);font-weight:600}
+@media(min-width:720px){.dont .drow{grid-template-columns:220px 1fr;align-items:baseline}}
+
+/* FINAL CTA (sec10) */
+.finalcta{text-align:left;position:relative;overflow:hidden}
+.finalcta .fc-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.4;pointer-events:none}
+.finalcta .fc-inner{position:relative;padding:clamp(60px,10vw,120px) 0}
+.finalcta h2{font-size:clamp(34px,7vw,72px);font-weight:700;letter-spacing:-0.03em;max-width:16ch}
+.finalcta .fc-cta{margin-top:32px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.finalcta .fc-read{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-faint);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.finalcta .fc-read .val{color:var(--accent)}
+
+/* FOOTER (sec11) */
+.site-footer{border-top:1px solid var(--line);background:var(--panel)}
+.foot-top{display:grid;grid-template-columns:1fr;gap:28px;padding:clamp(36px,5vw,56px) 0}
+.foot-brand{display:flex;flex-direction:column;gap:14px;max-width:38ch}
+.foot-brand .fb-name{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:0.04em}
+.foot-brand .fb-name .dot{width:12px;height:12px;background:var(--accent)}
+.foot-brand p{color:var(--ink-faint);font-family:var(--mono);font-size:12px;letter-spacing:0.02em;line-height:1.6}
+.foot-nav h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint);margin-bottom:14px}
+.foot-nav ul{display:flex;flex-direction:column;gap:2px}
+.foot-nav a{display:inline-flex;align-items:center;min-height:40px;font-family:var(--mono);font-size:13px;color:var(--ink-dim);letter-spacing:0.02em}
+.foot-nav a:hover{color:var(--accent)}
+.foot-bot{border-top:1px solid var(--line);padding:20px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.04em}
+@media(min-width:820px){.foot-top{grid-template-columns:1.5fr 1fr 1fr}}
+
+/* MODAL / DIALOG */
+.modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(5,6,7,0.78);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:clamp(12px,4vh,48px) 16px;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.dialog{width:100%;max-width:560px;background:var(--panel);border:1px solid var(--line-strong);position:relative;margin:auto 0}
+.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dialog-head .dh-l{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-faint)}
+.dialog-head .dh-l .dot{width:8px;height:8px;background:var(--accent);border-radius:50%}
+.dclose{width:44px;height:44px;background:transparent;border:1px solid var(--line-strong);color:var(--ink);cursor:pointer;font-size:20px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+.dclose:hover{border-color:var(--accent);color:var(--accent)}
+.dialog-body{padding:clamp(20px,4vw,32px)}
+.dialog h2{font-size:clamp(22px,3.4vw,30px);margin-bottom:8px}
+.dialog .lead{color:var(--ink-dim);font-size:14px;margin-bottom:24px;font-family:var(--mono);letter-spacing:0.02em}
+.field{margin-bottom:22px}
+.field > .qlabel{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:10px}
+.field .qlabel .qn{color:var(--accent);margin-right:8px}
+.field select{width:100%;padding:14px 16px;min-height:48px;background:var(--panel-2);border:1px solid var(--line-strong);color:var(--ink);font-family:var(--grot);font-size:15px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C5F82A' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.field select:focus-visible{border-color:var(--accent)}
+.radios{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:420px){.radios{grid-template-columns:1fr}}
+.radio{position:relative}
+.radio input{position:absolute;opacity:0;width:0;height:0}
+.radio label{display:flex;align-items:center;min-height:48px;padding:12px 14px;border:1px solid var(--line-strong);background:var(--panel-2);font-family:var(--mono);font-size:13px;color:var(--ink-dim);cursor:pointer;letter-spacing:0.02em}
+.radio input:checked + label{border-color:var(--accent);color:var(--accent);background:rgba(197,248,42,0.06)}
+.radio input:focus-visible + label{outline:2px solid var(--accent);outline-offset:2px}
+.err{display:none;color:var(--accent);font-family:var(--mono);font-size:12px;margin-top:8px;letter-spacing:0.02em}
+.field.invalid .err{display:block}
+.field.invalid select,.field.invalid .radios{outline:1px solid var(--accent);outline-offset:4px}
+.dialog-actions{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
+
+/* calendar */
+.cal-label{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink);margin-bottom:12px;display:block}
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-bottom:24px}
+.day{padding:12px 8px;min-height:56px;border:1px solid var(--line-strong);background:var(--panel-2);cursor:pointer;text-align:left;font-family:var(--mono);color:var(--ink-dim);display:flex;flex-direction:column;gap:2px}
+.day .dow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint)}
+.day .dnum{font-size:16px;font-weight:700;color:var(--ink)}
+.day[aria-pressed="true"]{border-color:var(--accent);background:rgba(197,248,42,0.08)}
+.day[aria-pressed="true"] .dnum{color:var(--accent)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px;margin-bottom:24px}
+.slot{padding:12px 8px;min-height:48px;border:1px solid var(--line-strong);background:var(--panel-2);cursor:pointer;font-family:var(--mono);font-size:13px;color:var(--ink-dim)}
+.slot[aria-pressed="true"]{border-color:var(--accent);background:rgba(197,248,42,0.08);color:var(--accent);font-weight:700}
+
+/* confirmation */
+.confirm{text-align:left}
+.confirm .cmark{width:56px;height:56px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:26px;margin-bottom:22px}
+.confirm .cval{font-family:var(--mono);font-weight:700;color:var(--accent);font-size:clamp(18px,3vw,24px);margin:12px 0}
+.confirm p{color:var(--ink-dim);max-width:44ch}
+
+/* video lightbox */
+.video-frame{width:100%;aspect-ratio:16/9;border:1px solid var(--line-strong);background:var(--panel-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;overflow:hidden}
+.video-frame .vgrid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;opacity:.5}
+.video-frame .vplay{position:relative;width:64px;height:64px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.video-frame .vcap{position:relative;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-dim)}
+
+/* hidden util */
+[hidden]{display:none !important}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important}
+  .readout .pulse{opacity:1}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap hbar">
+    <a class="brand" href="#top" aria-label="Dispatch home">
+      <span class="dot" aria-hidden="true"></span>
+      DISPATCH<span class="sub">/ops</span>
+    </a>
+    <nav class="nav-desk" aria-label="Primary">
+      <a href="#top">Home</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#who">Who We Help</a>
+      <a href="#voice">Voice AI</a>
+    </nav>
+    <button class="btn sm hcta" data-open-funnel type="button">See If Your Business Qualifies</button>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="#top">Home</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#who">Who We Help</a>
+    <a href="#voice">Voice AI</a>
+    <a href="#final" data-open-funnel-link>See If Your Business Qualifies</a>
+  </nav>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- SECTION 1: HERO -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="readout" role="status" aria-live="off">
+      <span class="lbl">Response time</span>
+      <span class="val tick" id="respReadout">00:00s</span>
+      <span class="pulse" aria-hidden="true"></span>
+    </div>
+    <h1 id="hero-h1">The Business That Answers First Almost Always Wins. <span class="hl">We Make Sure It's You.</span></h1>
+    <p class="sub">Not because you do better work, just because you got there first. We answer every single inquiry within seconds, so speed is never the reason you lost them.</p>
+    <div class="strip" role="list">
+      <div class="cell" role="listitem">Instant AI Response</div>
+      <div class="cell" role="listitem">Real Human Oversight</div>
+      <div class="cell" role="listitem">24/7 Free Support</div>
+    </div>
+    <p class="guarantee">More booked, showed-up appointments in 30 days, or we work for free.</p>
+    <div class="hero-cta">
+      <button class="btn" data-open-funnel type="button">See If Your Business Qualifies</button>
+      <button class="link-demo" data-open-demo type="button">
+        <span class="play" aria-hidden="true">
+          <svg width="9" height="10" viewBox="0 0 9 10" fill="none"><path d="M0 0l9 5-9 5z" fill="currentColor"/></svg>
+        </span>
+        Watch a 90-second demo
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: WHAT YOU GET -->
+<section aria-labelledby="s2h" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">01</span> / What you get</span>
+      <h2 id="s2h">Fast infrastructure, watched by people.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="item">
+        <span class="num">01</span>
+        <h3>Instant AI Response</h3>
+        <p>Every inquiry gets a reply within seconds, day or night. Nobody waits, and nobody gets forgotten.</p>
+      </div>
+      <div class="item">
+        <span class="num">02</span>
+        <h3>Real Human Oversight</h3>
+        <p>A real person is always watching. Nothing runs unchecked, and nothing gets weird.</p>
+      </div>
+      <div class="item">
+        <span class="num">03</span>
+        <h3>24/7 Free Support</h3>
+        <p>Something breaks or needs a tweak? Message us, any time. No tickets, no upcharges, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: HOW IT WORKS -->
+<section aria-labelledby="s3h" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">02</span> / How it works</span>
+      <h2 id="s3h">Four steps, one loop.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="sidx">01</div>
+        <div class="sbody">
+          <h3>They Reach Out</h3>
+          <p>A text, a form, or a message on social, however they reach out, we're already watching for it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sidx">02</div>
+        <div class="sbody">
+          <h3>We Answer, In Seconds</h3>
+          <p>Our AI replies immediately, in your voice, and starts qualifying them right there in the conversation. A real person is watching this happen, same as everything else.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sidx">03</div>
+        <div class="sbody">
+          <h3>It Gets Booked</h3>
+          <p>Once they're a real fit, the appointment goes straight into your calendar. No calendar links, no back-and-forth, no waiting on you to notice the message.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sidx">04</div>
+        <div class="sbody">
+          <h3>We Keep Them Showing Up</h3>
+          <p>Reminders go out on their own, and if someone goes quiet, we follow up until they confirm or tell us no. You just show up and do the work you're actually good at.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: WHY SPEED WINS — telemetry dashboard -->
+<section aria-labelledby="s4h" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">03</span> / Why speed wins</span>
+      <h2 id="s4h">We didn't invent this, it's just what independent research found.</h2>
+    </div>
+    <div class="telemetry">
+      <div class="tel-top">
+        <span>Signal / lead-response telemetry</span>
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <div class="tel-grid">
+        <div class="tel-cell">
+          <div class="bars" aria-hidden="true"><span style="height:12px"></span><span style="height:20px"></span><span style="height:28px"></span><span style="height:34px"></span></div>
+          <div class="fig">78%</div>
+          <p class="desc">Go with whoever answers first. Not whoever's best, whoever's fastest.</p>
+          <p class="src">(Source: Lead Connect / Vendasta research, 2025)</p>
+        </div>
+        <div class="tel-cell">
+          <div class="bars" aria-hidden="true"><span style="height:8px"></span><span style="height:16px"></span><span style="height:24px"></span><span style="height:34px"></span></div>
+          <div class="fig">100x</div>
+          <p class="desc">Less likely you'll even reach someone if you wait 30 minutes instead of 5.</p>
+          <p class="src">(Source: MIT / InsideSales.com study, 15,000+ leads tracked)</p>
+        </div>
+        <div class="tel-cell">
+          <div class="bars" aria-hidden="true"><span style="height:14px"></span><span style="height:18px"></span><span style="height:26px"></span><span style="height:32px"></span></div>
+          <div class="fig">2x+</div>
+          <p class="desc">More appointments get booked from an instant reply than a typical follow-up.</p>
+          <p class="src">(Source: Chili Piper 2025 Benchmark Report, 4 million form submissions)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: WHO WE HELP -->
+<section id="who" aria-labelledby="s5h" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">04</span> / Who we help</span>
+      <h2 id="s5h">Local-service operators who live and die on follow-up.</h2>
+    </div>
+    <div class="verticals">
+      <div class="vrow">
+        <span class="vidx">01</span>
+        <h3>Martial Arts &amp; Dance Studios</h3>
+        <p>Never lose another trial to slow follow-up. Instant text-back books the mat, kids and all.</p>
+      </div>
+      <div class="vrow">
+        <span class="vidx">02</span>
+        <h3>Med Spas &amp; Aesthetics</h3>
+        <p>Consultations that show up and leave a deposit, or you don't pay.</p>
+      </div>
+      <div class="vrow">
+        <span class="vidx">03</span>
+        <h3>Chiropractors &amp; Massage</h3>
+        <p>Every inquiry answered before they call the practice next door.</p>
+      </div>
+      <div class="vrow">
+        <span class="vidx">04</span>
+        <h3>Auto Detailing</h3>
+        <p>Booked, paid jobs on your calendar. You only pay when the customer shows.</p>
+      </div>
+      <div class="vrow">
+        <span class="vidx">05</span>
+        <h3>Cabinets &amp; Kitchen Remodeling</h3>
+        <p>In-home design consultations booked with homeowners who can actually afford the job.</p>
+      </div>
+      <div class="vrow">
+        <span class="vidx">06</span>
+        <h3>Marketing &amp; Lead-Gen Agencies (white-label)</h3>
+        <p>Your bottom-of-funnel layer, under your brand. We convert the leads you're already paying for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: TESTIMONIALS -->
+<!-- PLACEHOLDER TESTIMONIALS: swap real names/quotes/logos -->
+<section aria-labelledby="s6h" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">05</span> / Field reports</span>
+      <h2 id="s6h">What operators say.</h2>
+      <span class="badge-ph">Placeholder — sample data</span>
+    </div>
+    <div class="tgrid">
+      <div class="tcell">
+        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"We used to lose kids to whoever texted back first, usually not us. Now the reply's instant and our trial bookings finally show up."</blockquote>
+        <cite>— Marcus Webb, Owner, Ironclad BJJ Academy</cite>
+      </div>
+      <div class="tcell">
+        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"Deposits are the whole game in this business. Since switching, way fewer people ghost their consult."</blockquote>
+        <cite>— Dr. Alina Cho, Radiance Aesthetics &amp; Skin Clinic</cite>
+      </div>
+      <div class="tcell">
+        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"I don't answer my phone during a job, obviously. Now I don't have to, and I still get the booking."</blockquote>
+        <cite>— Danny Reyes, Owner, Reyes Ceramic Coating Studio</cite>
+      </div>
+      <div class="tcell">
+        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"Homeowners want an answer same day or they call the next guy. We stopped being the next guy."</blockquote>
+        <cite>— Karen Doss, Doss Custom Cabinetry</cite>
+      </div>
+      <div class="tcell">
+        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"Half our new patient calls came in after hours anyway. Now someone actually answers them."</blockquote>
+        <cite>— Dr. James Whitfield, Whitfield Family Chiropractic</cite>
+      </div>
+      <div class="tcell">
+        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"We white-labeled this under our own brand and it became a real upsell, not just a feature nobody used."</blockquote>
+        <cite>— Priya Anand, Founder, Northline Growth Partners</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: PRICING -->
+<section id="pricing" aria-labelledby="s7h" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">06</span> / Pricing</span>
+      <h2 id="s7h">Plain plans, no lock-in.</h2>
+    </div>
+
+    <div class="toggle-row">
+      <div class="billtog" role="group" aria-label="Billing period">
+        <button type="button" id="billMonthly" data-bill="monthly" aria-pressed="true">Monthly</button>
+        <button type="button" id="billYearly" data-bill="yearly" aria-pressed="false">Yearly</button>
+      </div>
+      <span class="tog-note">Yearly = 2 months free</span>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="ptag"><span class="pname">Starter</span></div>
+        <div class="price"><span class="pamt" data-monthly="$397" data-yearly="$3,970">$397</span><span class="per pper" data-monthly="/mo" data-yearly="/yr">/mo</span></div>
+        <p class="pnote">Setup waived your first month.</p>
+        <ul>
+          <li>AI booking assistant live within 5 business days</li>
+          <li>Instant response to every inquiry, day or night</li>
+          <li>Appointments booked straight into your calendar</li>
+          <li>Monthly performance report</li>
+        </ul>
+      </div>
+      <div class="plan feature">
+        <div class="ptag"><span class="pname">Growth</span><span class="pflag">Most chosen</span></div>
+        <div class="price"><span class="pamt" data-monthly="$697" data-yearly="$6,970">$697</span><span class="per pper" data-monthly="/mo" data-yearly="/yr">/mo</span></div>
+        <p class="pnote">&nbsp;</p>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>No-show recovery and re-engagement follow-ups</li>
+          <li>Every conversation reviewed by a real person</li>
+          <li>Priority support, unlimited troubleshooting, no extra charge</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="include">
+      <h3>Every plan includes</h3>
+      <ul>
+        <li>No long-term contract, cancel any time</li>
+        <li>Free, unlimited support, no tickets, no upcharges</li>
+        <li>17+ languages supported, no extra charge</li>
+        <li>Real human oversight on every account</li>
+        <li>30-day guarantee: more booked, showed-up appointments, or we work for free</li>
+      </ul>
+    </div>
+
+    <div class="two-col">
+      <div class="addons">
+        <h3>Add-ons, available on any plan</h3>
+        <ul>
+          <li>Additional location or sub-account — $29/mo each</li>
+          <li>Rush setup, live within 48 hours instead of 5 business days — $150 one-time</li>
+          <li>Voice AI Agent — custom pricing, see Section 8</li>
+        </ul>
+      </div>
+      <div class="agencies">
+        <h3>Agencies (White-Label)</h3>
+        <div class="tiers">
+          <div class="tier"><b>Pilot:</b> $1,500 for 30 days</div>
+          <div class="tier"><b>Retainer:</b> $2,500/mo + $1,500 setup, once the pilot converts</div>
+        </div>
+        <ul>
+          <li>White-label the entire system under your brand</li>
+          <li>Resell to your own local-service clients</li>
+          <li>We fulfill, you keep the client relationship</li>
+          <li>Wholesale per-client pricing available at volume, ask us</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="enterprise" style="margin-top:16px">
+      <h3>Enterprise — Custom</h3>
+      <p class="ep">For multi-location operators, franchises, or agencies who need something built specifically for them.</p>
+      <ul>
+        <li>Dedicated account manager</li>
+        <li>Done-for-you setup across every location</li>
+        <li>Custom integrations and workflows</li>
+        <li>Priority support</li>
+      </ul>
+      <div class="ecta">
+        <button class="btn ghost sm" data-open-funnel type="button">Book a Call</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: VOICE AI -->
+<section id="voice" aria-labelledby="s8h" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">07</span> / Voice AI Agents (Custom, By Request)</span>
+    </div>
+    <div class="voice">
+      <h2 id="s8h">Need the phone answered too, not just messages?</h2>
+      <p class="vp">For businesses that specifically need it, we build a dedicated voice AI agent on top of your system, a real phone call, answered instantly, handled by AI, with a real person reviewing how it performs. This isn't part of the standard plans. It's built for your business specifically, and scoped on a call.</p>
+      <div class="wave" aria-hidden="true">
+        <span style="height:10px"></span><span style="height:22px"></span><span style="height:34px"></span><span style="height:18px"></span><span style="height:40px"></span><span style="height:26px"></span><span style="height:12px"></span><span style="height:30px"></span><span style="height:20px"></span><span style="height:36px"></span><span style="height:14px"></span><span style="height:24px"></span>
+      </div>
+      <div class="vcta">
+        <button class="btn sm" data-open-funnel type="button">Ask About Voice AI</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: WHAT WE DON'T DO -->
+<section aria-labelledby="s9h" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">08</span> / What we don't do</span>
+      <h2 id="s9h">Compliance sounds boring until a number gets banned and every message stops sending. Here's what's permanently off the table, and why.</h2>
+    </div>
+    <div class="dont">
+      <div class="drow">
+        <div class="dno"><span class="x" aria-hidden="true">✕</span> No personal WhatsApp or iMessage</div>
+        <p>Automation runs on registered business channels only. Personal accounts get banned running at any real volume, so we never touch them.</p>
+      </div>
+      <div class="drow">
+        <div class="dno"><span class="x" aria-hidden="true">✕</span> No unregistered numbers</div>
+        <p>Every sending number is A2P 10DLC registered before it goes live. Skip that step and carriers block it outright, silently, no warning. We don't skip it.</p>
+      </div>
+      <div class="drow">
+        <div class="dno"><span class="x" aria-hidden="true">✕</span> No cold texting strangers</div>
+        <p>SMS only reaches people who already reached out or opted in. If cold outreach is ever part of the plan, it happens over email, never a text blast to a bought list.</p>
+      </div>
+      <div class="drow">
+        <div class="dno"><span class="x" aria-hidden="true">✕</span> No bought lists, no spoofed numbers</div>
+        <p>No bought lists, no spoofed numbers, no shortcuts that get flagged as spam. If it risks the number's reputation, it's off the table, permanently, not just for now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10: FINAL CTA -->
+<section id="final" class="finalcta" aria-labelledby="s10h">
+  <div class="fc-bg" aria-hidden="true"></div>
+  <div class="wrap fc-inner">
+    <p class="fc-read"><span>Response time</span> <span class="val tick">00:02s</span></p>
+    <h2 id="s10h">See If Your Business Qualifies</h2>
+    <div class="fc-cta">
+      <button class="btn" data-open-funnel type="button">See If Your Business Qualifies</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SECTION 11: FOOTER -->
+<footer class="site-footer">
+  <div class="wrap foot-top">
+    <div class="foot-brand">
+      <span class="fb-name"><span class="dot" aria-hidden="true"></span> DISPATCH<span style="color:var(--ink-faint);font-weight:400">/ops</span></span>
+      <p>Instant AI response, watched by real people. Speed is never the reason you lost them.</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#who">Who We Help</a></li>
+      </ul>
+    </nav>
+    <nav class="foot-nav" aria-label="Legal and contact">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="#final">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap foot-bot">
+    <span>© {{BRAND_NAME}} — all systems operational</span>
+    <span class="tick">Uptime 24/7 · Response ~00:02s</span>
+  </div>
+</footer>
+
+<!-- ===== FUNNEL MODAL ===== -->
+<div class="modal-overlay" id="funnelOverlay">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="funnelTitle" id="funnelDialog">
+    <div class="dialog-head">
+      <div class="dh-l"><span class="dot" aria-hidden="true"></span> <span id="funnelStepLabel">Step 1 of 3</span></div>
+      <button class="dclose" type="button" data-close-funnel aria-label="Close dialog">×</button>
+    </div>
+    <div class="dialog-body">
+      <!-- STEP 1 -->
+      <div id="funnelStep1">
+        <h2 id="funnelTitle">See if your business qualifies</h2>
+        <p class="lead">Four quick questions. About thirty seconds.</p>
+        <form id="qualifyForm" novalidate>
+          <div class="field" id="fieldQ1">
+            <label class="qlabel" for="q1"><span class="qn">01</span>What's your business?</label>
+            <select id="q1" name="q1" required aria-describedby="q1err">
+              <option value="" disabled selected>Select one</option>
+              <option>Martial Arts</option>
+              <option>Dance</option>
+              <option>Med Spa</option>
+              <option>Chiropractic</option>
+              <option>Massage</option>
+              <option>Auto Detailing</option>
+              <option>Cabinets &amp; Remodeling</option>
+              <option>Marketing Agency</option>
+              <option>Other</option>
+            </select>
+            <span class="err" id="q1err">Pick an option to continue.</span>
+          </div>
+
+          <div class="field" id="fieldQ2" role="radiogroup" aria-labelledby="q2label" aria-describedby="q2err">
+            <span class="qlabel" id="q2label"><span class="qn">02</span>Roughly how many new inquiries do you get a month?</span>
+            <div class="radios">
+              <div class="radio"><input type="radio" name="q2" id="q2a" value="under 20"><label for="q2a">under 20</label></div>
+              <div class="radio"><input type="radio" name="q2" id="q2b" value="20–50"><label for="q2b">20–50</label></div>
+              <div class="radio"><input type="radio" name="q2" id="q2c" value="50–100"><label for="q2c">50–100</label></div>
+              <div class="radio"><input type="radio" name="q2" id="q2d" value="100+"><label for="q2d">100+</label></div>
+            </div>
+            <span class="err" id="q2err">Pick an option to continue.</span>
+          </div>
+
+          <div class="field" id="fieldQ3" role="radiogroup" aria-labelledby="q3label" aria-describedby="q3err">
+            <span class="qlabel" id="q3label"><span class="qn">03</span>Do you currently follow up with every inquiry within 5 minutes?</span>
+            <div class="radios">
+              <div class="radio"><input type="radio" name="q3" id="q3a" value="Yes"><label for="q3a">Yes</label></div>
+              <div class="radio"><input type="radio" name="q3" id="q3b" value="No"><label for="q3b">No</label></div>
+              <div class="radio"><input type="radio" name="q3" id="q3c" value="Not sure"><label for="q3c">Not sure</label></div>
+            </div>
+            <span class="err" id="q3err">Pick an option to continue.</span>
+          </div>
+
+          <div class="field" id="fieldQ4" role="radiogroup" aria-labelledby="q4label" aria-describedby="q4err">
+            <span class="qlabel" id="q4label"><span class="qn">04</span>What's slowing you down most right now?</span>
+            <div class="radios">
+              <div class="radio"><input type="radio" name="q4" id="q4a" value="Slow follow-up"><label for="q4a">Slow follow-up</label></div>
+              <div class="radio"><input type="radio" name="q4" id="q4b" value="No-shows"><label for="q4b">No-shows</label></div>
+              <div class="radio"><input type="radio" name="q4" id="q4c" value="Not enough leads"><label for="q4c">Not enough leads</label></div>
+              <div class="radio"><input type="radio" name="q4" id="q4d" value="Something else"><label for="q4d">Something else</label></div>
+            </div>
+            <span class="err" id="q4err">Pick an option to continue.</span>
+          </div>
+
+          <div class="dialog-actions">
+            <button class="btn" type="submit">Continue</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="funnelStep2" hidden>
+        <h2>Pick a call time</h2>
+        <p class="lead">Choose a day and a slot. We'll confirm on the next screen.</p>
+        <span class="cal-label">Day</span>
+        <div class="days" id="dayGrid" role="group" aria-label="Choose a day"></div>
+        <span class="cal-label">Time</span>
+        <div class="slots" id="slotGrid" role="group" aria-label="Choose a time"></div>
+        <span class="err" id="calErr">Pick a day and a time to continue.</span>
+        <div class="dialog-actions">
+          <button class="btn ghost sm" type="button" id="backToStep1">Back</button>
+          <button class="btn" type="button" id="confirmBooking">Confirm booking</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="funnelStep3" hidden>
+        <div class="confirm">
+          <div class="cmark" aria-hidden="true">✓</div>
+          <h2>You're booked.</h2>
+          <p class="cval" id="confirmDetail">—</p>
+          <p>Check your email for details.</p>
+          <div class="dialog-actions" style="margin-top:24px">
+            <button class="btn" type="button" data-close-funnel>Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DEMO LIGHTBOX ===== -->
+<div class="modal-overlay" id="demoOverlay">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="demoTitle" id="demoDialog">
+    <div class="dialog-head">
+      <div class="dh-l"><span class="dot" aria-hidden="true"></span> <span>Demo</span></div>
+      <button class="dclose" type="button" data-close-demo aria-label="Close dialog">×</button>
+    </div>
+    <div class="dialog-body">
+      <h2 id="demoTitle" class="visually-hidden">90-second demo</h2>
+      <div class="video-frame">
+        <div class="vgrid" aria-hidden="true"></div>
+        <div class="vplay" aria-hidden="true">
+          <svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M0 0l18 10L0 20z" fill="currentColor"/></svg>
+        </div>
+        <p class="vcap">90-second demo — video coming soon</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Hero response-time ticker ---------- */
+  var readout = document.getElementById("respReadout");
+  if(readout){
+    if(reduceMotion){
+      readout.textContent = "00:02s";
+    } else {
+      var v = 0;
+      setInterval(function(){
+        v += 1;
+        if(v > 20) v = 0;
+        var whole = Math.floor(v/10);
+        var frac = v % 10;
+        readout.textContent = "00:0" + whole + (frac ? "." + frac : "") + "s";
+      }, 90);
+    }
+  }
+
+  /* ---------- Mobile nav ---------- */
+  var burger = document.querySelector(".burger");
+  var mnav = document.getElementById("mobileNav");
+  if(burger && mnav){
+    burger.addEventListener("click", function(){
+      var open = burger.getAttribute("aria-expanded") === "true";
+      burger.setAttribute("aria-expanded", String(!open));
+      mnav.classList.toggle("open", !open);
+    });
+    mnav.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        burger.setAttribute("aria-expanded","false");
+        mnav.classList.remove("open");
+      });
+    });
+  }
+
+  /* ---------- Generic modal machinery ---------- */
+  var lastTrigger = null;
+  var scrollY = 0;
+  function lockScroll(){
+    scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = "-" + scrollY + "px";
+    document.body.style.width = "100%";
+  }
+  function unlockScroll(){
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    window.scrollTo(0, scrollY);
+  }
+  function focusables(container){
+    return Array.prototype.slice.call(container.querySelectorAll(
+      'a[href], button:not([disabled]), select, input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )).filter(function(el){ return el.offsetParent !== null || el === document.activeElement; });
+  }
+  function openModal(overlay, dialog, trigger){
+    lastTrigger = trigger || document.activeElement;
+    overlay.classList.add("open");
+    lockScroll();
+    var f = focusables(dialog);
+    (f[0] || dialog).focus();
+  }
+  function closeModal(overlay){
+    overlay.classList.remove("open");
+    unlockScroll();
+    if(lastTrigger && typeof lastTrigger.focus === "function"){ lastTrigger.focus(); }
+    lastTrigger = null;
+  }
+  function trapFocus(e, dialog){
+    if(e.key !== "Tab") return;
+    var f = focusables(dialog);
+    if(!f.length) return;
+    var first = f[0], last = f[f.length-1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  }
+
+  /* ---------- Funnel modal ---------- */
+  var funnelOverlay = document.getElementById("funnelOverlay");
+  var funnelDialog = document.getElementById("funnelDialog");
+  var step1 = document.getElementById("funnelStep1");
+  var step2 = document.getElementById("funnelStep2");
+  var step3 = document.getElementById("funnelStep3");
+  var stepLabel = document.getElementById("funnelStepLabel");
+
+  function showStep(n){
+    step1.hidden = n !== 1;
+    step2.hidden = n !== 2;
+    step3.hidden = n !== 3;
+    stepLabel.textContent = "Step " + n + " of 3";
+    var f = focusables(funnelDialog);
+    (f[0] || funnelDialog).focus();
+  }
+  function resetFunnel(){
+    var form = document.getElementById("qualifyForm");
+    if(form) form.reset();
+    ["fieldQ1","fieldQ2","fieldQ3","fieldQ4"].forEach(function(id){
+      document.getElementById(id).classList.remove("invalid");
+    });
+    selectedDay = null; selectedSlot = null;
+    document.getElementById("calErr").style.display = "none";
+    showStep(1);
+  }
+  function openFunnel(trigger){
+    resetFunnel();
+    openModal(funnelOverlay, funnelDialog, trigger);
+  }
+
+  document.querySelectorAll("[data-open-funnel],[data-open-funnel-link]").forEach(function(b){
+    b.addEventListener("click", function(e){
+      if(b.hasAttribute("data-open-funnel-link")) e.preventDefault();
+      openFunnel(b);
+    });
+  });
+  funnelOverlay.querySelectorAll("[data-close-funnel]").forEach(function(b){
+    b.addEventListener("click", function(){ closeModal(funnelOverlay); });
+  });
+  funnelOverlay.addEventListener("mousedown", function(e){
+    if(e.target === funnelOverlay) closeModal(funnelOverlay);
+  });
+
+  /* Step 1 validation */
+  var qForm = document.getElementById("qualifyForm");
+  qForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var ok = true;
+    var q1 = document.getElementById("q1");
+    if(!q1.value){ document.getElementById("fieldQ1").classList.add("invalid"); ok = false; }
+    else document.getElementById("fieldQ1").classList.remove("invalid");
+    [["q2","fieldQ2"],["q3","fieldQ3"],["q4","fieldQ4"]].forEach(function(pair){
+      var checked = qForm.querySelector('input[name="'+pair[0]+'"]:checked');
+      if(!checked){ document.getElementById(pair[1]).classList.add("invalid"); ok = false; }
+      else document.getElementById(pair[1]).classList.remove("invalid");
+    });
+    if(ok) showStep(2);
+    else {
+      var firstInvalid = funnelDialog.querySelector(".field.invalid");
+      if(firstInvalid){
+        var focusEl = firstInvalid.querySelector("select,input");
+        if(focusEl) focusEl.focus();
+      }
+    }
+  });
+
+  /* clear invalid state on change */
+  qForm.addEventListener("change", function(e){
+    var field = e.target.closest(".field");
+    if(field) field.classList.remove("invalid");
+  });
+
+  document.getElementById("backToStep1").addEventListener("click", function(){ showStep(1); });
+
+  /* ---------- Calendar ---------- */
+  var dayGrid = document.getElementById("dayGrid");
+  var slotGrid = document.getElementById("slotGrid");
+  var selectedDay = null, selectedSlot = null;
+  var DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  function buildDays(){
+    dayGrid.innerHTML = "";
+    var d = new Date();
+    var count = 0;
+    while(count < 8){
+      d.setDate(d.getDate() + 1);
+      var dow = d.getDay();
+      if(dow === 0 || dow === 6) continue; // weekdays only
+      count++;
+      var label = DOW[dow] + ", " + MON[d.getMonth()] + " " + d.getDate();
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "day";
+      btn.setAttribute("aria-pressed","false");
+      btn.dataset.label = label;
+      btn.innerHTML = '<span class="dow">'+DOW[dow]+'</span><span class="dnum">'+MON[d.getMonth()]+' '+d.getDate()+'</span>';
+      btn.addEventListener("click", function(){
+        dayGrid.querySelectorAll(".day").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+        this.setAttribute("aria-pressed","true");
+        selectedDay = this.dataset.label;
+        document.getElementById("calErr").style.display = "none";
+      });
+      dayGrid.appendChild(btn);
+    }
+  }
+  function buildSlots(){
+    slotGrid.innerHTML = "";
+    var times = ["9:00 AM","9:30 AM","10:00 AM","10:30 AM","11:00 AM","11:30 AM","1:00 PM","1:30 PM","2:00 PM","2:30 PM","3:00 PM","3:30 PM","4:00 PM"];
+    times.forEach(function(t){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "slot";
+      btn.textContent = t;
+      btn.setAttribute("aria-pressed","false");
+      btn.addEventListener("click", function(){
+        slotGrid.querySelectorAll(".slot").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+        this.setAttribute("aria-pressed","true");
+        selectedSlot = t;
+        document.getElementById("calErr").style.display = "none";
+      });
+      slotGrid.appendChild(btn);
+    });
+  }
+  buildDays();
+  buildSlots();
+
+  document.getElementById("confirmBooking").addEventListener("click", function(){
+    if(!selectedDay || !selectedSlot){
+      document.getElementById("calErr").style.display = "block";
+      return;
+    }
+    document.getElementById("confirmDetail").textContent = "You're booked for " + selectedDay + " at " + selectedSlot + ".";
+    showStep(3);
+  });
+
+  /* ---------- Demo lightbox ---------- */
+  var demoOverlay = document.getElementById("demoOverlay");
+  var demoDialog = document.getElementById("demoDialog");
+  document.querySelectorAll("[data-open-demo]").forEach(function(b){
+    b.addEventListener("click", function(){ openModal(demoOverlay, demoDialog, b); });
+  });
+  demoOverlay.querySelectorAll("[data-close-demo]").forEach(function(b){
+    b.addEventListener("click", function(){ closeModal(demoOverlay); });
+  });
+  demoOverlay.addEventListener("mousedown", function(e){
+    if(e.target === demoOverlay) closeModal(demoOverlay);
+  });
+
+  /* ---------- Global key handling ---------- */
+  document.addEventListener("keydown", function(e){
+    if(funnelOverlay.classList.contains("open")){
+      if(e.key === "Escape") closeModal(funnelOverlay);
+      else trapFocus(e, funnelDialog);
+    } else if(demoOverlay.classList.contains("open")){
+      if(e.key === "Escape") closeModal(demoOverlay);
+      else trapFocus(e, demoDialog);
+    }
+  });
+
+  /* ---------- Pricing billing toggle ---------- */
+  var billMonthly = document.getElementById("billMonthly");
+  var billYearly = document.getElementById("billYearly");
+  function setBilling(mode){
+    var yearly = mode === "yearly";
+    billMonthly.setAttribute("aria-pressed", String(!yearly));
+    billYearly.setAttribute("aria-pressed", String(yearly));
+    document.querySelectorAll(".pamt").forEach(function(el){
+      el.textContent = yearly ? el.dataset.yearly : el.dataset.monthly;
+    });
+    document.querySelectorAll(".pper").forEach(function(el){
+      el.textContent = yearly ? el.dataset.yearly : el.dataset.monthly;
+    });
+  }
+  billMonthly.addEventListener("click", function(){ setBilling("monthly"); });
+  billYearly.addEventListener("click", function(){ setBilling("yearly"); });
+  setBilling("monthly");
+})();
+</script>
+</body>
+</html>

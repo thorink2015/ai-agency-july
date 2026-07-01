@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design directions — choose one</title>
+<meta name="description" content="Three distinct visual directions for the landing page. Open each and compare.">
+<meta name="theme-color" content="#0b0c0e">
+<style>
+  :root{
+    --bg:#0b0c0e; --panel:#141619; --line:rgba(255,255,255,.12);
+    --text:#f4f5f6; --muted:#9aa0a6; --accent:#c5f82a;
+    --font:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html:focus-within{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);
+    line-height:1.5;-webkit-font-smoothing:antialiased;padding:clamp(1.25rem,5vw,4rem)}
+  a{color:inherit}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#000;padding:.6rem 1rem;border-radius:6px}
+  .skip:focus{left:1rem;top:1rem;z-index:10}
+  header{max-width:1100px;margin:0 auto 2.5rem}
+  .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 .75rem}
+  h1{font-size:clamp(1.9rem,1.2rem+3vw,3.2rem);line-height:1.08;margin:0 0 1rem;letter-spacing:-.02em}
+  .lede{max-width:60ch;color:var(--muted);font-size:clamp(1rem,.95rem+.3vw,1.15rem);margin:0}
+  main{max-width:1100px;margin:0 auto}
+  .grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+  @media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
+  .card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:1.5rem;text-decoration:none;transition:transform .2s ease,border-color .2s ease}
+  .card:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .num{font-family:var(--mono);font-size:.8rem;color:var(--muted);letter-spacing:.1em}
+  .swatches{display:flex;gap:.4rem;margin:1rem 0}
+  .sw{width:26px;height:26px;border-radius:6px;border:1px solid rgba(255,255,255,.15)}
+  .card h2{font-size:1.35rem;margin:.6rem 0 .35rem;letter-spacing:-.01em}
+  .card p{color:var(--muted);font-size:.95rem;margin:0 0 1.25rem}
+  .open{margin-top:auto;font-family:var(--mono);font-size:.85rem;color:var(--accent)}
+  .open::after{content:" \2192"}
+  .a .sw:nth-child(1){background:#0b0c0e}.a .sw:nth-child(2){background:#c5f82a}.a .sw:nth-child(3){background:#f4f5f6}
+  .b .sw:nth-child(1){background:#f6f1e7}.b .sw:nth-child(2){background:#c4552f}.b .sw:nth-child(3){background:#1e1b16}
+  .c .sw:nth-child(1){background:#1f3bff}.c .sw:nth-child(2){background:#e8ff3a}.c .sw:nth-child(3){background:#fafaf7}
+  footer{max-width:1100px;margin:3rem auto 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1.5rem}
+  footer code{font-family:var(--mono);color:var(--text)}
+  ul.notes{margin:.5rem 0 0;padding-left:1.1rem}ul.notes li{margin:.25rem 0}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#choose">Skip to the designs</a>
+<header>
+  <p class="kicker">Design preview · pick a direction</p>
+  <h1>Three directions for the same page.</h1>
+  <p class="lede">Same copy, word for word. Three genuinely different visual worlds — different palette, type, layout, and mood — so there's a real choice to make. Open each in a new tab and compare. Everything is a working preview: the qualify → book funnel and the pricing toggle are live; testimonials and the demo video are placeholders.</p>
+</header>
+<main id="choose">
+  <div class="grid">
+    <a class="card a" href="01-dispatch/index.html">
+      <span class="num">01</span>
+      <div class="swatches" aria-hidden="true"><span class="sw"></span><span class="sw"></span><span class="sw"></span></div>
+      <h2>Dispatch</h2>
+      <p>Operations-terminal. Near-black, one signal accent, monospace data. Fast, precise, engineered — infrastructure that answers first.</p>
+      <span class="open">Open Dispatch</span>
+    </a>
+    <a class="card b" href="02-storefront/index.html">
+      <span class="num">02</span>
+      <div class="swatches" aria-hidden="true"><span class="sw"></span><span class="sw"></span><span class="sw"></span></div>
+      <h2>Storefront</h2>
+      <p>Warm editorial. Cream paper, ink, an earthy accent, display serif. A trusted local operator — human oversight up front, zero hype.</p>
+      <span class="open">Open Storefront</span>
+    </a>
+    <a class="card c" href="03-signal/index.html">
+      <span class="num">03</span>
+      <div class="swatches" aria-hidden="true"><span class="sw"></span><span class="sw"></span><span class="sw"></span></div>
+      <h2>Signal</h2>
+      <p>Bold brutalist duotone. Huge confident type, blocky high contrast. Decisive and modern — the proof stats blown up big.</p>
+      <span class="open">Open Signal</span>
+    </a>
+  </div>
+</main>
+<footer>
+  <p>Each direction is a self-contained set: <code>index.html</code> + <code>privacy.html</code> + <code>terms.html</code>.</p>
+  <ul class="notes">
+    <li>Copy is identical across all three — only the design differs.</li>
+    <li>The CTA funnel runs qualify form → calendar → confirmation (not a direct calendar link). No live chat widget, by request.</li>
+    <li>Testimonials + logos and the demo video are clearly-marked placeholders to swap later.</li>
+  </ul>
+</footer>
+</body>
+</html>

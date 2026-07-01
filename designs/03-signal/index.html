@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal — Answer First, Win the Booking</title>
+<meta name="description" content="We answer every inquiry within seconds so speed is never the reason you lost the lead. Instant AI response with real human oversight. More booked, showed-up appointments in 30 days, or we work for free.">
+<meta name="theme-color" content="#1F3BFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#1F3BFF;
+  --cobalt-dark:#1730D6;
+  --yellow:#E8FF3A;
+  --paper:#FAFAF7;
+  --ink:#0A0A0A;
+  --ink-70:#3A3A3A;
+  --line:#0A0A0A;
+  --disp:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --maxw:1240px;
+  --pad:clamp(16px,4vw,44px);
+  --bd:4px;
+  --bd-thick:6px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button{font-family:inherit;cursor:pointer}
+h1,h2,h3,h4{margin:0;font-family:var(--disp);line-height:0.95;letter-spacing:-0.02em}
+
+/* Display type helpers */
+.disp{font-family:var(--disp);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;line-height:0.9}
+
+/* Skip link */
+.skip{position:absolute;left:-9999px;top:0;z-index:300;background:var(--yellow);color:var(--ink);padding:14px 20px;font-family:var(--disp);font-weight:800;text-transform:uppercase;border:var(--bd) solid var(--ink)}
+.skip:focus{left:12px;top:12px}
+
+/* Focus visibility */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{
+  outline:4px solid var(--cobalt);
+  outline-offset:3px;
+}
+button:focus-visible,.btn:focus-visible{outline-color:var(--yellow);outline-offset:4px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+/* Section marker */
+.marker{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.08em}
+.marker .num{background:var(--ink);color:var(--paper);padding:4px 10px;font-variant-numeric:tabular-nums}
+
+section{border-bottom:var(--bd-thick) solid var(--ink)}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:0.01em;
+  font-size:clamp(16px,2vw,19px);
+  padding:18px 28px;min-height:56px;
+  border:var(--bd) solid var(--ink);
+  background:var(--yellow);color:var(--ink);
+  box-shadow:8px 8px 0 var(--ink);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:4px 4px 0 var(--ink)}
+.btn--cobalt{background:var(--cobalt);color:var(--paper)}
+.btn--ghost{background:var(--paper);color:var(--ink);box-shadow:none}
+.btn--ghost:hover{background:var(--ink);color:var(--paper);transform:none;box-shadow:none}
+.btn--sm{font-size:15px;padding:12px 18px;min-height:48px;box-shadow:5px 5px 0 var(--ink)}
+@media (prefers-reduced-motion: reduce){
+  .btn{transition:none}
+  .btn:hover,.btn:active{transform:none;box-shadow:8px 8px 0 var(--ink)}
+}
+
+/* ---------- HEADER / NAV ---------- */
+.site-header{position:sticky;top:0;z-index:100;background:var(--cobalt);color:var(--paper);border-bottom:var(--bd-thick) solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:24px;letter-spacing:-0.01em}
+.brand .mark{width:34px;height:34px;flex:0 0 auto}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:15px;letter-spacing:0.02em;padding:10px 12px;border:3px solid transparent}
+.nav-links a:hover{border-color:var(--paper)}
+.nav-cta{margin-left:8px}
+.nav-toggle{display:none;background:var(--yellow);color:var(--ink);border:var(--bd) solid var(--ink);width:52px;height:52px;align-items:center;justify-content:center}
+.nav-toggle svg{width:26px;height:26px}
+@media (max-width:960px){
+  .nav-links{
+    position:fixed;inset:72px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;
+    background:var(--cobalt);border-bottom:var(--bd-thick) solid var(--ink);
+    padding:8px var(--pad) 20px;display:none;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:16px 4px;border:none;border-bottom:3px solid rgba(250,250,247,0.25)}
+  .nav-cta{margin:12px 0 0}
+  .nav-toggle{display:inline-flex}
+}
+
+/* ---------- HERO (1) ---------- */
+.hero{background:var(--paper);position:relative;overflow:hidden}
+.hero-inner{padding-block:clamp(48px,8vw,96px)}
+.hero h1{
+  font-weight:900;text-transform:uppercase;
+  font-size:clamp(2.6rem,8.5vw,7.2rem);
+  line-height:0.88;letter-spacing:-0.03em;
+  max-width:16ch;
+}
+.hero h1 .flip{background:var(--cobalt);color:var(--paper);padding:0 .12em;display:inline-block}
+.hero h1 .mark-y{background:var(--yellow);color:var(--ink);padding:0 .12em;display:inline-block}
+.hero-sub{margin-top:28px;font-size:clamp(1.05rem,2.2vw,1.4rem);line-height:1.5;max-width:56ch;color:var(--ink-70);font-weight:500}
+.strip{display:flex;flex-wrap:wrap;gap:0;margin-top:34px;border:var(--bd) solid var(--ink);width:fit-content;max-width:100%}
+.strip li{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(13px,1.6vw,16px);letter-spacing:0.02em;padding:12px 18px;border-right:var(--bd) solid var(--ink)}
+.strip li:last-child{border-right:none}
+.strip li:nth-child(2){background:var(--yellow)}
+.hero-guarantee{margin-top:30px;display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:var(--paper);padding:16px 22px;border:var(--bd) solid var(--ink);font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(14px,1.9vw,18px);letter-spacing:0.01em;max-width:100%}
+.hero-guarantee .dot{width:14px;height:14px;background:var(--yellow);flex:0 0 auto}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:36px}
+
+/* ---------- WHAT YOU GET (2) ---------- */
+.band{padding-block:clamp(44px,7vw,84px)}
+.band-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:clamp(28px,4vw,48px)}
+.band-head h2{font-weight:900;text-transform:uppercase;font-size:clamp(2rem,5.5vw,4rem);line-height:0.9;letter-spacing:-0.02em}
+.get-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:var(--bd) solid var(--ink)}
+.get-cell{padding:clamp(24px,3vw,40px);border-right:var(--bd) solid var(--ink)}
+.get-cell:last-child{border-right:none}
+.get-cell:nth-child(2){background:var(--cobalt);color:var(--paper)}
+.get-cell .idx{font-family:var(--disp);font-weight:900;font-size:clamp(3rem,6vw,5rem);line-height:0.8;color:var(--yellow);-webkit-text-stroke:2px var(--ink);text-transform:uppercase}
+.get-cell:nth-child(2) .idx{color:var(--yellow);-webkit-text-stroke:2px var(--paper)}
+.get-cell h3{margin-top:18px;font-weight:900;text-transform:uppercase;font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:0.95}
+.get-cell p{margin-top:14px;font-size:1.02rem;line-height:1.5}
+.get-cell:nth-child(2) p{color:var(--paper)}
+@media (max-width:820px){.get-grid{grid-template-columns:1fr}.get-cell{border-right:none;border-bottom:var(--bd) solid var(--ink)}.get-cell:last-child{border-bottom:none}}
+
+/* ---------- HOW IT WORKS (3) ---------- */
+.how{background:var(--ink);color:var(--paper)}
+.how .marker .num{background:var(--yellow);color:var(--ink)}
+.how .band-head h2{color:var(--paper)}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:0;border:var(--bd) solid var(--paper)}
+.step{padding:clamp(24px,3vw,40px);border-right:var(--bd) solid var(--paper);border-bottom:var(--bd) solid var(--paper);display:flex;gap:20px;align-items:flex-start}
+.step:nth-child(2n){border-right:none}
+.step:nth-child(3),.step:nth-child(4){border-bottom:none}
+.step-n{font-family:var(--disp);font-weight:900;font-size:clamp(3rem,7vw,5.5rem);line-height:0.75;color:var(--cobalt);-webkit-text-stroke:2px var(--paper);flex:0 0 auto}
+.step h3{font-weight:900;text-transform:uppercase;font-size:clamp(1.15rem,2.3vw,1.6rem);line-height:0.95}
+.step p{margin-top:12px;color:#D6D6D2;font-size:1rem;line-height:1.5}
+@media (max-width:820px){.steps{grid-template-columns:1fr}.step{border-right:none}.step:nth-child(3){border-bottom:var(--bd) solid var(--paper)}}
+
+/* ---------- WHY SPEED WINS (4) — GIANT NUMBERS ---------- */
+.speed{background:var(--cobalt);color:var(--paper)}
+.speed .marker .num{background:var(--yellow);color:var(--ink)}
+.speed-intro{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(1.2rem,3vw,2.2rem);line-height:1;letter-spacing:-0.01em;max-width:24ch;margin-bottom:clamp(30px,5vw,56px)}
+.stat{border-top:var(--bd-thick) solid var(--paper);padding-block:clamp(28px,4vw,52px);display:grid;grid-template-columns:minmax(0,0.9fr) 1.1fr;gap:clamp(20px,4vw,56px);align-items:center}
+.stat:last-child{border-bottom:var(--bd-thick) solid var(--paper)}
+.stat .big{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(5rem,20vw,15rem);line-height:0.72;letter-spacing:-0.04em;color:var(--yellow);-webkit-text-stroke:0}
+.stat .copy{font-size:clamp(1.15rem,2.4vw,1.7rem);line-height:1.28;font-weight:600}
+.stat .src{display:block;margin-top:14px;font-family:var(--disp);font-weight:600;text-transform:uppercase;font-size:clamp(11px,1.3vw,13px);letter-spacing:0.04em;color:rgba(250,250,247,0.75)}
+@media (max-width:760px){.stat{grid-template-columns:1fr;gap:8px}.stat .big{font-size:clamp(5rem,32vw,10rem)}}
+
+/* ---------- WHO WE HELP (5) ---------- */
+.who .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:var(--bd) solid var(--ink)}
+.who-cell{padding:clamp(22px,2.6vw,34px);border-right:var(--bd) solid var(--ink);border-bottom:var(--bd) solid var(--ink)}
+.who-cell:nth-child(3n){border-right:none}
+.who-cell:nth-child(n+4){}
+.who-cell:nth-child(4),.who-cell:nth-child(5),.who-cell:nth-child(6){border-bottom:none}
+.who-cell h3{font-weight:800;text-transform:uppercase;font-size:clamp(1.05rem,1.9vw,1.3rem);line-height:1}
+.who-cell p{margin-top:12px;font-size:0.98rem;line-height:1.5;color:var(--ink-70)}
+.who-cell .tag{display:inline-block;width:24px;height:8px;background:var(--yellow);border:2px solid var(--ink);margin-bottom:14px}
+.who-cell:nth-child(6) .tag{background:var(--cobalt)}
+@media (max-width:900px){.who .who-grid{grid-template-columns:1fr 1fr}.who-cell:nth-child(3n){border-right:var(--bd) solid var(--ink)}.who-cell:nth-child(2n){border-right:none}.who-cell:nth-child(5),.who-cell:nth-child(6){border-bottom:none}.who-cell:nth-child(4){border-bottom:var(--bd) solid var(--ink)}}
+@media (max-width:560px){.who .who-grid{grid-template-columns:1fr}.who-cell{border-right:none!important;border-bottom:var(--bd) solid var(--ink)!important}.who-cell:last-child{border-bottom:none!important}}
+
+/* ---------- TESTIMONIALS (6) ---------- */
+.tst{background:var(--yellow)}
+.tst .marker .num{background:var(--ink);color:var(--yellow)}
+.tst-note{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:0.06em;background:var(--ink);color:var(--yellow);padding:8px 12px;display:inline-block;margin-bottom:24px}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tst-card{background:var(--paper);border:var(--bd) solid var(--ink);padding:24px;display:flex;flex-direction:column;gap:18px;box-shadow:8px 8px 0 var(--ink)}
+.tst-logo{width:100%;height:64px;border:3px dashed var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:0.06em;color:var(--ink-70);background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(31,59,255,0.06) 8px,rgba(31,59,255,0.06) 16px)}
+.tst-card blockquote{margin:0;font-size:1.05rem;line-height:1.45;font-weight:500}
+.tst-card .who-said{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:14px;line-height:1.15;letter-spacing:0.01em}
+@media (max-width:900px){.tst-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.tst-grid{grid-template-columns:1fr}}
+
+/* ---------- PRICING (7) ---------- */
+.pricing .band-head{align-items:center}
+.toggle-wrap{display:inline-flex;align-items:center;gap:14px;border:var(--bd) solid var(--ink);background:var(--paper);padding:6px}
+.toggle-wrap .lbl{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:14px;padding:8px 12px}
+.toggle-wrap .lbl.on{background:var(--ink);color:var(--paper)}
+.switch{position:relative;width:64px;height:36px;border:3px solid var(--ink);background:var(--paper);padding:0;flex:0 0 auto}
+.switch .knob{position:absolute;top:2px;left:2px;width:26px;height:26px;background:var(--cobalt);transition:transform .15s ease}
+.switch[aria-pressed="true"] .knob{transform:translateX(28px);background:var(--yellow);border:2px solid var(--ink)}
+@media (prefers-reduced-motion: reduce){.switch .knob{transition:none}}
+.yr-note{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:0.04em;color:var(--ink-70)}
+
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.plan{border:var(--bd) solid var(--ink);background:var(--paper);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column}
+.plan--feature{background:var(--cobalt);color:var(--paper);box-shadow:10px 10px 0 var(--ink)}
+.plan .p-name{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,3vw,2.4rem);line-height:0.9}
+.plan .price{margin-top:16px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.plan .price .amt{font-family:var(--disp);font-weight:900;font-size:clamp(2.6rem,6vw,4.2rem);line-height:0.8;letter-spacing:-0.02em}
+.plan .price .per{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:1rem}
+.plan .p-note{margin-top:12px;font-weight:600;font-size:0.95rem}
+.plan--feature .p-note{color:var(--paper)}
+.plan ul.feats{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.plan ul.feats li{position:relative;padding-left:30px;font-size:1rem;line-height:1.4}
+.plan ul.feats li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;background:var(--yellow);border:2px solid var(--ink)}
+.plan--feature ul.feats li::before{background:var(--yellow);border-color:var(--paper)}
+
+.includes{margin-top:24px;border:var(--bd) solid var(--ink);background:var(--ink);color:var(--paper);padding:clamp(24px,3vw,36px)}
+.includes h3{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(1.3rem,2.6vw,2rem);color:var(--yellow)}
+.includes ul{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.includes ul li{position:relative;padding-left:30px;line-height:1.4}
+.includes ul li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;background:var(--yellow)}
+@media (max-width:700px){.includes ul{grid-template-columns:1fr}}
+
+.addons{margin-top:24px;border:var(--bd) solid var(--ink);background:var(--paper);padding:clamp(24px,3vw,36px)}
+.addons h3,.wl h3,.ent h3{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(1.3rem,2.6vw,2rem)}
+.addons ul{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.addons ul li{padding-left:30px;position:relative;line-height:1.45}
+.addons ul li::before{content:"+";position:absolute;left:0;top:-1px;font-family:var(--disp);font-weight:900;color:var(--cobalt);font-size:1.3rem}
+
+.pair{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.wl,.ent{border:var(--bd) solid var(--ink);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column}
+.wl{background:var(--yellow)}
+.ent{background:var(--paper)}
+.wl .tiers{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.wl .tier{border:3px solid var(--ink);background:var(--paper);padding:12px 14px;font-weight:600}
+.wl .tier strong{font-family:var(--disp);font-weight:900;text-transform:uppercase;display:block;font-size:0.85rem;letter-spacing:0.04em;margin-bottom:2px}
+.wl ul,.ent ul{margin-top:18px;display:flex;flex-direction:column;gap:11px}
+.wl ul li,.ent ul li{position:relative;padding-left:28px;line-height:1.45}
+.wl ul li::before,.ent ul li::before{content:"";position:absolute;left:0;top:5px;width:14px;height:14px;background:var(--ink)}
+.ent .ent-desc{margin-top:14px;font-weight:500;line-height:1.5;color:var(--ink-70)}
+.ent .btn{margin-top:auto}
+.wl .btn{margin-top:auto}
+@media (max-width:820px){.plan-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}}
+
+/* ---------- VOICE AI (8) ---------- */
+.voice{background:var(--ink);color:var(--paper)}
+.voice .marker .num{background:var(--yellow);color:var(--ink)}
+.voice-inner{display:grid;grid-template-columns:1.2fr 0.8fr;gap:clamp(24px,4vw,56px);align-items:center}
+.voice h2{font-weight:900;text-transform:uppercase;font-size:clamp(2rem,5vw,3.6rem);line-height:0.9;color:var(--paper)}
+.voice .lead{margin-top:20px;font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.5;color:#D6D6D2;font-weight:500}
+.voice-mark{border:var(--bd) solid var(--yellow);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.voice-mark svg{width:60%;height:60%}
+@media (max-width:820px){.voice-inner{grid-template-columns:1fr}.voice-mark{max-width:260px}}
+
+/* ---------- WHAT WE DON'T DO (9) ---------- */
+.dont{background:var(--paper)}
+.dont-intro{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.1rem,2.4vw,1.7rem);line-height:1.1;max-width:34ch;margin-bottom:clamp(28px,4vw,48px)}
+.dont-list{display:grid;grid-template-columns:1fr 1fr;gap:0;border:var(--bd) solid var(--ink)}
+.dont-item{padding:clamp(22px,3vw,36px);border-right:var(--bd) solid var(--ink);border-bottom:var(--bd) solid var(--ink);display:flex;gap:18px;align-items:flex-start}
+.dont-item:nth-child(2n){border-right:none}
+.dont-item:nth-child(3),.dont-item:nth-child(4){border-bottom:none}
+.dont-x{width:42px;height:42px;flex:0 0 auto;background:var(--cobalt);border:3px solid var(--ink);display:flex;align-items:center;justify-content:center}
+.dont-x svg{width:22px;height:22px}
+.dont-item p{font-size:1rem;line-height:1.5}
+.dont-item p strong{font-family:var(--disp);font-weight:900;text-transform:uppercase;display:block;margin-bottom:6px;font-size:1.05rem;line-height:1}
+@media (max-width:820px){.dont-list{grid-template-columns:1fr}.dont-item{border-right:none}.dont-item:nth-child(3){border-bottom:var(--bd) solid var(--ink)}}
+
+/* ---------- TICKER ---------- */
+.ticker{background:var(--yellow);border-bottom:var(--bd-thick) solid var(--ink);overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:0;padding-block:14px;animation:scrollx 26s linear infinite;will-change:transform}
+.ticker-track span{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(16px,2.6vw,26px);letter-spacing:0.02em;padding-inline:22px}
+.ticker-track span::after{content:"◆";margin-left:22px;color:var(--cobalt)}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.ticker-track{animation:none;white-space:normal;flex-wrap:wrap}}
+
+/* ---------- FINAL CTA (10) ---------- */
+.final{background:var(--cobalt);color:var(--paper);text-align:center}
+.final-inner{padding-block:clamp(56px,10vw,120px)}
+.final h2{font-weight:900;text-transform:uppercase;font-size:clamp(2.4rem,9vw,7rem);line-height:0.86;letter-spacing:-0.03em;max-width:18ch;margin:0 auto}
+.final .btn{margin-top:40px}
+.final h2 .hl{background:var(--yellow);color:var(--ink);padding:0 .1em}
+
+/* ---------- FOOTER (11) ---------- */
+.site-footer{background:var(--ink);color:var(--paper);border-bottom:none}
+.footer-inner{padding-block:clamp(40px,6vw,72px);display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.footer-brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:28px}
+.footer-brand .mark{width:38px;height:38px}
+.footer-tag{margin-top:16px;color:#C7C7C3;max-width:44ch;line-height:1.5}
+.footer-nav{display:flex;flex-wrap:wrap;gap:8px 4px}
+.footer-nav a{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:14px;letter-spacing:0.03em;padding:10px 12px;border:3px solid rgba(250,250,247,0.25)}
+.footer-nav a:hover{border-color:var(--yellow);color:var(--yellow)}
+.footer-legal{grid-column:1/-1;margin-top:32px;padding-top:20px;border-top:3px solid rgba(250,250,247,0.2);color:#9A9A96;font-size:13px;display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--disp);text-transform:uppercase;font-weight:600;letter-spacing:0.03em}
+@media (max-width:760px){.footer-inner{grid-template-columns:1fr}}
+
+/* ---------- MODAL / DIALOG ---------- */
+.overlay{position:fixed;inset:0;z-index:200;background:rgba(10,10,10,0.72);display:none;align-items:flex-start;justify-content:center;padding:clamp(12px,4vh,48px) 16px;overflow-y:auto}
+.overlay.open{display:flex}
+.dialog{background:var(--paper);color:var(--ink);border:var(--bd-thick) solid var(--ink);box-shadow:14px 14px 0 var(--cobalt);width:100%;max-width:600px;margin:auto}
+.dialog--video{max-width:860px}
+.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--cobalt);color:var(--paper);padding:18px 22px;border-bottom:var(--bd) solid var(--ink)}
+.dialog-head h2{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(1.2rem,3vw,1.7rem);line-height:0.95}
+.dialog-close{background:var(--yellow);color:var(--ink);border:var(--bd) solid var(--ink);width:48px;height:48px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:0}
+.dialog-close svg{width:22px;height:22px}
+.dialog-body{padding:clamp(20px,4vw,32px)}
+.step-label{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:0.06em;color:var(--cobalt);margin-bottom:6px;display:block}
+.q{margin-bottom:24px}
+.q > .q-label{display:block;font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:0.95rem;line-height:1.15;margin-bottom:12px}
+select,input{font-family:var(--body);font-size:1rem}
+.q select{width:100%;padding:14px;border:var(--bd) solid var(--ink);background:var(--paper);min-height:52px;font-weight:500}
+.radios{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.radios{grid-template-columns:1fr}}
+.radio-opt{display:flex;align-items:center;gap:10px;border:3px solid var(--ink);padding:12px 14px;min-height:48px;cursor:pointer;font-weight:500;background:var(--paper)}
+.radio-opt:hover{background:#F0F0EA}
+.radio-opt input{width:20px;height:20px;accent-color:var(--cobalt);flex:0 0 auto}
+.radio-opt:has(input:checked){background:var(--yellow)}
+.err{color:#B00020;font-weight:600;font-size:0.9rem;margin-top:8px;display:none}
+.err.show{display:block}
+.q.invalid select,.q.invalid .radios{outline:3px solid #B00020;outline-offset:4px}
+.dialog-foot{margin-top:8px;display:flex;justify-content:flex-end;gap:12px}
+
+/* calendar */
+.cal-lead{font-weight:600;margin-bottom:16px;line-height:1.45}
+.day-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:26px}
+.day-opt,.time-opt{border:3px solid var(--ink);background:var(--paper);padding:12px 8px;text-align:center;font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:0.85rem;line-height:1.1;min-height:52px}
+.day-opt small{display:block;font-family:var(--body);font-weight:600;font-size:0.72rem;color:var(--ink-70);margin-top:4px;text-transform:none}
+.day-opt[aria-pressed="true"],.time-opt[aria-pressed="true"]{background:var(--cobalt);color:var(--paper);box-shadow:4px 4px 0 var(--ink)}
+.day-opt[aria-pressed="true"] small{color:rgba(250,250,247,0.8)}
+.time-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px}
+.subhead{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:0.9rem;margin:20px 0 12px}
+
+/* confirmation */
+.confirm{text-align:center;padding:8px 0 12px}
+.confirm .check{width:72px;height:72px;margin:0 auto 20px;background:var(--yellow);border:var(--bd) solid var(--ink);display:flex;align-items:center;justify-content:center}
+.confirm .check svg{width:38px;height:38px}
+.confirm h3{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(1.4rem,3.4vw,2rem);line-height:0.95}
+.confirm p{margin-top:16px;font-size:1.1rem;line-height:1.5;max-width:44ch;margin-inline:auto}
+.confirm .booked{font-weight:700;color:var(--cobalt)}
+
+/* video placeholder */
+.video-frame{aspect-ratio:16/9;background:var(--ink);border:var(--bd) solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:var(--paper)}
+.video-frame .play{width:84px;height:84px;background:var(--yellow);border:var(--bd) solid var(--paper);display:flex;align-items:center;justify-content:center}
+.video-frame .play svg{width:34px;height:34px}
+.video-frame .cap{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(0.9rem,2vw,1.1rem);letter-spacing:0.03em}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+body.locked{overflow:hidden}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== HEADER / NAV ===== -->
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Signal home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="2" y="2" width="36" height="36" fill="#FAFAF7" stroke="#0A0A0A" stroke-width="3"/>
+        <rect x="8" y="22" width="5" height="10" fill="#0A0A0A"/>
+        <rect x="17" y="15" width="5" height="17" fill="#0A0A0A"/>
+        <rect x="26" y="8" width="5" height="24" fill="#E8FF3A" stroke="#0A0A0A" stroke-width="2"/>
+      </svg>
+      Signal
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#top">Home</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#who">Who We Help</a>
+      <a href="#voice">Voice AI</a>
+      <button class="btn btn--sm nav-cta" data-open-funnel type="button">See If Your Business Qualifies</button>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ===== SECTION 1: HERO ===== -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-inner">
+    <p class="marker"><span class="num">01</span> The Signal</p>
+    <h1 id="hero-h" style="margin-top:20px">The Business That Answers First <span class="flip">Almost Always Wins.</span> We Make Sure It's <span class="mark-y">You.</span></h1>
+    <p class="hero-sub">Not because you do better work, just because you got there first. We answer every single inquiry within seconds, so speed is never the reason you lost them.</p>
+    <ul class="strip" aria-label="What you get">
+      <li>Instant AI Response</li>
+      <li>Real Human Oversight</li>
+      <li>24/7 Free Support</li>
+    </ul>
+    <p class="hero-guarantee"><span class="dot" aria-hidden="true"></span>More booked, showed-up appointments in 30 days, or we work for free.</p>
+    <div class="hero-cta">
+      <button class="btn btn--cobalt" data-open-funnel type="button">See If Your Business Qualifies</button>
+      <button class="btn btn--ghost btn--sm" data-open-video type="button">Watch a 90-second demo</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: WHAT YOU GET ===== -->
+<section class="band" aria-labelledby="get-h">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <p class="marker"><span class="num">02</span> What You Get</p>
+        <h2 id="get-h" style="margin-top:16px">What You Get</h2>
+      </div>
+    </div>
+    <div class="get-grid">
+      <div class="get-cell">
+        <span class="idx" aria-hidden="true">01</span>
+        <h3>Instant AI Response</h3>
+        <p>Every inquiry gets a reply within seconds, day or night. Nobody waits, and nobody gets forgotten.</p>
+      </div>
+      <div class="get-cell">
+        <span class="idx" aria-hidden="true">02</span>
+        <h3>Real Human Oversight</h3>
+        <p>A real person is always watching. Nothing runs unchecked, and nothing gets weird.</p>
+      </div>
+      <div class="get-cell">
+        <span class="idx" aria-hidden="true">03</span>
+        <h3>24/7 Free Support</h3>
+        <p>Something breaks or needs a tweak? Message us, any time. No tickets, no upcharges, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: HOW IT WORKS ===== -->
+<section class="how band" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <p class="marker"><span class="num">03</span> How It Works</p>
+        <h2 id="how-h" style="margin-top:16px">How It Works</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-n" aria-hidden="true">1</span>
+        <div>
+          <h3>They Reach Out</h3>
+          <p>A text, a form, or a message on social, however they reach out, we're already watching for it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n" aria-hidden="true">2</span>
+        <div>
+          <h3>We Answer, In Seconds</h3>
+          <p>Our AI replies immediately, in your voice, and starts qualifying them right there in the conversation. A real person is watching this happen, same as everything else.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n" aria-hidden="true">3</span>
+        <div>
+          <h3>It Gets Booked</h3>
+          <p>Once they're a real fit, the appointment goes straight into your calendar. No calendar links, no back-and-forth, no waiting on you to notice the message.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n" aria-hidden="true">4</span>
+        <div>
+          <h3>We Keep Them Showing Up</h3>
+          <p>Reminders go out on their own, and if someone goes quiet, we follow up until they confirm or tell us no. You just show up and do the work you're actually good at.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: WHY SPEED WINS (GIANT NUMBERS) ===== -->
+<section class="speed band" aria-labelledby="speed-h">
+  <div class="wrap">
+    <p class="marker"><span class="num">04</span> Why Speed Wins</p>
+    <h2 id="speed-h" class="sr-only">Why Speed Wins</h2>
+    <p class="speed-intro" style="margin-top:20px">We didn't invent this, it's just what independent research found.</p>
+    <div class="stat">
+      <div class="big" aria-hidden="true">78%</div>
+      <p class="copy"><span class="sr-only">78% </span>Go with whoever answers first. Not whoever's best, whoever's fastest.<span class="src">(Source: Lead Connect / Vendasta research, 2025)</span></p>
+    </div>
+    <div class="stat">
+      <div class="big" aria-hidden="true">100x</div>
+      <p class="copy"><span class="sr-only">100x </span>Less likely you'll even reach someone if you wait 30 minutes instead of 5.<span class="src">(Source: MIT / InsideSales.com study, 15,000+ leads tracked)</span></p>
+    </div>
+    <div class="stat">
+      <div class="big" aria-hidden="true">2x+</div>
+      <p class="copy"><span class="sr-only">2x+ </span>More appointments get booked from an instant reply than a typical follow-up.<span class="src">(Source: Chili Piper 2025 Benchmark Report, 4 million form submissions)</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: WHO WE HELP ===== -->
+<section class="who band" id="who" aria-labelledby="who-h">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <p class="marker"><span class="num">05</span> Who We Help</p>
+        <h2 id="who-h" style="margin-top:16px">Who We Help</h2>
+      </div>
+    </div>
+    <div class="who-grid">
+      <div class="who-cell">
+        <span class="tag" aria-hidden="true"></span>
+        <h3>Martial Arts &amp; Dance Studios</h3>
+        <p>Never lose another trial to slow follow-up. Instant text-back books the mat, kids and all.</p>
+      </div>
+      <div class="who-cell">
+        <span class="tag" aria-hidden="true"></span>
+        <h3>Med Spas &amp; Aesthetics</h3>
+        <p>Consultations that show up and leave a deposit, or you don't pay.</p>
+      </div>
+      <div class="who-cell">
+        <span class="tag" aria-hidden="true"></span>
+        <h3>Chiropractors &amp; Massage</h3>
+        <p>Every inquiry answered before they call the practice next door.</p>
+      </div>
+      <div class="who-cell">
+        <span class="tag" aria-hidden="true"></span>
+        <h3>Auto Detailing</h3>
+        <p>Booked, paid jobs on your calendar. You only pay when the customer shows.</p>
+      </div>
+      <div class="who-cell">
+        <span class="tag" aria-hidden="true"></span>
+        <h3>Cabinets &amp; Kitchen Remodeling</h3>
+        <p>In-home design consultations booked with homeowners who can actually afford the job.</p>
+      </div>
+      <div class="who-cell">
+        <span class="tag" aria-hidden="true"></span>
+        <h3>Marketing &amp; Lead-Gen Agencies (white-label)</h3>
+        <p>Your bottom-of-funnel layer, under your brand. We convert the leads you're already paying for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: TESTIMONIALS ===== -->
+<!-- PLACEHOLDER TESTIMONIALS: swap real names/quotes/logos -->
+<section class="tst band" aria-labelledby="tst-h">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <p class="marker"><span class="num">06</span> Testimonials</p>
+        <h2 id="tst-h" style="margin-top:16px">Testimonials</h2>
+      </div>
+    </div>
+    <p class="tst-note">Placeholder — real names, quotes and logos to be swapped in</p>
+    <div class="tst-grid">
+      <figure class="tst-card">
+        <div class="tst-logo" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"We used to lose kids to whoever texted back first, usually not us. Now the reply's instant and our trial bookings finally show up."</blockquote>
+        <figcaption class="who-said">— Marcus Webb, Owner, Ironclad BJJ Academy</figcaption>
+      </figure>
+      <figure class="tst-card">
+        <div class="tst-logo" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"Deposits are the whole game in this business. Since switching, way fewer people ghost their consult."</blockquote>
+        <figcaption class="who-said">— Dr. Alina Cho, Radiance Aesthetics &amp; Skin Clinic</figcaption>
+      </figure>
+      <figure class="tst-card">
+        <div class="tst-logo" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"I don't answer my phone during a job, obviously. Now I don't have to, and I still get the booking."</blockquote>
+        <figcaption class="who-said">— Danny Reyes, Owner, Reyes Ceramic Coating Studio</figcaption>
+      </figure>
+      <figure class="tst-card">
+        <div class="tst-logo" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"Homeowners want an answer same day or they call the next guy. We stopped being the next guy."</blockquote>
+        <figcaption class="who-said">— Karen Doss, Doss Custom Cabinetry</figcaption>
+      </figure>
+      <figure class="tst-card">
+        <div class="tst-logo" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"Half our new patient calls came in after hours anyway. Now someone actually answers them."</blockquote>
+        <figcaption class="who-said">— Dr. James Whitfield, Whitfield Family Chiropractic</figcaption>
+      </figure>
+      <figure class="tst-card">
+        <div class="tst-logo" aria-hidden="true">Logo placeholder</div>
+        <blockquote>"We white-labeled this under our own brand and it became a real upsell, not just a feature nobody used."</blockquote>
+        <figcaption class="who-said">— Priya Anand, Founder, Northline Growth Partners</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: PRICING ===== -->
+<section class="pricing band" id="pricing" aria-labelledby="pricing-h">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <p class="marker"><span class="num">07</span> Pricing</p>
+        <h2 id="pricing-h" style="margin-top:16px">Pricing</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+        <div class="toggle-wrap" role="group" aria-label="Billing period">
+          <span class="lbl on" id="lbl-month" data-month>Monthly</span>
+          <button class="switch" id="billingToggle" type="button" role="switch" aria-checked="false" aria-label="Switch to yearly billing"><span class="knob" aria-hidden="true"></span></button>
+          <span class="lbl" id="lbl-year" data-year>Yearly</span>
+        </div>
+        <span class="yr-note">Yearly = 2 months free</span>
+      </div>
+    </div>
+
+    <div class="plan-grid">
+      <div class="plan">
+        <div class="p-name">Starter</div>
+        <div class="price">
+          <span class="amt" data-price data-mo="$397" data-yr="$3,970">$397</span>
+          <span class="per" data-per>/mo</span>
+        </div>
+        <p class="p-note">Setup waived your first month.</p>
+        <ul class="feats">
+          <li>AI booking assistant live within 5 business days</li>
+          <li>Instant response to every inquiry, day or night</li>
+          <li>Appointments booked straight into your calendar</li>
+          <li>Monthly performance report</li>
+        </ul>
+      </div>
+      <div class="plan plan--feature">
+        <div class="p-name">Growth</div>
+        <div class="price">
+          <span class="amt" data-price data-mo="$697" data-yr="$6,970">$697</span>
+          <span class="per" data-per>/mo</span>
+        </div>
+        <p class="p-note">&nbsp;</p>
+        <ul class="feats">
+          <li>Everything in Starter</li>
+          <li>No-show recovery and re-engagement follow-ups</li>
+          <li>Every conversation reviewed by a real person</li>
+          <li>Priority support, unlimited troubleshooting, no extra charge</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="includes">
+      <h3>Every plan includes</h3>
+      <ul>
+        <li>No long-term contract, cancel any time</li>
+        <li>Free, unlimited support, no tickets, no upcharges</li>
+        <li>17+ languages supported, no extra charge</li>
+        <li>Real human oversight on every account</li>
+        <li>30-day guarantee: more booked, showed-up appointments, or we work for free</li>
+      </ul>
+    </div>
+
+    <div class="addons">
+      <h3>Add-ons, available on any plan</h3>
+      <ul>
+        <li>Additional location or sub-account — $29/mo each</li>
+        <li>Rush setup, live within 48 hours instead of 5 business days — $150 one-time</li>
+        <li>Voice AI Agent — custom pricing, see Section 8</li>
+      </ul>
+    </div>
+
+    <div class="pair">
+      <div class="wl">
+        <h3>Agencies (White-Label)</h3>
+        <div class="tiers">
+          <div class="tier"><strong>Pilot</strong>$1,500 for 30 days</div>
+          <div class="tier"><strong>Retainer</strong>$2,500/mo + $1,500 setup, once the pilot converts</div>
+        </div>
+        <ul>
+          <li>White-label the entire system under your brand</li>
+          <li>Resell to your own local-service clients</li>
+          <li>We fulfill, you keep the client relationship</li>
+          <li>Wholesale per-client pricing available at volume, ask us</li>
+        </ul>
+      </div>
+      <div class="ent">
+        <h3>Enterprise — Custom</h3>
+        <p class="ent-desc">For multi-location operators, franchises, or agencies who need something built specifically for them.</p>
+        <ul>
+          <li>Dedicated account manager</li>
+          <li>Done-for-you setup across every location</li>
+          <li>Custom integrations and workflows</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn btn--cobalt btn--sm" data-open-funnel type="button" style="margin-top:22px">Book a Call</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: VOICE AI ===== -->
+<section class="voice band" id="voice" aria-labelledby="voice-h">
+  <div class="wrap">
+    <p class="marker"><span class="num">08</span> Voice AI Agents (Custom, By Request)</p>
+    <div class="voice-inner" style="margin-top:24px">
+      <div>
+        <h2 id="voice-h">Need the phone answered too, not just messages?</h2>
+        <p class="lead">For businesses that specifically need it, we build a dedicated voice AI agent on top of your system, a real phone call, answered instantly, handled by AI, with a real person reviewing how it performs. This isn't part of the standard plans. It's built for your business specifically, and scoped on a call.</p>
+        <button class="btn btn--sm" data-open-funnel type="button" style="margin-top:28px">Ask About Voice AI</button>
+      </div>
+      <div class="voice-mark" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#E8FF3A" stroke-width="6" stroke-linecap="round">
+          <path d="M50 20v60"/><path d="M30 32v36"/><path d="M70 32v36"/><path d="M15 44v12"/><path d="M85 44v12"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 9: WHAT WE DON'T DO ===== -->
+<section class="dont band" aria-labelledby="dont-h">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <p class="marker"><span class="num">09</span> What We Don't Do</p>
+        <h2 id="dont-h" style="margin-top:16px">What We Don't Do</h2>
+      </div>
+    </div>
+    <p class="dont-intro">Compliance sounds boring until a number gets banned and every message stops sending. Here's what's permanently off the table, and why.</p>
+    <div class="dont-list">
+      <div class="dont-item">
+        <span class="dont-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#FAFAF7" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+        <p><strong>No personal WhatsApp or iMessage.</strong>Automation runs on registered business channels only. Personal accounts get banned running at any real volume, so we never touch them.</p>
+      </div>
+      <div class="dont-item">
+        <span class="dont-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#FAFAF7" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+        <p><strong>No unregistered numbers.</strong>Every sending number is A2P 10DLC registered before it goes live. Skip that step and carriers block it outright, silently, no warning. We don't skip it.</p>
+      </div>
+      <div class="dont-item">
+        <span class="dont-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#FAFAF7" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+        <p><strong>No cold texting strangers.</strong>SMS only reaches people who already reached out or opted in. If cold outreach is ever part of the plan, it happens over email, never a text blast to a bought list.</p>
+      </div>
+      <div class="dont-item">
+        <span class="dont-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#FAFAF7" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+        <p><strong>No bought lists, no spoofed numbers, no shortcuts that get flagged as spam.</strong>If it risks the number's reputation, it's off the table, permanently, not just for now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Answer First</span><span>Win the Booking</span><span>Instant AI Response</span><span>Real Human Oversight</span><span>24/7 Free Support</span>
+    <span>Answer First</span><span>Win the Booking</span><span>Instant AI Response</span><span>Real Human Oversight</span><span>24/7 Free Support</span>
+  </div>
+</div>
+
+<!-- ===== SECTION 10: FINAL CTA ===== -->
+<section class="final" aria-labelledby="final-h">
+  <div class="wrap final-inner">
+    <h2 id="final-h">See If Your <span class="hl">Business</span> Qualifies</h2>
+    <button class="btn" data-open-funnel type="button">See If Your Business Qualifies</button>
+  </div>
+</section>
+</main>
+
+<!-- ===== SECTION 11: FOOTER ===== -->
+<footer class="site-footer" aria-labelledby="footer-h">
+  <div class="wrap footer-inner">
+    <h2 id="footer-h" class="sr-only">Footer</h2>
+    <div>
+      <div class="footer-brand">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="36" height="36" fill="#0A0A0A" stroke="#FAFAF7" stroke-width="3"/>
+          <rect x="8" y="22" width="5" height="10" fill="#FAFAF7"/>
+          <rect x="17" y="15" width="5" height="17" fill="#FAFAF7"/>
+          <rect x="26" y="8" width="5" height="24" fill="#E8FF3A" stroke="#FAFAF7" stroke-width="2"/>
+        </svg>
+        Signal
+      </div>
+      <p class="footer-tag">The business that answers first almost always wins. We make sure it's you.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#top">Home</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#who">Who We Help</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="#footer-h">Contact</a>
+    </nav>
+    <div class="footer-legal">
+      <span>© 2026 Signal</span>
+      <span>Instant AI Response · Real Human Oversight · 24/7 Free Support</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FUNNEL MODAL ===== -->
+<div class="overlay" id="funnelOverlay">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="funnelTitle" id="funnelDialog">
+    <div class="dialog-head">
+      <h2 id="funnelTitle">See If Your Business Qualifies</h2>
+      <button class="dialog-close" data-close type="button" aria-label="Close dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+
+      <!-- STEP 1 -->
+      <form id="step1" novalidate>
+        <span class="step-label">Step 1 of 3 — A few quick questions</span>
+        <div class="q" id="q1">
+          <label class="q-label" for="f-business">What's your business?</label>
+          <select id="f-business" name="business" required aria-describedby="q1-err">
+            <option value="">Select one</option>
+            <option>Martial Arts</option>
+            <option>Dance</option>
+            <option>Med Spa</option>
+            <option>Chiropractic</option>
+            <option>Massage</option>
+            <option>Auto Detailing</option>
+            <option>Cabinets &amp; Remodeling</option>
+            <option>Marketing Agency</option>
+            <option>Other</option>
+          </select>
+          <p class="err" id="q1-err">Please choose your business.</p>
+        </div>
+
+        <div class="q" id="q2">
+          <span class="q-label" id="q2-label">Roughly how many new inquiries do you get a month?</span>
+          <div class="radios" role="radiogroup" aria-labelledby="q2-label" aria-describedby="q2-err">
+            <label class="radio-opt"><input type="radio" name="volume" value="under 20"> under 20</label>
+            <label class="radio-opt"><input type="radio" name="volume" value="20–50"> 20–50</label>
+            <label class="radio-opt"><input type="radio" name="volume" value="50–100"> 50–100</label>
+            <label class="radio-opt"><input type="radio" name="volume" value="100+"> 100+</label>
+          </div>
+          <p class="err" id="q2-err">Please pick a range.</p>
+        </div>
+
+        <div class="q" id="q3">
+          <span class="q-label" id="q3-label">Do you currently follow up with every inquiry within 5 minutes?</span>
+          <div class="radios" role="radiogroup" aria-labelledby="q3-label" aria-describedby="q3-err">
+            <label class="radio-opt"><input type="radio" name="followup" value="Yes"> Yes</label>
+            <label class="radio-opt"><input type="radio" name="followup" value="No"> No</label>
+            <label class="radio-opt"><input type="radio" name="followup" value="Not sure"> Not sure</label>
+          </div>
+          <p class="err" id="q3-err">Please pick one.</p>
+        </div>
+
+        <div class="q" id="q4">
+          <span class="q-label" id="q4-label">What's slowing you down most right now?</span>
+          <div class="radios" role="radiogroup" aria-labelledby="q4-label" aria-describedby="q4-err">
+            <label class="radio-opt"><input type="radio" name="blocker" value="Slow follow-up"> Slow follow-up</label>
+            <label class="radio-opt"><input type="radio" name="blocker" value="No-shows"> No-shows</label>
+            <label class="radio-opt"><input type="radio" name="blocker" value="Not enough leads"> Not enough leads</label>
+            <label class="radio-opt"><input type="radio" name="blocker" value="Something else"> Something else</label>
+          </div>
+          <p class="err" id="q4-err">Please pick one.</p>
+        </div>
+
+        <div class="dialog-foot">
+          <button class="btn btn--cobalt btn--sm" type="submit">Continue</button>
+        </div>
+      </form>
+
+      <!-- STEP 2 -->
+      <div id="step2" hidden>
+        <span class="step-label">Step 2 of 3 — Pick a time</span>
+        <p class="cal-lead">Choose a day and a time that works. This is a preview booking.</p>
+        <p class="subhead">Day</p>
+        <div class="day-grid" id="dayGrid" role="group" aria-label="Choose a day"></div>
+        <p class="subhead">Time</p>
+        <div class="time-grid" id="timeGrid" role="group" aria-label="Choose a time"></div>
+        <p class="err" id="cal-err">Please pick a day and a time.</p>
+        <div class="dialog-foot">
+          <button class="btn btn--ghost btn--sm" type="button" id="backTo1">Back</button>
+          <button class="btn btn--cobalt btn--sm" type="button" id="confirmBooking">Confirm booking</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="step3" hidden>
+        <div class="confirm">
+          <div class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+          <h3>You're booked</h3>
+          <p id="confirmText">Check your email for details.</p>
+          <div class="dialog-foot" style="justify-content:center">
+            <button class="btn btn--cobalt btn--sm" type="button" data-close>Close</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== VIDEO MODAL ===== -->
+<div class="overlay" id="videoOverlay">
+  <div class="dialog dialog--video" role="dialog" aria-modal="true" aria-labelledby="videoTitle" id="videoDialog">
+    <div class="dialog-head">
+      <h2 id="videoTitle">90-second demo</h2>
+      <button class="dialog-close" data-close type="button" aria-label="Close dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <div class="video-frame" role="img" aria-label="90-second demo, video coming soon">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#0A0A0A" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="cap">90-second demo — video coming soon</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Mobile nav ---------- */
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+      navToggle.setAttribute('aria-label','Open menu');
+    });
+  });
+
+  /* ---------- Pricing toggle ---------- */
+  var toggle = document.getElementById('billingToggle');
+  var lblMonth = document.getElementById('lbl-month');
+  var lblYear = document.getElementById('lbl-year');
+  function setBilling(yearly){
+    toggle.setAttribute('aria-checked', String(yearly));
+    lblMonth.classList.toggle('on', !yearly);
+    lblYear.classList.toggle('on', yearly);
+    document.querySelectorAll('[data-price]').forEach(function(el){
+      el.textContent = yearly ? el.getAttribute('data-yr') : el.getAttribute('data-mo');
+    });
+    document.querySelectorAll('[data-per]').forEach(function(el){
+      el.textContent = yearly ? '/yr' : '/mo';
+    });
+  }
+  toggle.addEventListener('click', function(){
+    setBilling(toggle.getAttribute('aria-checked') !== 'true');
+  });
+  setBilling(false);
+
+  /* ---------- Dialog machinery ---------- */
+  var FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  var lastTrigger = null;
+  var activeOverlay = null;
+
+  function visibleFocusables(container){
+    return Array.prototype.filter.call(container.querySelectorAll(FOCUSABLE), function(el){
+      return el.offsetParent !== null || el === document.activeElement;
+    });
+  }
+  function openOverlay(overlay, dialog){
+    lastTrigger = document.activeElement;
+    activeOverlay = overlay;
+    overlay.classList.add('open');
+    document.body.classList.add('locked');
+    var f = visibleFocusables(dialog);
+    (f[0] || dialog).focus();
+  }
+  function closeOverlay(){
+    if(!activeOverlay) return;
+    activeOverlay.classList.remove('open');
+    document.body.classList.remove('locked');
+    activeOverlay = null;
+    if(lastTrigger && typeof lastTrigger.focus === 'function'){ lastTrigger.focus(); }
+  }
+  function trapTab(e, dialog){
+    if(e.key !== 'Tab') return;
+    var f = visibleFocusables(dialog);
+    if(!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  }
+  document.addEventListener('keydown', function(e){
+    if(!activeOverlay) return;
+    if(e.key === 'Escape'){ e.preventDefault(); closeOverlay(); return; }
+    var dialog = activeOverlay.querySelector('[role="dialog"]');
+    trapTab(e, dialog);
+  });
+  document.querySelectorAll('.overlay').forEach(function(ov){
+    ov.addEventListener('mousedown', function(e){ if(e.target === ov){ closeOverlay(); } });
+  });
+  document.querySelectorAll('[data-close]').forEach(function(btn){
+    btn.addEventListener('click', closeOverlay);
+  });
+
+  /* ---------- Video modal ---------- */
+  var videoOverlay = document.getElementById('videoOverlay');
+  var videoDialog = document.getElementById('videoDialog');
+  document.querySelectorAll('[data-open-video]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openOverlay(videoOverlay, videoDialog); });
+  });
+
+  /* ---------- Funnel modal ---------- */
+  var funnelOverlay = document.getElementById('funnelOverlay');
+  var funnelDialog = document.getElementById('funnelDialog');
+  var step1 = document.getElementById('step1');
+  var step2 = document.getElementById('step2');
+  var step3 = document.getElementById('step3');
+  var funnelTitle = document.getElementById('funnelTitle');
+
+  function showStep(n){
+    step1.hidden = n !== 1;
+    step2.hidden = n !== 2;
+    step3.hidden = n !== 3;
+    if(n === 1) funnelTitle.textContent = 'See If Your Business Qualifies';
+    if(n === 2) funnelTitle.textContent = 'Pick a call time';
+    if(n === 3) funnelTitle.textContent = "You're booked";
+  }
+  function resetFunnel(){
+    step1.reset();
+    document.querySelectorAll('#step1 .q').forEach(function(q){ q.classList.remove('invalid'); });
+    document.querySelectorAll('#step1 .err').forEach(function(e){ e.classList.remove('show'); });
+    selectedDay = null; selectedTime = null;
+    document.getElementById('cal-err').classList.remove('show');
+    buildCalendar();
+    showStep(1);
+  }
+  document.querySelectorAll('[data-open-funnel]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      resetFunnel();
+      openOverlay(funnelOverlay, funnelDialog);
+    });
+  });
+
+  /* Step 1 validation */
+  function fieldValid(name){
+    if(name === 'business'){ return document.getElementById('f-business').value !== ''; }
+    return !!step1.querySelector('input[name="'+name+'"]:checked');
+  }
+  step1.addEventListener('submit', function(e){
+    e.preventDefault();
+    var checks = [
+      ['business','q1','q1-err'],
+      ['volume','q2','q2-err'],
+      ['followup','q3','q3-err'],
+      ['blocker','q4','q4-err']
+    ];
+    var firstBad = null;
+    checks.forEach(function(c){
+      var ok = fieldValid(c[0]);
+      var q = document.getElementById(c[1]);
+      var err = document.getElementById(c[2]);
+      q.classList.toggle('invalid', !ok);
+      err.classList.toggle('show', !ok);
+      if(!ok && !firstBad) firstBad = q;
+    });
+    if(firstBad){
+      var focusEl = firstBad.querySelector('select, input');
+      if(focusEl) focusEl.focus();
+      return;
+    }
+    showStep(2);
+    var d = visibleFocusables(step2)[0];
+    if(d) d.focus();
+  });
+  document.getElementById('backTo1').addEventListener('click', function(){
+    showStep(1);
+    document.getElementById('f-business').focus();
+  });
+
+  /* Step 2 calendar */
+  var selectedDay = null, selectedTime = null;
+  var dayGrid = document.getElementById('dayGrid');
+  var timeGrid = document.getElementById('timeGrid');
+  var DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var TIMES = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM'];
+
+  function buildCalendar(){
+    dayGrid.innerHTML = '';
+    timeGrid.innerHTML = '';
+    var added = 0;
+    var d = new Date();
+    d.setHours(0,0,0,0);
+    while(added < 9){
+      d.setDate(d.getDate() + 1);
+      var wd = d.getDay();
+      if(wd === 0 || wd === 6) continue;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'day-opt';
+      btn.setAttribute('aria-pressed','false');
+      var label = DAYS[wd] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate();
+      btn.innerHTML = DAYS[wd] + '<small>' + MONTHS[d.getMonth()] + ' ' + d.getDate() + '</small>';
+      btn.setAttribute('data-label', label);
+      btn.addEventListener('click', function(){
+        dayGrid.querySelectorAll('.day-opt').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+        this.setAttribute('aria-pressed','true');
+        selectedDay = this.getAttribute('data-label');
+        document.getElementById('cal-err').classList.remove('show');
+      });
+      dayGrid.appendChild(btn);
+      added++;
+    }
+    TIMES.forEach(function(t){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'time-opt';
+      b.setAttribute('aria-pressed','false');
+      b.textContent = t;
+      b.addEventListener('click', function(){
+        timeGrid.querySelectorAll('.time-opt').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+        this.setAttribute('aria-pressed','true');
+        selectedTime = t;
+        document.getElementById('cal-err').classList.remove('show');
+      });
+      timeGrid.appendChild(b);
+    });
+  }
+
+  document.getElementById('confirmBooking').addEventListener('click', function(){
+    if(!selectedDay || !selectedTime){
+      document.getElementById('cal-err').classList.add('show');
+      return;
+    }
+    document.getElementById('confirmText').innerHTML =
+      "You're booked for <span class=\"booked\">" + selectedDay + " at " + selectedTime + "</span>. Check your email for details.";
+    showStep(3);
+    var c = visibleFocusables(step3)[0];
+    if(c) c.focus();
+  });
+
+  buildCalendar();
+})();
+</script>
+</body>
+</html>
