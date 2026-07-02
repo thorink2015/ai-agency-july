@@ -25,6 +25,8 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23C5F82A'/%3E%3Cpath d='M6.5 7l5 5-5 5M12.5 7l5 5-5 5' stroke='%230B0C0E' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <style>
 /* metric-tuned local fallbacks — keep text width stable while webfonts load (less CLS) */
 @font-face{font-family:"Space Grotesk Fallback";src:local("Arial"),local("Helvetica");size-adjust:103%;ascent-override:99%;descent-override:25%;line-gap-override:0%}
@@ -408,6 +410,41 @@ section{border-top:1px solid var(--line)}
   .readout .pulse{opacity:1}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://instant33.com/#org",
+      "name": "Dispatch",
+      "url": "https://instant33.com/",
+      "logo": {"@type": "ImageObject", "url": "https://instant33.com/logo.png", "width": 512, "height": 512},
+      "description": "Done-for-you AI appointment-setting and lead-response agency. Instant AI response to every inquiry, 24/7, with real human oversight on every account."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://instant33.com/#website",
+      "url": "https://instant33.com/",
+      "name": "Dispatch",
+      "publisher": {"@id": "https://instant33.com/#org"}
+    },
+    {
+      "@type": "Service",
+      "@id": "https://instant33.com/#service",
+      "name": "AI appointment setting and lead response",
+      "serviceType": "AI lead response and appointment booking",
+      "provider": {"@id": "https://instant33.com/#org"},
+      "areaServed": "US",
+      "description": "Instant AI replies to every inquiry by SMS, WhatsApp Business, Instagram DMs, Facebook Messenger, and website forms. Leads are qualified in conversation and appointments are booked straight into the business calendar, with a real person overseeing every account.",
+      "offers": [
+        {"@type": "Offer", "name": "Starter", "price": "397", "priceCurrency": "USD", "description": "Monthly plan. AI booking assistant live within 5 business days, instant response to every inquiry, appointments booked straight into your calendar, monthly performance report."},
+        {"@type": "Offer", "name": "Growth", "price": "697", "priceCurrency": "USD", "description": "Monthly plan. Everything in Starter plus no-show recovery and re-engagement follow-ups, every conversation reviewed by a real person, and priority support."}
+      ]
+    }
+  ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

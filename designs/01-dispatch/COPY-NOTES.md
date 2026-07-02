@@ -60,6 +60,14 @@
 - index.html: canonical + Open Graph + Twitter-card tags for https://instant33.com/; privacy/terms: canonical tags.
 - ⚠ Open question: site brand says **Dispatch**, domain says **instant33.com** — owner to decide whether to rebrand the page to Instant33 (one find-and-replace + new mark) or keep Dispatch-on-instant33.
 
+**Pass 6 (2026-07-02, by-the-book SEO/AI-SEO/launch hardening):**
+- Schema.org graph added to index: Organization + WebSite + Service (Starter $397 / Growth $697 offers, facts match visible page); FAQPage already present. All JSON-LD validated.
+- Brand icons: logo.png (512), icon-192.png, apple-touch-icon.png rendered from the mark; site.webmanifest; icon/manifest links on all four pages.
+- robots.txt: explicit Allow for AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, Claude-Web, PerplexityBot, Google-Extended, CCBot) — AI-SEO intent per ADR-0009.
+- _headers: HSTS (6-month, includeSubDomains) + long cache for icons.
+- Verified: Lighthouse 100/100/96*/100 (*sandbox font block), CLS 0, zero page errors, links OK.
+- ⚠ External verification (DNS, email records, live headers) impossible from this sandbox (proxy blocks all outbound probes) — owner runs the launch checklist provided in chat: Cloudflare Pages settings, SSL Full(strict), Always-HTTPS, HTTP/3, Bot Fight Mode, Email Routing + SPF/DMARC anti-spoofing records, Search Console + Bing verification, PSI/Rich-Results/headers one-click tests.
+
 ## Deferred by owner decision
 
 - Live AI chat demo widget (test-drive the agent on-page) — deliberately later; no placeholder.

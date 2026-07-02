@@ -1,0 +1,13 @@
+{
+  "name": "Dispatch",
+  "short_name": "Dispatch",
+  "description": "Instant AI response, watched by real people. Speed is never the reason you lost them.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0B0C0E",
+  "theme_color": "#0B0C0E",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
