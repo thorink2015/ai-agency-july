@@ -1,5 +1,7 @@
 # Design Directions — Preview
 
+> **Chosen direction: [01 Dispatch](./01-dispatch/index.html)** (owner decision, 2026-07-02). It has since been refined: demo button removed (no video exists), FAQ section + FAQPage JSON-LD added, per-plan pricing CTAs, icons, scroll/stat motion (reduced-motion safe), font-loading and anchor-scroll fixes. 02/03 remain as originally built, for reference.
+
 Three genuinely distinct visual directions for the single-scroll landing page, built from the **same copy, word for word**. Open [`index.html`](./index.html) for the chooser, or open any direction directly. These are **standalone previews** — they do not use the `tokens/` brand system (the brief asked for full creative freedom), so they can be evaluated independently of the foundation on `main`.
 
 | # | Direction | Mood | Palette | Type |
