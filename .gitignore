@@ -1,0 +1,16 @@
+# Dependencies / tooling installs (not part of the foundation or design deliverables)
+node_modules/
+package-lock.json
+package.json
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Build output / local artifacts
+dist/
+.cache/
+*.log

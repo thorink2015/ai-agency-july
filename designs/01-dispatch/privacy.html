@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Dispatch</title>
+<meta name="description" content="Privacy policy for Dispatch. Content coming soon.">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#0B0C0E;--panel:#101215;--ink:#F2F3F0;--ink-dim:#A9ADB0;--ink-faint:#71767A;
+  --accent:#C5F82A;--accent-ink:#0B0C0E;--line:rgba(242,243,240,0.12);--line-strong:rgba(242,243,240,0.22);
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --grot:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --maxw:1200px;--pad:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--grot);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1{margin:0;font-family:var(--grot);font-weight:600;letter-spacing:-0.02em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--accent);color:var(--accent-ink);padding:12px 18px;font-family:var(--mono);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em}
+.skip:focus{left:12px;top:12px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(11,12,14,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hbar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:0.04em}
+.brand .dot{width:12px;height:12px;background:var(--accent);display:inline-block}
+.brand .sub{color:var(--ink-faint);font-weight:400}
+.nav-desk{display:none;align-items:center;gap:6px}
+.nav-desk a{font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--ink-dim);padding:10px 12px;min-height:44px;display:flex;align-items:center}
+.nav-desk a:hover{color:var(--ink)}
+@media(min-width:720px){.nav-desk{display:flex}}
+main{min-height:60vh}
+.page{padding:clamp(64px,12vw,140px) 0}
+.eyebrow{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-faint);display:block;margin-bottom:20px}
+.eyebrow .idx{color:var(--accent)}
+h1{font-size:clamp(34px,7vw,64px)}
+.soon{margin-top:24px;color:var(--ink-dim);font-family:var(--mono);font-size:15px;letter-spacing:0.02em}
+.back{margin-top:36px;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-family:var(--mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line-strong);padding:12px 18px}
+.back:hover{border-color:var(--accent)}
+.site-footer{border-top:1px solid var(--line);background:var(--panel)}
+.foot-bot{padding:24px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.04em}
+.foot-bot a{color:var(--ink-dim)}
+.foot-bot a:hover{color:var(--accent)}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap hbar">
+    <a class="brand" href="index.html" aria-label="Dispatch home">
+      <span class="dot" aria-hidden="true"></span> DISPATCH<span class="sub">/ops</span>
+    </a>
+    <nav class="nav-desk" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#who">Who We Help</a>
+      <a href="index.html#voice">Voice AI</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap page">
+    <span class="eyebrow"><span class="idx">//</span> Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="soon">Content coming soon.</p>
+    <a class="back" href="index.html">Back to home</a>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap foot-bot">
+    <span>© {{BRAND_NAME}} — all systems operational</span>
+    <span class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
