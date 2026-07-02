@@ -8,26 +8,34 @@
 <meta name="theme-color" content="#0B0C0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='3' y='3' width='10' height='10' fill='%23C5F82A'/%3E%3C/svg%3E">
 <style>
+/* metric-tuned local fallbacks — keep text width stable while webfonts load (less CLS) */
+@font-face{font-family:"Space Grotesk Fallback";src:local("Arial"),local("Helvetica");size-adjust:103%;ascent-override:99%;descent-override:25%;line-gap-override:0%}
+@font-face{font-family:"JetBrains Mono Fallback";src:local("Courier New");size-adjust:105%;ascent-override:101%;descent-override:26%;line-gap-override:0%}
 :root{
   --canvas:#0B0C0E;
   --panel:#101215;
   --panel-2:#15181C;
   --ink:#F2F3F0;
   --ink-dim:#A9ADB0;
-  --ink-faint:#71767A;
+  --ink-faint:#80868F;
   --accent:#C5F82A;
   --accent-ink:#0B0C0E;
   --line:rgba(242,243,240,0.12);
   --line-strong:rgba(242,243,240,0.22);
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --grot:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono","JetBrains Mono Fallback",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --grot:"Space Grotesk","Space Grotesk Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --maxw:1200px;
   --pad:clamp(16px,4vw,40px);
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+::selection{background:var(--accent);color:var(--accent-ink)}
 body{
   margin:0;
   background:var(--canvas);
@@ -56,7 +64,7 @@ button{font-family:inherit}
 
 /* mono micro-labels */
 .mono{font-family:var(--mono)}
-.eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-faint)}
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-faint)}
 .eyebrow .idx{color:var(--accent)}
 .tick{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
 
@@ -112,7 +120,7 @@ section{border-top:1px solid var(--line)}
 .hero-inner{position:relative;padding-top:clamp(48px,7vw,88px);padding-bottom:clamp(56px,8vw,104px)}
 .readout{display:inline-flex;align-items:center;gap:14px;border:1px solid var(--line-strong);padding:8px 14px;margin-bottom:28px;background:var(--panel)}
 .readout .lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint)}
-.readout .val{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--accent);font-variant-numeric:tabular-nums}
+.readout .val{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--accent);font-variant-numeric:tabular-nums;min-width:8ch}
 .readout .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
 .hero h1{font-size:clamp(34px,7.2vw,76px);font-weight:700;letter-spacing:-0.03em;max-width:15ch}
@@ -124,10 +132,6 @@ section{border-top:1px solid var(--line)}
 .strip .cell::before{content:"";width:6px;height:6px;background:var(--accent);flex:0 0 auto}
 .guarantee{margin-top:28px;display:flex;gap:12px;align-items:flex-start;font-family:var(--mono);font-size:13px;letter-spacing:0.02em;color:var(--ink);border-left:2px solid var(--accent);padding:6px 0 6px 14px;max-width:60ch}
 .hero-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.link-demo{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--ink-dim);background:transparent;border:0;cursor:pointer;padding:12px 4px;min-height:44px}
-.link-demo:hover{color:var(--accent)}
-.link-demo .play{width:26px;height:26px;border:1px solid var(--line-strong);border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
-.link-demo:hover .play{border-color:var(--accent)}
 
 /* WHAT YOU GET (sec2) */
 .grid-3{display:grid;grid-template-columns:1fr;border:1px solid var(--line)}
@@ -219,7 +223,7 @@ section{border-top:1px solid var(--line)}
 .plan .pname{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink)}
 .plan .pflag{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-ink);background:var(--accent);padding:4px 8px;font-weight:700}
 .plan .price{margin:18px 0 4px;font-family:var(--mono);font-weight:700;font-size:clamp(30px,5vw,44px);letter-spacing:-0.02em;color:var(--accent);font-variant-numeric:tabular-nums}
-.plan .price .per{font-size:16px;color:var(--ink-dim);font-weight:500}
+.plan .price .per{font-size:16px;color:var(--ink-dim);font-weight:400}
 .plan .pnote{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-bottom:18px}
 .plan ul li{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);color:var(--ink-dim);font-size:15px}
 .plan ul li::before{content:"→";color:var(--accent);font-family:var(--mono);flex:0 0 auto}
@@ -276,7 +280,7 @@ section{border-top:1px solid var(--line)}
 .foot-brand .fb-name{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:0.04em}
 .foot-brand .fb-name .dot{width:12px;height:12px;background:var(--accent)}
 .foot-brand p{color:var(--ink-faint);font-family:var(--mono);font-size:12px;letter-spacing:0.02em;line-height:1.6}
-.foot-nav h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint);margin-bottom:14px}
+.foot-nav h3{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint);margin-bottom:14px}
 .foot-nav ul{display:flex;flex-direction:column;gap:2px}
 .foot-nav a{display:inline-flex;align-items:center;min-height:40px;font-family:var(--mono);font-size:13px;color:var(--ink-dim);letter-spacing:0.02em}
 .foot-nav a:hover{color:var(--accent)}
@@ -330,11 +334,43 @@ section{border-top:1px solid var(--line)}
 .confirm .cval{font-family:var(--mono);font-weight:700;color:var(--accent);font-size:clamp(18px,3vw,24px);margin:12px 0}
 .confirm p{color:var(--ink-dim);max-width:44ch}
 
-/* video lightbox */
-.video-frame{width:100%;aspect-ratio:16/9;border:1px solid var(--line-strong);background:var(--panel-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;overflow:hidden}
-.video-frame .vgrid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;opacity:.5}
-.video-frame .vplay{position:relative;width:64px;height:64px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent)}
-.video-frame .vcap{position:relative;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-dim)}
+/* FAQ (sec: straight answers) */
+.faq{border:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:last-child{border-bottom:0}
+.faq summary{display:grid;grid-template-columns:44px 1fr 32px;align-items:center;gap:12px;padding:18px clamp(16px,3vw,26px);min-height:60px;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover .fq{color:var(--accent)}
+.faq .fidx{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:0.1em}
+.faq .fq{font-family:var(--grot);font-weight:600;font-size:clamp(15px,2vw,18px);color:var(--ink);letter-spacing:-0.01em}
+.faq .mark{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--accent);justify-self:end;transition:transform .2s ease}
+.faq details[open] .mark{transform:rotate(45deg)}
+.faq .fa{padding:0 clamp(16px,3vw,26px) 22px;margin:0}
+.faq .fa p{color:var(--ink-dim);max-width:70ch}
+@media(min-width:720px){.faq .fa{padding-left:calc(clamp(16px,3vw,26px) + 56px)}}
+
+/* what-you-get icons */
+.item-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.item .ico{width:40px;height:40px;border:1px solid var(--line-strong);display:inline-flex;align-items:center;justify-content:center;color:var(--accent);flex:0 0 auto}
+.item .ico svg{width:20px;height:20px}
+
+/* plan card CTAs */
+.plan .pcta{margin-top:auto;padding-top:22px}
+
+/* voice wave motion */
+@media(prefers-reduced-motion:no-preference){
+  .voice .wave span{animation:wave 1.5s ease-in-out infinite alternate;transform-origin:bottom}
+  .voice .wave span:nth-child(2n){animation-delay:-.35s}
+  .voice .wave span:nth-child(3n){animation-delay:-.7s}
+  .voice .wave span:nth-child(4n){animation-delay:-1.05s}
+  .voice .wave span:nth-child(5n){animation-delay:-.2s}
+}
+@keyframes wave{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+
+/* scroll reveal (JS adds .js-anim on <html>; no-JS and reduced-motion stay fully visible) */
+.js-anim .rv{opacity:0;transform:translateY(12px);transition:opacity .45s cubic-bezier(0,0,0.2,1),transform .45s cubic-bezier(0,0,0.2,1)}
+.js-anim .rv.in{opacity:1;transform:none}
+@media print{.js-anim .rv{opacity:1 !important;transform:none !important}}
 
 /* hidden util */
 [hidden]{display:none !important}
@@ -345,21 +381,38 @@ section{border-top:1px solid var(--line)}
   .readout .pulse{opacity:1}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How fast can we be live?","acceptedAnswer":{"@type":"Answer","text":"Starter accounts go live within 5 business days. Rush setup gets you live within 48 hours for $150, one-time."}},
+    {"@type":"Question","name":"Do we have to switch tools or CRMs?","acceptedAnswer":{"@type":"Answer","text":"No. We plug into the calendar and tools you already run. If something can't connect, we tell you before you pay, not after."}},
+    {"@type":"Question","name":"Will it sound like a robot?","acceptedAnswer":{"@type":"Answer","text":"It answers in your voice, with your services, your prices, and your hours. When someone asks for a human, a human takes over."}},
+    {"@type":"Question","name":"What happens when the AI doesn't know something?","acceptedAnswer":{"@type":"Answer","text":"It doesn't guess. The conversation gets flagged to a real person, and a human steps in. That's what the oversight is for."}},
+    {"@type":"Question","name":"What does the 30-day guarantee actually mean?","acceptedAnswer":{"@type":"Answer","text":"If your first 30 days don't produce more booked, showed-up appointments than before, we keep working for free until they do."}},
+    {"@type":"Question","name":"Is there a contract?","acceptedAnswer":{"@type":"Answer","text":"No long-term contract, cancel any time. Yearly billing just trades flexibility for 2 months free."}},
+    {"@type":"Question","name":"We already have someone answering. Why this?","acceptedAnswer":{"@type":"Answer","text":"Keep them. We catch what they can't, nights, weekends, and the inquiries that come in while they're on another call."}},
+    {"@type":"Question","name":"Who sees our data?","acceptedAnswer":{"@type":"Answer","text":"Your data stays yours. We use it to run your account, not to sell it or share it. Details will live in the Privacy Policy."}}
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap hbar">
-    <a class="brand" href="#top" aria-label="Dispatch home">
+    <a class="brand" href="#top">
       <span class="dot" aria-hidden="true"></span>
       DISPATCH<span class="sub">/ops</span>
     </a>
     <nav class="nav-desk" aria-label="Primary">
       <a href="#top">Home</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#how">How It Works</a>
       <a href="#who">Who We Help</a>
-      <a href="#voice">Voice AI</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <button class="btn sm hcta" data-open-funnel type="button">See If Your Business Qualifies</button>
     <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
@@ -368,9 +421,11 @@ section{border-top:1px solid var(--line)}
   </div>
   <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
     <a href="#top">Home</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#how">How It Works</a>
     <a href="#who">Who We Help</a>
+    <a href="#pricing">Pricing</a>
     <a href="#voice">Voice AI</a>
+    <a href="#faq">FAQ</a>
     <a href="#final" data-open-funnel-link>See If Your Business Qualifies</a>
   </nav>
 </header>
@@ -397,12 +452,7 @@ section{border-top:1px solid var(--line)}
     <p class="guarantee">More booked, showed-up appointments in 30 days, or we work for free.</p>
     <div class="hero-cta">
       <button class="btn" data-open-funnel type="button">See If Your Business Qualifies</button>
-      <button class="link-demo" data-open-demo type="button">
-        <span class="play" aria-hidden="true">
-          <svg width="9" height="10" viewBox="0 0 9 10" fill="none"><path d="M0 0l9 5-9 5z" fill="currentColor"/></svg>
-        </span>
-        Watch a 90-second demo
-      </button>
+      <a class="btn ghost" href="#how">See how it works</a>
     </div>
   </div>
 </section>
@@ -415,18 +465,27 @@ section{border-top:1px solid var(--line)}
       <h2 id="s2h">Fast infrastructure, watched by people.</h2>
     </div>
     <div class="grid-3">
-      <div class="item">
-        <span class="num">01</span>
+      <div class="item rv">
+        <div class="item-top">
+          <span class="num">01</span>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
+        </div>
         <h3>Instant AI Response</h3>
         <p>Every inquiry gets a reply within seconds, day or night. Nobody waits, and nobody gets forgotten.</p>
       </div>
-      <div class="item">
-        <span class="num">02</span>
+      <div class="item rv">
+        <div class="item-top">
+          <span class="num">02</span>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+        </div>
         <h3>Real Human Oversight</h3>
         <p>A real person is always watching. Nothing runs unchecked, and nothing gets weird.</p>
       </div>
-      <div class="item">
-        <span class="num">03</span>
+      <div class="item rv">
+        <div class="item-top">
+          <span class="num">03</span>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="3" y="13" width="4" height="6"/><rect x="17" y="13" width="4" height="6"/><path d="M21 19a3 3 0 0 1-3 3h-3"/></svg></span>
+        </div>
         <h3>24/7 Free Support</h3>
         <p>Something breaks or needs a tweak? Message us, any time. No tickets, no upcharges, ever.</p>
       </div>
@@ -435,35 +494,35 @@ section{border-top:1px solid var(--line)}
 </section>
 
 <!-- SECTION 3: HOW IT WORKS -->
-<section aria-labelledby="s3h" class="sec-pad">
+<section id="how" aria-labelledby="s3h" class="sec-pad">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow"><span class="idx">02</span> / How it works</span>
       <h2 id="s3h">Four steps, one loop.</h2>
     </div>
     <div class="steps">
-      <div class="step">
+      <div class="step rv">
         <div class="sidx">01</div>
         <div class="sbody">
           <h3>They Reach Out</h3>
           <p>A text, a form, or a message on social, however they reach out, we're already watching for it.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step rv">
         <div class="sidx">02</div>
         <div class="sbody">
           <h3>We Answer, In Seconds</h3>
           <p>Our AI replies immediately, in your voice, and starts qualifying them right there in the conversation. A real person is watching this happen, same as everything else.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step rv">
         <div class="sidx">03</div>
         <div class="sbody">
           <h3>It Gets Booked</h3>
           <p>Once they're a real fit, the appointment goes straight into your calendar. No calendar links, no back-and-forth, no waiting on you to notice the message.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step rv">
         <div class="sidx">04</div>
         <div class="sbody">
           <h3>We Keep Them Showing Up</h3>
@@ -487,21 +546,21 @@ section{border-top:1px solid var(--line)}
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
       </div>
       <div class="tel-grid">
-        <div class="tel-cell">
+        <div class="tel-cell rv">
           <div class="bars" aria-hidden="true"><span style="height:12px"></span><span style="height:20px"></span><span style="height:28px"></span><span style="height:34px"></span></div>
-          <div class="fig">78%</div>
+          <div class="fig" data-count="78" data-suffix="%">78%</div>
           <p class="desc">Go with whoever answers first. Not whoever's best, whoever's fastest.</p>
           <p class="src">(Source: Lead Connect / Vendasta research, 2025)</p>
         </div>
-        <div class="tel-cell">
+        <div class="tel-cell rv">
           <div class="bars" aria-hidden="true"><span style="height:8px"></span><span style="height:16px"></span><span style="height:24px"></span><span style="height:34px"></span></div>
-          <div class="fig">100x</div>
+          <div class="fig" data-count="100" data-suffix="x">100x</div>
           <p class="desc">Less likely you'll even reach someone if you wait 30 minutes instead of 5.</p>
           <p class="src">(Source: MIT / InsideSales.com study, 15,000+ leads tracked)</p>
         </div>
-        <div class="tel-cell">
+        <div class="tel-cell rv">
           <div class="bars" aria-hidden="true"><span style="height:14px"></span><span style="height:18px"></span><span style="height:26px"></span><span style="height:32px"></span></div>
-          <div class="fig">2x+</div>
+          <div class="fig" data-count="2" data-suffix="x+">2x+</div>
           <p class="desc">More appointments get booked from an instant reply than a typical follow-up.</p>
           <p class="src">(Source: Chili Piper 2025 Benchmark Report, 4 million form submissions)</p>
         </div>
@@ -518,32 +577,32 @@ section{border-top:1px solid var(--line)}
       <h2 id="s5h">Local-service operators who live and die on follow-up.</h2>
     </div>
     <div class="verticals">
-      <div class="vrow">
+      <div class="vrow rv">
         <span class="vidx">01</span>
         <h3>Martial Arts &amp; Dance Studios</h3>
         <p>Never lose another trial to slow follow-up. Instant text-back books the mat, kids and all.</p>
       </div>
-      <div class="vrow">
+      <div class="vrow rv">
         <span class="vidx">02</span>
         <h3>Med Spas &amp; Aesthetics</h3>
         <p>Consultations that show up and leave a deposit, or you don't pay.</p>
       </div>
-      <div class="vrow">
+      <div class="vrow rv">
         <span class="vidx">03</span>
         <h3>Chiropractors &amp; Massage</h3>
         <p>Every inquiry answered before they call the practice next door.</p>
       </div>
-      <div class="vrow">
+      <div class="vrow rv">
         <span class="vidx">04</span>
         <h3>Auto Detailing</h3>
         <p>Booked, paid jobs on your calendar. You only pay when the customer shows.</p>
       </div>
-      <div class="vrow">
+      <div class="vrow rv">
         <span class="vidx">05</span>
         <h3>Cabinets &amp; Kitchen Remodeling</h3>
         <p>In-home design consultations booked with homeowners who can actually afford the job.</p>
       </div>
-      <div class="vrow">
+      <div class="vrow rv">
         <span class="vidx">06</span>
         <h3>Marketing &amp; Lead-Gen Agencies (white-label)</h3>
         <p>Your bottom-of-funnel layer, under your brand. We convert the leads you're already paying for.</p>
@@ -562,32 +621,32 @@ section{border-top:1px solid var(--line)}
       <span class="badge-ph">Placeholder — sample data</span>
     </div>
     <div class="tgrid">
-      <div class="tcell">
+      <div class="tcell rv">
         <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
         <blockquote>"We used to lose kids to whoever texted back first, usually not us. Now the reply's instant and our trial bookings finally show up."</blockquote>
         <cite>— Marcus Webb, Owner, Ironclad BJJ Academy</cite>
       </div>
-      <div class="tcell">
+      <div class="tcell rv">
         <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
         <blockquote>"Deposits are the whole game in this business. Since switching, way fewer people ghost their consult."</blockquote>
         <cite>— Dr. Alina Cho, Radiance Aesthetics &amp; Skin Clinic</cite>
       </div>
-      <div class="tcell">
+      <div class="tcell rv">
         <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
         <blockquote>"I don't answer my phone during a job, obviously. Now I don't have to, and I still get the booking."</blockquote>
         <cite>— Danny Reyes, Owner, Reyes Ceramic Coating Studio</cite>
       </div>
-      <div class="tcell">
+      <div class="tcell rv">
         <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
         <blockquote>"Homeowners want an answer same day or they call the next guy. We stopped being the next guy."</blockquote>
         <cite>— Karen Doss, Doss Custom Cabinetry</cite>
       </div>
-      <div class="tcell">
+      <div class="tcell rv">
         <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
         <blockquote>"Half our new patient calls came in after hours anyway. Now someone actually answers them."</blockquote>
         <cite>— Dr. James Whitfield, Whitfield Family Chiropractic</cite>
       </div>
-      <div class="tcell">
+      <div class="tcell rv">
         <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
         <blockquote>"We white-labeled this under our own brand and it became a real upsell, not just a feature nobody used."</blockquote>
         <cite>— Priya Anand, Founder, Northline Growth Partners</cite>
@@ -613,7 +672,7 @@ section{border-top:1px solid var(--line)}
     </div>
 
     <div class="plans">
-      <div class="plan">
+      <div class="plan rv">
         <div class="ptag"><span class="pname">Starter</span></div>
         <div class="price"><span class="pamt" data-monthly="$397" data-yearly="$3,970">$397</span><span class="per pper" data-monthly="/mo" data-yearly="/yr">/mo</span></div>
         <p class="pnote">Setup waived your first month.</p>
@@ -623,8 +682,9 @@ section{border-top:1px solid var(--line)}
           <li>Appointments booked straight into your calendar</li>
           <li>Monthly performance report</li>
         </ul>
+        <div class="pcta"><button class="btn ghost sm block" data-open-funnel type="button">See If Your Business Qualifies</button></div>
       </div>
-      <div class="plan feature">
+      <div class="plan feature rv">
         <div class="ptag"><span class="pname">Growth</span><span class="pflag">Most chosen</span></div>
         <div class="price"><span class="pamt" data-monthly="$697" data-yearly="$6,970">$697</span><span class="per pper" data-monthly="/mo" data-yearly="/yr">/mo</span></div>
         <p class="pnote">&nbsp;</p>
@@ -634,6 +694,7 @@ section{border-top:1px solid var(--line)}
           <li>Every conversation reviewed by a real person</li>
           <li>Priority support, unlimited troubleshooting, no extra charge</li>
         </ul>
+        <div class="pcta"><button class="btn sm block" data-open-funnel type="button">See If Your Business Qualifies</button></div>
       </div>
     </div>
 
@@ -728,9 +789,53 @@ section{border-top:1px solid var(--line)}
         <p>SMS only reaches people who already reached out or opted in. If cold outreach is ever part of the plan, it happens over email, never a text blast to a bought list.</p>
       </div>
       <div class="drow">
-        <div class="dno"><span class="x" aria-hidden="true">✕</span> No bought lists, no spoofed numbers</div>
-        <p>No bought lists, no spoofed numbers, no shortcuts that get flagged as spam. If it risks the number's reputation, it's off the table, permanently, not just for now.</p>
+        <div class="dno"><span class="x" aria-hidden="true">✕</span> No bought lists, no spoofed numbers, no shortcuts that get flagged as spam</div>
+        <p>If it risks the number's reputation, it's off the table, permanently, not just for now.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9b: FAQ -->
+<section id="faq" aria-labelledby="s9bh" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">09</span> / FAQ</span>
+      <h2 id="s9bh">Straight answers.</h2>
+    </div>
+    <div class="faq rv">
+      <details>
+        <summary><span class="fidx">01</span><span class="fq">How fast can we be live?</span><span class="mark" aria-hidden="true">+</span></summary>
+        <div class="fa"><p>Starter accounts go live within 5 business days. Rush setup gets you live within 48 hours for $150, one-time.</p></div>
+      </details>
+      <details>
+        <summary><span class="fidx">02</span><span class="fq">Do we have to switch tools or CRMs?</span><span class="mark" aria-hidden="true">+</span></summary>
+        <div class="fa"><p>No. We plug into the calendar and tools you already run. If something can't connect, we tell you before you pay, not after.</p></div>
+      </details>
+      <details>
+        <summary><span class="fidx">03</span><span class="fq">Will it sound like a robot?</span><span class="mark" aria-hidden="true">+</span></summary>
+        <div class="fa"><p>It answers in your voice, with your services, your prices, and your hours. When someone asks for a human, a human takes over.</p></div>
+      </details>
+      <details>
+        <summary><span class="fidx">04</span><span class="fq">What happens when the AI doesn't know something?</span><span class="mark" aria-hidden="true">+</span></summary>
+        <div class="fa"><p>It doesn't guess. The conversation gets flagged to a real person, and a human steps in. That's what the oversight is for.</p></div>
+      </details>
+      <details>
+        <summary><span class="fidx">05</span><span class="fq">What does the 30-day guarantee actually mean?</span><span class="mark" aria-hidden="true">+</span></summary>
+        <div class="fa"><p>If your first 30 days don't produce more booked, showed-up appointments than before, we keep working for free until they do.</p></div>
+      </details>
+      <details>
+        <summary><span class="fidx">06</span><span class="fq">Is there a contract?</span><span class="mark" aria-hidden="true">+</span></summary>
+        <div class="fa"><p>No long-term contract, cancel any time. Yearly billing just trades flexibility for 2 months free.</p></div>
+      </details>
+      <details>
+        <summary><span class="fidx">07</span><span class="fq">We already have someone answering. Why this?</span><span class="mark" aria-hidden="true">+</span></summary>
+        <div class="fa"><p>Keep them. We catch what they can't, nights, weekends, and the inquiries that come in while they're on another call.</p></div>
+      </details>
+      <details>
+        <summary><span class="fidx">08</span><span class="fq">Who sees our data?</span><span class="mark" aria-hidden="true">+</span></summary>
+        <div class="fa"><p>Your data stays yours. We use it to run your account, not to sell it or share it. Details will live in the Privacy Policy.</p></div>
+      </details>
     </div>
   </div>
 </section>
@@ -757,15 +862,16 @@ section{border-top:1px solid var(--line)}
       <p>Instant AI response, watched by real people. Speed is never the reason you lost them.</p>
     </div>
     <nav class="foot-nav" aria-label="Footer">
-      <h4>Navigate</h4>
+      <h3>Navigate</h3>
       <ul>
         <li><a href="#top">Home</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#who">Who We Help</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
     <nav class="foot-nav" aria-label="Legal and contact">
-      <h4>Legal</h4>
+      <h3>Legal</h3>
       <ul>
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
@@ -878,30 +984,11 @@ section{border-top:1px solid var(--line)}
   </div>
 </div>
 
-<!-- ===== DEMO LIGHTBOX ===== -->
-<div class="modal-overlay" id="demoOverlay">
-  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="demoTitle" id="demoDialog">
-    <div class="dialog-head">
-      <div class="dh-l"><span class="dot" aria-hidden="true"></span> <span>Demo</span></div>
-      <button class="dclose" type="button" data-close-demo aria-label="Close dialog">×</button>
-    </div>
-    <div class="dialog-body">
-      <h2 id="demoTitle" class="visually-hidden">90-second demo</h2>
-      <div class="video-frame">
-        <div class="vgrid" aria-hidden="true"></div>
-        <div class="vplay" aria-hidden="true">
-          <svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M0 0l18 10L0 20z" fill="currentColor"/></svg>
-        </div>
-        <p class="vcap">90-second demo — video coming soon</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 (function(){
   "use strict";
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!reduceMotion){ document.documentElement.classList.add("js-anim"); }
 
   /* ---------- Hero response-time ticker ---------- */
   var readout = document.getElementById("respReadout");
@@ -909,12 +996,13 @@ section{border-top:1px solid var(--line)}
     if(reduceMotion){
       readout.textContent = "00:02s";
     } else {
-      var v = 0;
+      var v = 0; /* tenths of a second — counts to 2.0s, holds, then loops */
       setInterval(function(){
         v += 1;
-        if(v > 20) v = 0;
-        var whole = Math.floor(v/10);
-        var frac = v % 10;
+        if(v > 34) v = 0;
+        var t = Math.min(v, 20);
+        var whole = Math.floor(t/10);
+        var frac = t % 10;
         readout.textContent = "00:0" + whole + (frac ? "." + frac : "") + "s";
       }, 90);
     }
@@ -923,6 +1011,11 @@ section{border-top:1px solid var(--line)}
   /* ---------- Mobile nav ---------- */
   var burger = document.querySelector(".burger");
   var mnav = document.getElementById("mobileNav");
+  function closeMobileNav(){
+    if(!burger || !mnav) return;
+    burger.setAttribute("aria-expanded","false");
+    mnav.classList.remove("open");
+  }
   if(burger && mnav){
     burger.addEventListener("click", function(){
       var open = burger.getAttribute("aria-expanded") === "true";
@@ -930,10 +1023,10 @@ section{border-top:1px solid var(--line)}
       mnav.classList.toggle("open", !open);
     });
     mnav.querySelectorAll("a").forEach(function(a){
-      a.addEventListener("click", function(){
-        burger.setAttribute("aria-expanded","false");
-        mnav.classList.remove("open");
-      });
+      a.addEventListener("click", closeMobileNav);
+    });
+    document.addEventListener("click", function(e){
+      if(mnav.classList.contains("open") && !e.target.closest(".site-header")) closeMobileNav();
     });
   }
 
@@ -999,8 +1092,11 @@ section{border-top:1px solid var(--line)}
     var form = document.getElementById("qualifyForm");
     if(form) form.reset();
     ["fieldQ1","fieldQ2","fieldQ3","fieldQ4"].forEach(function(id){
-      document.getElementById(id).classList.remove("invalid");
+      var fd = document.getElementById(id);
+      fd.classList.remove("invalid");
+      fd.removeAttribute("aria-invalid");
     });
+    document.getElementById("q1").removeAttribute("aria-invalid");
     selectedDay = null; selectedSlot = null;
     document.getElementById("calErr").style.display = "none";
     showStep(1);
@@ -1029,12 +1125,14 @@ section{border-top:1px solid var(--line)}
     e.preventDefault();
     var ok = true;
     var q1 = document.getElementById("q1");
-    if(!q1.value){ document.getElementById("fieldQ1").classList.add("invalid"); ok = false; }
-    else document.getElementById("fieldQ1").classList.remove("invalid");
+    var f1 = document.getElementById("fieldQ1");
+    if(!q1.value){ f1.classList.add("invalid"); q1.setAttribute("aria-invalid","true"); ok = false; }
+    else { f1.classList.remove("invalid"); q1.removeAttribute("aria-invalid"); }
     [["q2","fieldQ2"],["q3","fieldQ3"],["q4","fieldQ4"]].forEach(function(pair){
       var checked = qForm.querySelector('input[name="'+pair[0]+'"]:checked');
-      if(!checked){ document.getElementById(pair[1]).classList.add("invalid"); ok = false; }
-      else document.getElementById(pair[1]).classList.remove("invalid");
+      var fd = document.getElementById(pair[1]);
+      if(!checked){ fd.classList.add("invalid"); fd.setAttribute("aria-invalid","true"); ok = false; }
+      else { fd.classList.remove("invalid"); fd.removeAttribute("aria-invalid"); }
     });
     if(ok) showStep(2);
     else {
@@ -1049,7 +1147,8 @@ section{border-top:1px solid var(--line)}
   /* clear invalid state on change */
   qForm.addEventListener("change", function(e){
     var field = e.target.closest(".field");
-    if(field) field.classList.remove("invalid");
+    if(field){ field.classList.remove("invalid"); field.removeAttribute("aria-invalid"); }
+    e.target.removeAttribute("aria-invalid");
   });
 
   document.getElementById("backToStep1").addEventListener("click", function(){ showStep(1); });
@@ -1116,27 +1215,14 @@ section{border-top:1px solid var(--line)}
     showStep(3);
   });
 
-  /* ---------- Demo lightbox ---------- */
-  var demoOverlay = document.getElementById("demoOverlay");
-  var demoDialog = document.getElementById("demoDialog");
-  document.querySelectorAll("[data-open-demo]").forEach(function(b){
-    b.addEventListener("click", function(){ openModal(demoOverlay, demoDialog, b); });
-  });
-  demoOverlay.querySelectorAll("[data-close-demo]").forEach(function(b){
-    b.addEventListener("click", function(){ closeModal(demoOverlay); });
-  });
-  demoOverlay.addEventListener("mousedown", function(e){
-    if(e.target === demoOverlay) closeModal(demoOverlay);
-  });
-
   /* ---------- Global key handling ---------- */
   document.addEventListener("keydown", function(e){
     if(funnelOverlay.classList.contains("open")){
       if(e.key === "Escape") closeModal(funnelOverlay);
       else trapFocus(e, funnelDialog);
-    } else if(demoOverlay.classList.contains("open")){
-      if(e.key === "Escape") closeModal(demoOverlay);
-      else trapFocus(e, demoDialog);
+    } else if(e.key === "Escape" && mnav && mnav.classList.contains("open")){
+      closeMobileNav();
+      burger.focus();
     }
   });
 
@@ -1157,6 +1243,51 @@ section{border-top:1px solid var(--line)}
   billMonthly.addEventListener("click", function(){ setBilling("monthly"); });
   billYearly.addEventListener("click", function(){ setBilling("yearly"); });
   setBilling("monthly");
+
+  /* ---------- Scroll reveal (staggered per group) ---------- */
+  var rvEls = Array.prototype.slice.call(document.querySelectorAll(".rv"));
+  if(!reduceMotion && "IntersectionObserver" in window && rvEls.length){
+    var groups = [];
+    rvEls.forEach(function(el){
+      var rec = null;
+      for(var i = 0; i < groups.length; i++){ if(groups[i].p === el.parentNode){ rec = groups[i]; break; } }
+      if(!rec){ rec = {p: el.parentNode, n: 0}; groups.push(rec); }
+      el.style.transitionDelay = Math.min(rec.n * 60, 300) + "ms";
+      rec.n += 1;
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, {rootMargin: "0px 0px 6% 0px", threshold: 0.01});
+    rvEls.forEach(function(el){ io.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ---------- Stat count-up (once, on view) ---------- */
+  var figs = Array.prototype.slice.call(document.querySelectorAll(".fig[data-count]"));
+  if(!reduceMotion && "IntersectionObserver" in window && figs.length){
+    var fio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        fio.unobserve(en.target);
+        var el = en.target;
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        var suffix = el.getAttribute("data-suffix") || "";
+        var start = null, dur = 900;
+        var tick = function(ts){
+          if(start === null) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if(p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, {threshold: 0.4});
+    figs.forEach(function(el){ fio.observe(el); });
+  }
 })();
 </script>
 </body>

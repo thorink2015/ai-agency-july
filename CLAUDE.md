@@ -109,7 +109,7 @@ ai-agency-july/
 
 ## Decisions (ADR index)
 
-The 10 foundational decisions are recorded in [`docs/systems/decision-log.md`](docs/systems/decision-log.md): ADR-0001 palette · 0002 typography · 0003 spacing/type scale · 0004 accessibility target · 0005 performance budgets · 0006 image strategy · 0007 rendering · 0008 structured data · 0009 llms.txt · 0010 tokens-as-source-of-truth. **Do not re-litigate an Accepted ADR — supersede it with a new one if it must change.**
+The foundational decisions are recorded in [`docs/systems/decision-log.md`](docs/systems/decision-log.md): ADR-0001 palette · 0002 typography · 0003 spacing/type scale · 0004 accessibility target · 0005 performance budgets · 0006 image strategy · 0007 rendering · 0008 structured data · 0009 llms.txt · 0010 tokens-as-source-of-truth · 0011 landing design direction (Dispatch — see `designs/01-dispatch/`; token reconciliation pending). **Do not re-litigate an Accepted ADR — supersede it with a new one if it must change.**
 
 ## Placeholders (never invent real values)
 
