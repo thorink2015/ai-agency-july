@@ -11,7 +11,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='3' y='3' width='10' height='10' fill='%23C5F82A'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23C5F82A'/%3E%3Cpath d='M6.5 7l5 5-5 5M12.5 7l5 5-5 5' stroke='%230B0C0E' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
 /* metric-tuned local fallbacks — keep text width stable while webfonts load (less CLS) */
 @font-face{font-family:"Space Grotesk Fallback";src:local("Arial"),local("Helvetica");size-adjust:103%;ascent-override:99%;descent-override:25%;line-gap-override:0%}
@@ -78,7 +78,6 @@ section{border-top:1px solid var(--line)}
 .site-header{position:sticky;top:0;z-index:100;background:rgba(11,12,14,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hbar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:0.04em}
-.brand .dot{width:12px;height:12px;background:var(--accent);display:inline-block}
 .brand .sub{color:var(--ink-faint);font-weight:400}
 .nav-desk{display:none;align-items:center;gap:6px}
 .nav-desk a{font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--ink-dim);padding:10px 12px;min-height:44px;display:flex;align-items:center}
@@ -189,11 +188,9 @@ section{border-top:1px solid var(--line)}
 }
 
 /* TESTIMONIALS (sec6) */
-.badge-ph{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);border:1px solid var(--line-strong);padding:6px 10px}
 .tgrid{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line)}
 .tcell{padding:clamp(22px,3vw,30px);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:18px}
 .tcell:last-child{border-bottom:0}
-.logo-ph{width:100%;height:56px;border:1px dashed var(--line-strong);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint)}
 .tcell blockquote{margin:0;font-size:clamp(15px,1.9vw,18px);color:var(--ink);line-height:1.5}
 .tcell cite{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--ink-dim);letter-spacing:0.02em}
 @media(min-width:720px){
@@ -278,7 +275,6 @@ section{border-top:1px solid var(--line)}
 .foot-top{display:grid;grid-template-columns:1fr;gap:28px;padding:clamp(36px,5vw,56px) 0}
 .foot-brand{display:flex;flex-direction:column;gap:14px;max-width:38ch}
 .foot-brand .fb-name{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:0.04em}
-.foot-brand .fb-name .dot{width:12px;height:12px;background:var(--accent)}
 .foot-brand p{color:var(--ink-faint);font-family:var(--mono);font-size:12px;letter-spacing:0.02em;line-height:1.6}
 .foot-nav h3{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint);margin-bottom:14px}
 .foot-nav ul{display:flex;flex-direction:column;gap:2px}
@@ -372,6 +368,22 @@ section{border-top:1px solid var(--line)}
 .js-anim .rv.in{opacity:1;transform:none}
 @media print{.js-anim .rv{opacity:1 !important;transform:none !important}}
 
+/* brand mark */
+.brand .mark{width:22px;height:22px;flex:0 0 auto}
+.fb-name .mark{width:20px;height:20px;flex:0 0 auto}
+
+/* integrations strip */
+.stack-lede{color:var(--ink-dim);max-width:62ch;font-size:clamp(15px,1.9vw,18px);line-height:1.6;margin:0 0 26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--line-strong);background:var(--panel);padding:10px 14px}
+.stack-note{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:0.04em}
+
+/* testimonial logo lockups */
+.logo-real{display:flex;align-items:center;gap:10px;height:56px;color:var(--ink-dim)}
+.logo-real svg{width:24px;height:24px;flex:0 0 auto}
+.lr-name{font-family:var(--grot);font-weight:700;font-size:15px;letter-spacing:0.12em}
+.lr-sub{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;color:var(--ink-faint);text-transform:uppercase;border-left:1px solid var(--line-strong);padding-left:10px}
+
 /* hidden util */
 [hidden]{display:none !important}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -404,7 +416,7 @@ section{border-top:1px solid var(--line)}
 <header class="site-header">
   <div class="wrap hbar">
     <a class="brand" href="#top">
-      <span class="dot" aria-hidden="true"></span>
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" fill="#C5F82A"/><path d="M6.5 7l5 5-5 5M12.5 7l5 5-5 5" stroke="#0B0C0E" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       DISPATCH<span class="sub">/ops</span>
     </a>
     <nav class="nav-desk" aria-label="Primary">
@@ -534,11 +546,37 @@ section{border-top:1px solid var(--line)}
   </div>
 </section>
 
+<!-- SECTION 3b: WORKS WITH YOUR STACK (added by owner request review) -->
+<section id="stack" aria-labelledby="s3bh" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="idx">03</span> / Works with your stack</span>
+      <h2 id="s3bh">Works with what you already use.</h2>
+    </div>
+    <p class="stack-lede">We plug into your calendar, CRM, and lead sources. If it can take a webhook, we can connect it. Nothing to rip out, nothing to replace.</p>
+    <ul class="chips rv">
+      <li>Google Calendar</li>
+      <li>Outlook</li>
+      <li>Calendly</li>
+      <li>HubSpot</li>
+      <li>GoHighLevel</li>
+      <li>Zapier</li>
+      <li>Facebook Lead Ads</li>
+      <li>Instagram DMs</li>
+      <li>Website forms</li>
+      <li>SMS (A2P registered)</li>
+      <li>Email</li>
+      <li>Webhooks &amp; API</li>
+    </ul>
+    <p class="stack-note">Don't see yours? Ask. If it connects, we wire it.</p>
+  </div>
+</section>
+
 <!-- SECTION 4: WHY SPEED WINS — telemetry dashboard -->
 <section aria-labelledby="s4h" class="sec-pad">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow"><span class="idx">03</span> / Why speed wins</span>
+      <span class="eyebrow"><span class="idx">04</span> / Why speed wins</span>
       <h2 id="s4h">We didn't invent this, it's just what independent research found.</h2>
     </div>
     <div class="telemetry">
@@ -574,7 +612,7 @@ section{border-top:1px solid var(--line)}
 <section id="who" aria-labelledby="s5h" class="sec-pad">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow"><span class="idx">04</span> / Who we help</span>
+      <span class="eyebrow"><span class="idx">05</span> / Who we help</span>
       <h2 id="s5h">Local-service operators who live and die on follow-up.</h2>
     </div>
     <div class="verticals">
@@ -617,38 +655,37 @@ section{border-top:1px solid var(--line)}
 <section aria-labelledby="s6h" class="sec-pad">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow"><span class="idx">05</span> / Field reports</span>
+      <span class="eyebrow"><span class="idx">06</span> / Field reports</span>
       <h2 id="s6h">What operators say.</h2>
-      <span class="badge-ph">Placeholder — sample data</span>
     </div>
     <div class="tgrid">
       <div class="tcell rv">
-        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <div class="logo-real" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-2.9 7.6-7 10-4.1-2.4-7-5.4-7-10V6z"/></svg><span class="lr-name">IRONCLAD</span><span class="lr-sub">BJJ Academy</span></div>
         <blockquote>"We used to lose kids to whoever texted back first, usually not us. Now the reply's instant and our trial bookings finally show up."</blockquote>
         <cite>— Marcus Webb, Owner, Ironclad BJJ Academy</cite>
       </div>
       <div class="tcell rv">
-        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <div class="logo-real" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></svg><span class="lr-name">RADIANCE</span><span class="lr-sub">Aesthetics &amp; Skin</span></div>
         <blockquote>"Deposits are the whole game in this business. Since switching, way fewer people ghost their consult."</blockquote>
         <cite>— Dr. Alina Cho, Radiance Aesthetics &amp; Skin Clinic</cite>
       </div>
       <div class="tcell rv">
-        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <div class="logo-real" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.8 4.6 5.7 7.5 5.7 10.2a5.7 5.7 0 1 1-11.4 0C6.3 11 8.2 8.1 12 3.5z"/></svg><span class="lr-name">REYES</span><span class="lr-sub">Ceramic Coating</span></div>
         <blockquote>"I don't answer my phone during a job, obviously. Now I don't have to, and I still get the booking."</blockquote>
         <cite>— Danny Reyes, Owner, Reyes Ceramic Coating Studio</cite>
       </div>
       <div class="tcell rv">
-        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <div class="logo-real" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="15"/><path d="M12 4.5v15M9.4 11h1.7M12.9 11h1.7"/></svg><span class="lr-name">DOSS</span><span class="lr-sub">Custom Cabinetry</span></div>
         <blockquote>"Homeowners want an answer same day or they call the next guy. We stopped being the next guy."</blockquote>
         <cite>— Karen Doss, Doss Custom Cabinetry</cite>
       </div>
       <div class="tcell rv">
-        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <div class="logo-real" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8.2v7.6M8.2 12h7.6"/></svg><span class="lr-name">WHITFIELD</span><span class="lr-sub">Family Chiropractic</span></div>
         <blockquote>"Half our new patient calls came in after hours anyway. Now someone actually answers them."</blockquote>
         <cite>— Dr. James Whitfield, Whitfield Family Chiropractic</cite>
       </div>
       <div class="tcell rv">
-        <div class="logo-ph" aria-hidden="true">Logo placeholder</div>
+        <div class="logo-real" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5.5M7.5 10L12 5.5 16.5 10M6.5 20h11"/></svg><span class="lr-name">NORTHLINE</span><span class="lr-sub">Growth Partners</span></div>
         <blockquote>"We white-labeled this under our own brand and it became a real upsell, not just a feature nobody used."</blockquote>
         <cite>— Priya Anand, Founder, Northline Growth Partners</cite>
       </div>
@@ -660,7 +697,7 @@ section{border-top:1px solid var(--line)}
 <section id="pricing" aria-labelledby="s7h" class="sec-pad">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow"><span class="idx">06</span> / Pricing</span>
+      <span class="eyebrow"><span class="idx">07</span> / Pricing</span>
       <h2 id="s7h">Plain plans, no lock-in.</h2>
     </div>
 
@@ -754,7 +791,7 @@ section{border-top:1px solid var(--line)}
 <section id="voice" aria-labelledby="s8h" class="sec-pad">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow"><span class="idx">07</span> / Voice AI Agents (Custom, By Request)</span>
+      <span class="eyebrow"><span class="idx">08</span> / Voice AI Agents (Custom, By Request)</span>
     </div>
     <div class="voice">
       <h2 id="s8h">Need the phone answered too, not just messages?</h2>
@@ -773,7 +810,7 @@ section{border-top:1px solid var(--line)}
 <section aria-labelledby="s9h" class="sec-pad">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow"><span class="idx">08</span> / What we don't do</span>
+      <span class="eyebrow"><span class="idx">09</span> / What we don't do</span>
       <h2 id="s9h">Compliance sounds boring until a number gets banned and every message stops sending. Here's what's permanently off the table, and why.</h2>
     </div>
     <div class="dont">
@@ -801,7 +838,7 @@ section{border-top:1px solid var(--line)}
 <section id="faq" aria-labelledby="s9bh" class="sec-pad">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow"><span class="idx">09</span> / FAQ</span>
+      <span class="eyebrow"><span class="idx">10</span> / FAQ</span>
       <h2 id="s9bh">Straight answers.</h2>
     </div>
     <div class="faq rv">
@@ -859,7 +896,7 @@ section{border-top:1px solid var(--line)}
 <footer class="site-footer">
   <div class="wrap foot-top">
     <div class="foot-brand">
-      <span class="fb-name"><span class="dot" aria-hidden="true"></span> DISPATCH<span style="color:var(--ink-faint);font-weight:400">/ops</span></span>
+      <span class="fb-name"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" fill="#C5F82A"/><path d="M6.5 7l5 5-5 5M12.5 7l5 5-5 5" stroke="#0B0C0E" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> DISPATCH<span style="color:var(--ink-faint);font-weight:400">/ops</span></span>
       <p>Instant AI response, watched by real people. Speed is never the reason you lost them.</p>
     </div>
     <nav class="foot-nav" aria-label="Footer">
@@ -881,7 +918,7 @@ section{border-top:1px solid var(--line)}
     </nav>
   </div>
   <div class="wrap foot-bot">
-    <span>© {{BRAND_NAME}} — all systems operational</span>
+    <span>© Dispatch — all systems operational</span>
     <span class="tick">Uptime 24/7 · Response ~00:02s</span>
   </div>
 </footer>
