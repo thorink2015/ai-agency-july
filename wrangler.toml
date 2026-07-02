@@ -1,0 +1,7 @@
+# Cloudflare Pages configuration (repo-side source of truth for the deploy).
+# The site to serve lives in designs/01-dispatch/. Declaring the output
+# directory here means Cloudflare serves the right folder without relying on
+# the dashboard "Build output directory" field.
+name = "ai-agency-july"
+pages_build_output_dir = "designs/01-dispatch"
+compatibility_date = "2026-07-02"
