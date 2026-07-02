@@ -218,7 +218,9 @@
 
 **Decision.** Dispatch (designs/01-dispatch/) is the landing-page design direction. Refinements applied on selection: demo CTA + lightbox removed (no video exists — owner request), FAQ section (8 Q&A, new copy in brand voice) + matching FAQPage JSON-LD, per-plan pricing CTAs, what-you-get icons, motion system (ticker, stat count-up, scroll reveals, voice wave — all `prefers-reduced-motion` safe), a11y fixes (faint-grey → `#80868F` ≥ 4.5:1 on all surfaces, footer heading order, brand-link accessible name, inline SVG favicon), async font loading with metric-tuned fallbacks, `scroll-padding-top` for anchor jumps. Verified: Lighthouse 100 perf / 100 a11y / 100 SEO (mobile + desktop, local run), CLS 0, copy fidelity 58/58, 19/19 interaction checks. Designs 02/03 remain in the repo for reference.
 
-**Consequences.** The production site build proceeds from Dispatch. Follow-up decision needed: reconcile `tokens/design-tokens.json` (indigo/teal, Sora/Inter) with the Dispatch palette/type — either supersede ADR-0001/0002 with Dispatch values once the owner confirms, or keep the foundation tokens as the general brand system and treat Dispatch as the site skin. Until reconciled, the designs stay standalone and do not consume `tokens/`.
+**Update 2026-07-02:** the brand was renamed to **Instant33** to match the live domain instant33.com (new lightning-bolt logomark, wordmark INSTANT33 with the 33 in lime). The design/folder is still internally called `designs/01-dispatch/` (renaming it would break the Cloudflare Pages deploy path). Everything user-facing now says Instant33.
+
+**Consequences.** The production site build proceeds from Instant33 (design 01). Follow-up decision needed: reconcile `tokens/design-tokens.json` (indigo/teal, Sora/Inter) with the Dispatch palette/type — either supersede ADR-0001/0002 with Dispatch values once the owner confirms, or keep the foundation tokens as the general brand system and treat Dispatch as the site skin. Until reconciled, the designs stay standalone and do not consume `tokens/`.
 
 ---
 

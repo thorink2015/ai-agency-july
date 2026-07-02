@@ -68,6 +68,8 @@
 - Verified: Lighthouse 100/100/96*/100 (*sandbox font block), CLS 0, zero page errors, links OK.
 - ⚠ External verification (DNS, email records, live headers) impossible from this sandbox (proxy blocks all outbound probes) — owner runs the launch checklist provided in chat: Cloudflare Pages settings, SSL Full(strict), Always-HTTPS, HTTP/3, Bot Fight Mode, Email Routing + SPF/DMARC anti-spoofing records, Search Console + Bing verification, PSI/Rich-Results/headers one-click tests.
 
+**Pass 7 (2026-07-02, rebrand + launch fills):** Renamed Dispatch → **Instant33** (new bolt logomark; wordmark INSTANT33, 33 in lime) across all served files, meta/OG/JSON-LD/icons/manifest. Filled legal: contact hello@instant33.com, entity "Instant33", effective date July 2, 2026. Remaining legal placeholders: [STATE OF INCORPORATION], [BUSINESS ADDRESS]. GA4 + CSP + security.txt live. Folder name stays 01-dispatch (deploy path).
+
 ## Deferred by owner decision
 
 - Live AI chat demo widget (test-drive the agent on-page) — deliberately later; no placeholder.
