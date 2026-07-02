@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Dispatch</title>
-<meta name="description" content="Privacy policy for Dispatch. Content coming soon.">
+<meta name="description" content="How Dispatch collects, uses, and protects information — for clients, and for the people who message a client's AI assistant.">
 <meta name="theme-color" content="#0B0C0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23C5F82A'/%3E%3Cpath d='M6.5 7l5 5-5 5M12.5 7l5 5-5 5' stroke='%230B0C0E' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -19,9 +19,12 @@
   --maxw:1200px;--pad:clamp(16px,4vw,40px);
 }
 *{box-sizing:border-box}
+html{scroll-padding-top:84px}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+::selection{background:var(--accent);color:var(--accent-ink)}
 body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--grot);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-h1{margin:0;font-family:var(--grot);font-weight:600;letter-spacing:-0.02em}
+h1,h2{margin:0;font-family:var(--grot);font-weight:600;letter-spacing:-0.02em}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--accent);color:var(--accent-ink);padding:12px 18px;font-family:var(--mono);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em}
 .skip:focus{left:12px;top:12px}
@@ -29,25 +32,45 @@ h1{margin:0;font-family:var(--grot);font-weight:600;letter-spacing:-0.02em}
 .site-header{position:sticky;top:0;z-index:100;background:rgba(11,12,14,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hbar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:0.04em}
-.brand .dot{width:12px;height:12px;background:var(--accent);display:inline-block}
 .brand .sub{color:var(--ink-faint);font-weight:400}
 .nav-desk{display:none;align-items:center;gap:6px}
 .nav-desk a{font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--ink-dim);padding:10px 12px;min-height:44px;display:flex;align-items:center}
 .nav-desk a:hover{color:var(--ink)}
 @media(min-width:720px){.nav-desk{display:flex}}
 main{min-height:60vh}
-.page{padding:clamp(64px,12vw,140px) 0}
+.page{padding:clamp(56px,9vw,110px) 0}
 .eyebrow{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-faint);display:block;margin-bottom:20px}
 .eyebrow .idx{color:var(--accent)}
-h1{font-size:clamp(34px,7vw,64px)}
-.soon{margin-top:24px;color:var(--ink-dim);font-family:var(--mono);font-size:15px;letter-spacing:0.02em}
-.back{margin-top:36px;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-family:var(--mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line-strong);padding:12px 18px}
+h1{font-size:clamp(34px,6vw,56px)}
+.updated{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:0.06em;text-transform:uppercase}
+.doc{max-width:72ch}
+.doc .intro{margin-top:28px;color:var(--ink-dim);line-height:1.65}
+.toc{margin:36px 0 8px;border:1px solid var(--line);background:var(--panel);padding:22px 24px}
+.toc h2{font-family:var(--mono);font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint);margin-bottom:14px}
+.toc ol{margin:0;padding:0;list-style:none;columns:1;column-gap:36px}
+@media(min-width:640px){.toc ol{columns:2}}
+.toc li{break-inside:avoid}
+.toc a{display:inline-flex;align-items:center;gap:10px;min-height:34px;font-family:var(--mono);font-size:13px;color:var(--ink-dim);letter-spacing:0.02em}
+.toc a:hover{color:var(--accent)}
+.toc .n{color:var(--accent);font-size:11px}
+.doc h2.sec{display:flex;gap:14px;align-items:baseline;font-size:clamp(19px,2.4vw,24px);margin:46px 0 14px}
+.doc h2.sec .no{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.08em;flex:0 0 auto}
+.doc p{color:var(--ink-dim);line-height:1.65;margin:0 0 14px}
+.doc strong{color:var(--ink);font-weight:600}
+.doc ul{margin:0 0 14px;padding:0;list-style:none}
+.doc ul li{position:relative;padding-left:24px;margin-bottom:10px;color:var(--ink-dim);line-height:1.6}
+.doc ul li::before{content:"—";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
+.fill{font-family:var(--mono);font-size:0.9em;color:var(--accent);background:rgba(197,248,42,0.07);border:1px dashed rgba(197,248,42,0.4);padding:1px 6px;white-space:nowrap}
+.doc .xlink{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.doc .xlink:hover{color:var(--accent)}
+.back{margin-top:44px;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-family:var(--mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line-strong);padding:12px 18px}
 .back:hover{border-color:var(--accent)}
 .site-footer{border-top:1px solid var(--line);background:var(--panel)}
 .foot-bot{padding:24px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.04em}
-.foot-bot a{color:var(--ink-dim)}
+.foot-bot a{color:var(--ink-dim);display:inline-flex;align-items:center;min-height:32px}
 .foot-bot a:hover{color:var(--accent)}
 .foot-links{display:flex;gap:18px;flex-wrap:wrap}
+@media (prefers-reduced-motion: reduce){*{animation-duration:0.001ms !important;transition-duration:0.001ms !important}}
 </style>
 </head>
 <body>
@@ -62,15 +85,83 @@ h1{font-size:clamp(34px,7vw,64px)}
       <a href="index.html#pricing">Pricing</a>
       <a href="index.html#who">Who We Help</a>
       <a href="index.html#faq">FAQ</a>
+      <a href="terms.html">Terms</a>
     </nav>
   </div>
 </header>
 <main id="main">
   <div class="wrap page">
-    <span class="eyebrow"><span class="idx">//</span> Legal</span>
-    <h1>Privacy Policy</h1>
-    <p class="soon">Content coming soon.</p>
-    <a class="back" href="index.html">Back to home</a>
+    <article class="doc">
+      <span class="eyebrow"><span class="idx">//</span> Legal</span>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: <span class="fill">[EFFECTIVE DATE]</span></p>
+
+      <p class="intro">This Privacy Policy explains how Dispatch ("Dispatch," "we," "us") collects, uses, and protects information. It applies to two groups of people: businesses who use our service ("Client," "you") and the people who message a Client's AI assistant ("Contact"). If you're a Contact messaging a business that uses Dispatch, your business relationship is with that business, not with us, we process your information on their behalf and under their direction.</p>
+
+      <nav class="toc" aria-label="On this page">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#collect"><span class="n">01</span> Information We Collect</a></li>
+          <li><a href="#use"><span class="n">02</span> How We Use Information</a></li>
+          <li><a href="#sms"><span class="n">03</span> SMS &amp; Messaging Consent</a></li>
+          <li><a href="#share"><span class="n">04</span> How We Share Information</a></li>
+          <li><a href="#security"><span class="n">05</span> Data Security</a></li>
+          <li><a href="#retention"><span class="n">06</span> Data Retention</a></li>
+          <li><a href="#rights"><span class="n">07</span> Your Rights &amp; Choices</a></li>
+          <li><a href="#children"><span class="n">08</span> Children's Privacy</a></li>
+          <li><a href="#cookies"><span class="n">09</span> Cookies &amp; Analytics</a></li>
+          <li><a href="#international"><span class="n">10</span> International Users</a></li>
+          <li><a href="#changes"><span class="n">11</span> Changes to This Policy</a></li>
+          <li><a href="#contact"><span class="n">12</span> Contact Us</a></li>
+        </ol>
+      </nav>
+
+      <h2 class="sec" id="collect"><span class="no">01</span> Information We Collect</h2>
+      <p><strong>From Clients:</strong> name, business name, email, phone number, billing information, business details you provide for setup (services, hours, pricing, calendar access).</p>
+      <p><strong>From Contacts, collected on a Client's behalf:</strong> phone number or social handle, name, message content, appointment details, and any other information shared during a conversation with a Client's AI assistant.</p>
+      <p><strong>From the website:</strong> standard technical data (IP address, browser type, pages visited) via cookies and analytics, used to operate and improve the site.</p>
+
+      <h2 class="sec" id="use"><span class="no">02</span> How We Use Information</h2>
+      <p>To provide and operate the service, respond to support requests, process payments, send account-related communications, and improve our systems. We do not sell personal information to third parties.</p>
+
+      <h2 class="sec" id="sms"><span class="no">03</span> SMS and Messaging Consent</h2>
+      <p>Contacts who message a Client's business may receive automated replies. Message frequency varies. Message and data rates may apply. Reply STOP to any conversation to opt out at any time. Reply HELP for help. Consent to receive messages is never a condition of purchasing any product or service. All Client sending numbers are A2P 10DLC registered before use.</p>
+
+      <h2 class="sec" id="share"><span class="no">04</span> How We Share Information</h2>
+      <p>We share information with:</p>
+      <ul>
+        <li><strong>Service providers</strong> that help us operate (CRM and workflow infrastructure, SMS and messaging carriers, calendar providers, payment processors).</li>
+        <li><strong>Legal authorities</strong>, if required by law, subpoena, or to protect the rights, safety, or property of Dispatch, our Clients, or others.</li>
+        <li>We do not sell personal information, and we do not share Contact information with anyone outside of providing the service to the Client the Contact messaged.</li>
+      </ul>
+
+      <h2 class="sec" id="security"><span class="no">05</span> Data Security</h2>
+      <p>We use reasonable administrative, technical, and physical safeguards to protect information. No system is 100% secure, and we cannot guarantee absolute security.</p>
+
+      <h2 class="sec" id="retention"><span class="no">06</span> Data Retention</h2>
+      <p>We retain information for as long as needed to provide the service and for a reasonable period after a Client's account closes, to meet legal, accounting, or dispute-resolution needs, after which it is deleted or anonymized.</p>
+
+      <h2 class="sec" id="rights"><span class="no">07</span> Your Rights and Choices</h2>
+      <p>Clients can request access to, correction of, or deletion of their account data by contacting us. Contacts who want their data corrected or deleted should contact the business they messaged directly, since that business is the one who holds the underlying customer relationship. We will assist Clients in fulfilling verified requests.</p>
+
+      <h2 class="sec" id="children"><span class="no">08</span> Children's Privacy</h2>
+      <p>Our service is directed at businesses, not children. We do not knowingly collect personal information directly from children under 13. Where a Client's business involves inquiries on behalf of a minor (for example, a parent asking about class enrollment), the Client business is responsible for ensuring appropriate consent from a parent or guardian.</p>
+
+      <h2 class="sec" id="cookies"><span class="no">09</span> Cookies and Analytics</h2>
+      <p>Our website uses cookies and similar technologies for basic functionality and analytics. You can control cookies through your browser settings.</p>
+
+      <h2 class="sec" id="international"><span class="no">10</span> International Users</h2>
+      <p>Our service is designed primarily for businesses operating in the United States. If you access our service from outside the United States, your information will be processed in the United States.</p>
+
+      <h2 class="sec" id="changes"><span class="no">11</span> Changes to This Policy</h2>
+      <p>We may update this policy from time to time. Material changes will be posted on this page with an updated effective date.</p>
+
+      <h2 class="sec" id="contact"><span class="no">12</span> Contact Us</h2>
+      <p>Questions about this policy: <span class="fill">[CONTACT EMAIL]</span></p>
+      <p>Mailing address: <span class="fill">[BUSINESS ADDRESS]</span></p>
+
+      <a class="back" href="index.html">Back to home</a>
+    </article>
   </div>
 </main>
 <footer class="site-footer">

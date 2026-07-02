@@ -47,6 +47,13 @@
 - Desktop nav: added Voice AI (was mobile-only — inconsistent).
 - Header breakpoint 960 → 1100px (6 links wrapped to two lines at 960–1024; burger now covers that range).
 
+**Pass 4 (2026-07-02, owner-provided legal content):**
+- privacy.html + terms.html filled with the owner's Privacy Policy (12 sections) and Terms of Service (14 sections), word-for-word, in the Dispatch document style (numbered sections, table of contents, 72ch measure).
+- Fill-in tokens `[EFFECTIVE DATE]`, `[LEGAL ENTITY NAME]`, `[STATE OF INCORPORATION]`, `[CONTACT EMAIL]`, `[BUSINESS ADDRESS]` styled as visible dashed-accent chips so they can't be missed before publishing.
+- `[BUSINESS ADDRESS]` was in the owner's fill-in list but appeared nowhere in the provided text — added as a "Mailing address:" line in both Contact sections (disclosed to owner).
+- Main-page FAQ Q8: "Details will live in the Privacy Policy." → "Details live in the Privacy Policy." (now true), linked; JSON-LD synced.
+- ⚠ Owner's own note, preserved here: this legal copy follows standard SMB SaaS/agency structure but needs a real lawyer review before launch — especially SMS/A2P wording (regulatory risk) and health-adjacent conversations (med spas, chiropractors).
+
 ## Deferred by owner decision
 
 - Live AI chat demo widget (test-drive the agent on-page) — deliberately later; no placeholder.
