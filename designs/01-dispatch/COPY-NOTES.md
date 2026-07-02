@@ -21,7 +21,7 @@
 | What We Don't Do | **Keep** | Credibility engine of the page. Bold leads now mirror the brief exactly. |
 | FAQ (added 2026-07-02) | **Keep** | 8 objections in brand voice; JSON-LD mirrors visible text — keep in sync if edited. |
 | Funnel microcopy | **Keep** (see Flag 3) | "Four quick questions. About thirty seconds." sets cost honestly. |
-| Works With Your Stack (added 2026-07-02) | **New** | Integrations strip after How It Works — messaging pillar #4 was unrepresented; chips are factual claims (webhooks/calendars/CRMs per owner), adjust list to reality before launch. |
+| Works With Your Stack (added 2026-07-02) | **Fixed 2026-07-02** | Owner's external copy review flagged unconfirmed integration claims. Now confirmed-only: GoHighLevel (native), SMS/A2P, WhatsApp Business, Instagram DMs, Facebook Messenger, website forms, webhooks & API. Google Calendar/Outlook/Calendly/HubSpot/Zapier/Facebook Lead Ads removed until each is actually tested — re-add individually as they're confirmed. |
 
 ## Flags for the owner (decisions, not defects)
 
@@ -30,6 +30,13 @@
 3. **Contact capture.** The funnel collects 4 answers but no name/email/phone; the confirmation says "Check your email for details." Fine for the preview — the production calendar embed (Calendly/GHL/etc.) collects contact info at booking. Revisit when wiring the real calendar.
 
 ## Changes applied
+
+**Pass 3 (2026-07-02, owner's external copy review — claims must match confirmed reality):**
+- Integrations section rewritten to confirmed-only stack (see table); lede now leads with "natively on GoHighLevel"; note line: "We'll confirm before you pay, not after."
+- Pricing flag "Most chosen" → "Recommended" (no customer data exists yet — opinion, not fabricated behavior).
+- FAQ Q2 answer aligned with the integrations fix ("Not usually. We run on GoHighLevel natively…"), JSON-LD kept in sync.
+- "see Section 8" in the Voice AI add-on now links to the Voice section (kept the words, made them functional).
+- Chip labeled "WhatsApp Business" (not "WhatsApp") so it can't be misread against the "No personal WhatsApp" rule.
 
 **Pass 2 (2026-07-02, owner request):**
 - Working brand name: **Dispatch** (logomark: lime tile + » chevrons, header/footer/favicon; © Dispatch). ⚠ Verify domain + trademark before launch — one find-and-replace swaps it. Foundation docs keep `{{BRAND_NAME}}` until the name is final.
