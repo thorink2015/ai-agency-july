@@ -47,6 +47,27 @@
 - Desktop nav: added Voice AI (was mobile-only — inconsistent).
 - Header breakpoint 960 → 1100px (6 links wrapped to two lines at 960–1024; burger now covers that range).
 
+**Pass 4 (2026-07-02, owner-provided legal content):**
+- privacy.html + terms.html filled with the owner's Privacy Policy (12 sections) and Terms of Service (14 sections), word-for-word, in the Dispatch document style (numbered sections, table of contents, 72ch measure).
+- Fill-in tokens `[EFFECTIVE DATE]`, `[LEGAL ENTITY NAME]`, `[STATE OF INCORPORATION]`, `[CONTACT EMAIL]`, `[BUSINESS ADDRESS]` styled as visible dashed-accent chips so they can't be missed before publishing.
+- `[BUSINESS ADDRESS]` was in the owner's fill-in list but appeared nowhere in the provided text — added as a "Mailing address:" line in both Contact sections (disclosed to owner).
+- Main-page FAQ Q8: "Details will live in the Privacy Policy." → "Details live in the Privacy Policy." (now true), linked; JSON-LD synced.
+- ⚠ Owner's own note, preserved here: this legal copy follows standard SMB SaaS/agency structure but needs a real lawyer review before launch — especially SMS/A2P wording (regulatory risk) and health-adjacent conversations (med spas, chiropractors).
+
+**Pass 5 (2026-07-02, launch prep for instant33.com):**
+- Domain purchased: **instant33.com** (on Cloudflare). Deploy root = `designs/01-dispatch/` via Cloudflare Pages (owner connects GitHub in dashboard — cannot be done headlessly).
+- Added production files to the deploy root: robots.txt, sitemap.xml (3 URLs), llms.txt, 404.html (noindex), `_headers` (security headers), `_redirects` (www → apex 301), og-image.png (1200×630, real brand fonts embedded at render).
+- index.html: canonical + Open Graph + Twitter-card tags for https://instant33.com/; privacy/terms: canonical tags.
+- ⚠ Open question: site brand says **Dispatch**, domain says **instant33.com** — owner to decide whether to rebrand the page to Instant33 (one find-and-replace + new mark) or keep Dispatch-on-instant33.
+
+**Pass 6 (2026-07-02, by-the-book SEO/AI-SEO/launch hardening):**
+- Schema.org graph added to index: Organization + WebSite + Service (Starter $397 / Growth $697 offers, facts match visible page); FAQPage already present. All JSON-LD validated.
+- Brand icons: logo.png (512), icon-192.png, apple-touch-icon.png rendered from the mark; site.webmanifest; icon/manifest links on all four pages.
+- robots.txt: explicit Allow for AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, Claude-Web, PerplexityBot, Google-Extended, CCBot) — AI-SEO intent per ADR-0009.
+- _headers: HSTS (6-month, includeSubDomains) + long cache for icons.
+- Verified: Lighthouse 100/100/96*/100 (*sandbox font block), CLS 0, zero page errors, links OK.
+- ⚠ External verification (DNS, email records, live headers) impossible from this sandbox (proxy blocks all outbound probes) — owner runs the launch checklist provided in chat: Cloudflare Pages settings, SSL Full(strict), Always-HTTPS, HTTP/3, Bot Fight Mode, Email Routing + SPF/DMARC anti-spoofing records, Search Console + Bing verification, PSI/Rich-Results/headers one-click tests.
+
 ## Deferred by owner decision
 
 - Live AI chat demo widget (test-drive the agent on-page) — deliberately later; no placeholder.

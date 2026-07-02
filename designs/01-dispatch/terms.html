@@ -4,12 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of Service — Dispatch</title>
-<meta name="description" content="Terms of service for Dispatch. Content coming soon.">
+<meta name="description" content="The terms that govern use of Dispatch's AI appointment-setting and lead-response service.">
 <meta name="theme-color" content="#0B0C0E">
+<link rel="canonical" href="https://instant33.com/terms.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23C5F82A'/%3E%3Cpath d='M6.5 7l5 5-5 5M12.5 7l5 5-5 5' stroke='%230B0C0E' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <style>
 :root{
   --canvas:#0B0C0E;--panel:#101215;--ink:#F2F3F0;--ink-dim:#A9ADB0;--ink-faint:#80868F;
@@ -19,9 +22,12 @@
   --maxw:1200px;--pad:clamp(16px,4vw,40px);
 }
 *{box-sizing:border-box}
+html{scroll-padding-top:84px}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+::selection{background:var(--accent);color:var(--accent-ink)}
 body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--grot);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-h1{margin:0;font-family:var(--grot);font-weight:600;letter-spacing:-0.02em}
+h1,h2{margin:0;font-family:var(--grot);font-weight:600;letter-spacing:-0.02em}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--accent);color:var(--accent-ink);padding:12px 18px;font-family:var(--mono);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em}
 .skip:focus{left:12px;top:12px}
@@ -29,25 +35,40 @@ h1{margin:0;font-family:var(--grot);font-weight:600;letter-spacing:-0.02em}
 .site-header{position:sticky;top:0;z-index:100;background:rgba(11,12,14,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hbar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:0.04em}
-.brand .dot{width:12px;height:12px;background:var(--accent);display:inline-block}
 .brand .sub{color:var(--ink-faint);font-weight:400}
 .nav-desk{display:none;align-items:center;gap:6px}
 .nav-desk a{font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--ink-dim);padding:10px 12px;min-height:44px;display:flex;align-items:center}
 .nav-desk a:hover{color:var(--ink)}
 @media(min-width:720px){.nav-desk{display:flex}}
 main{min-height:60vh}
-.page{padding:clamp(64px,12vw,140px) 0}
+.page{padding:clamp(56px,9vw,110px) 0}
 .eyebrow{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--ink-faint);display:block;margin-bottom:20px}
 .eyebrow .idx{color:var(--accent)}
-h1{font-size:clamp(34px,7vw,64px)}
-.soon{margin-top:24px;color:var(--ink-dim);font-family:var(--mono);font-size:15px;letter-spacing:0.02em}
-.back{margin-top:36px;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-family:var(--mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line-strong);padding:12px 18px}
+h1{font-size:clamp(34px,6vw,56px)}
+.updated{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:0.06em;text-transform:uppercase}
+.doc{max-width:72ch}
+.doc .intro{margin-top:28px;color:var(--ink-dim);line-height:1.65}
+.toc{margin:36px 0 8px;border:1px solid var(--line);background:var(--panel);padding:22px 24px}
+.toc h2{font-family:var(--mono);font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-faint);margin-bottom:14px}
+.toc ol{margin:0;padding:0;list-style:none;columns:1;column-gap:36px}
+@media(min-width:640px){.toc ol{columns:2}}
+.toc li{break-inside:avoid}
+.toc a{display:inline-flex;align-items:center;gap:10px;min-height:34px;font-family:var(--mono);font-size:13px;color:var(--ink-dim);letter-spacing:0.02em}
+.toc a:hover{color:var(--accent)}
+.toc .n{color:var(--accent);font-size:11px}
+.doc h2.sec{display:flex;gap:14px;align-items:baseline;font-size:clamp(19px,2.4vw,24px);margin:46px 0 14px}
+.doc h2.sec .no{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.08em;flex:0 0 auto}
+.doc p{color:var(--ink-dim);line-height:1.65;margin:0 0 14px}
+.doc strong{color:var(--ink);font-weight:600}
+.fill{font-family:var(--mono);font-size:0.9em;color:var(--accent);background:rgba(197,248,42,0.07);border:1px dashed rgba(197,248,42,0.4);padding:1px 6px;white-space:nowrap}
+.back{margin-top:44px;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-family:var(--mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line-strong);padding:12px 18px}
 .back:hover{border-color:var(--accent)}
 .site-footer{border-top:1px solid var(--line);background:var(--panel)}
 .foot-bot{padding:24px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.04em}
-.foot-bot a{color:var(--ink-dim)}
+.foot-bot a{color:var(--ink-dim);display:inline-flex;align-items:center;min-height:32px}
 .foot-bot a:hover{color:var(--accent)}
 .foot-links{display:flex;gap:18px;flex-wrap:wrap}
+@media (prefers-reduced-motion: reduce){*{animation-duration:0.001ms !important;transition-duration:0.001ms !important}}
 </style>
 </head>
 <body>
@@ -62,15 +83,84 @@ h1{font-size:clamp(34px,7vw,64px)}
       <a href="index.html#pricing">Pricing</a>
       <a href="index.html#who">Who We Help</a>
       <a href="index.html#faq">FAQ</a>
+      <a href="privacy.html">Privacy</a>
     </nav>
   </div>
 </header>
 <main id="main">
   <div class="wrap page">
-    <span class="eyebrow"><span class="idx">//</span> Legal</span>
-    <h1>Terms of Service</h1>
-    <p class="soon">Content coming soon.</p>
-    <a class="back" href="index.html">Back to home</a>
+    <article class="doc">
+      <span class="eyebrow"><span class="idx">//</span> Legal</span>
+      <h1>Terms of Service</h1>
+      <p class="updated">Last updated: <span class="fill">[EFFECTIVE DATE]</span></p>
+
+      <p class="intro">These Terms of Service ("Terms") govern use of Dispatch's services, operated by <span class="fill">[LEGAL ENTITY NAME]</span> ("Dispatch," "we," "us"). By signing up, you ("Client," "you") agree to these Terms.</p>
+
+      <nav class="toc" aria-label="On this page">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#service"><span class="n">01</span> The Service</a></li>
+          <li><a href="#responsibilities"><span class="n">02</span> Client Responsibilities</a></li>
+          <li><a href="#acceptable-use"><span class="n">03</span> Acceptable Use</a></li>
+          <li><a href="#fees"><span class="n">04</span> Fees &amp; Payment</a></li>
+          <li><a href="#term"><span class="n">05</span> Term &amp; Cancellation</a></li>
+          <li><a href="#ip"><span class="n">06</span> Intellectual Property</a></li>
+          <li><a href="#third-party"><span class="n">07</span> Third-Party Dependencies</a></li>
+          <li><a href="#disclaimers"><span class="n">08</span> Disclaimers</a></li>
+          <li><a href="#liability"><span class="n">09</span> Limitation of Liability</a></li>
+          <li><a href="#indemnification"><span class="n">10</span> Indemnification</a></li>
+          <li><a href="#confidentiality"><span class="n">11</span> Confidentiality</a></li>
+          <li><a href="#governing-law"><span class="n">12</span> Governing Law &amp; Disputes</a></li>
+          <li><a href="#changes"><span class="n">13</span> Changes to These Terms</a></li>
+          <li><a href="#contact"><span class="n">14</span> Contact Us</a></li>
+        </ol>
+      </nav>
+
+      <h2 class="sec" id="service"><span class="no">01</span> The Service</h2>
+      <p>Dispatch provides AI-assisted chat conversation, appointment booking, and follow-up automation for businesses, delivered through SMS, WhatsApp, and other supported channels, connected to Client's calendar and business systems.</p>
+
+      <h2 class="sec" id="responsibilities"><span class="no">02</span> Client Responsibilities</h2>
+      <p>Client is responsible for: providing accurate business information (hours, services, pricing) used to configure the assistant; ensuring Client has proper consent and opt-in for any contact lists Client provides; and complying with all applicable laws for Client's own industry, including any healthcare, licensing, or advertising regulations that apply to Client's business. Dispatch does not represent or warrant HIPAA compliance or any industry-specific certification unless separately agreed in writing.</p>
+
+      <h2 class="sec" id="acceptable-use"><span class="no">03</span> Acceptable Use</h2>
+      <p>Client agrees not to use the service for: cold texting or messaging anyone who has not opted in or previously contacted the business; sending messages from unregistered or personal phone numbers or personal WhatsApp/iMessage accounts; sending spam, scams, or misleading content; purchasing or using bought/scraped contact lists; or any activity that risks carrier penalties or number reputation. Dispatch may suspend or terminate service immediately, without refund, for violations of this section, since such activity puts shared infrastructure and other Clients at risk.</p>
+
+      <h2 class="sec" id="fees"><span class="no">04</span> Fees and Payment</h2>
+      <p>Fees are billed in advance on a monthly or annual basis as selected at signup. Setup fees, once work has begun, are non-refundable. Monthly and annual fees are non-refundable for partial periods. We may change pricing with 30 days' notice to existing Clients. Accounts more than 15 days past due may be suspended until payment is received.</p>
+
+      <h2 class="sec" id="term"><span class="no">05</span> Term and Cancellation</h2>
+      <p>Client may cancel at any time. Service continues through the end of the current paid period, no partial refunds are issued for early cancellation. Any performance guarantee referenced in our marketing materials (including the 30-day booked-appointment guarantee) is governed by the specific terms stated when offered, and requires Client's reasonable cooperation, including accurate business information, timely responses during setup, and a working calendar or CRM connection, to remain valid.</p>
+
+      <h2 class="sec" id="ip"><span class="no">06</span> Intellectual Property</h2>
+      <p>Dispatch retains all rights to its underlying technology, workflows, and systems. Client retains ownership of Client's own business content, branding, and data. Client grants Dispatch a limited license to use Client's business information solely to provide the service.</p>
+
+      <h2 class="sec" id="third-party"><span class="no">07</span> Third-Party Dependencies</h2>
+      <p>The service relies on third-party infrastructure, including messaging carriers, calendar providers, and CRM platforms. Dispatch is not liable for outages, changes, or limitations caused by these third parties, and does not guarantee uninterrupted service.</p>
+
+      <h2 class="sec" id="disclaimers"><span class="no">08</span> Disclaimers</h2>
+      <p>The service is provided "as is" and "as available." Except for the specific guarantee described in our marketing materials and Section 5, Dispatch makes no other warranties, express or implied, including any implied warranty of merchantability or fitness for a particular purpose.</p>
+
+      <h2 class="sec" id="liability"><span class="no">09</span> Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, Dispatch's total liability arising from or related to the service will not exceed the total fees paid by Client in the 12 months preceding the claim. Dispatch is not liable for indirect, incidental, consequential, or punitive damages, including lost profits or lost business opportunities.</p>
+
+      <h2 class="sec" id="indemnification"><span class="no">10</span> Indemnification</h2>
+      <p>Client agrees to indemnify and hold Dispatch harmless from claims arising out of: Client's business content or instructions provided to the assistant; Client's contact lists or consent practices; or Client's violation of these Terms or applicable law.</p>
+
+      <h2 class="sec" id="confidentiality"><span class="no">11</span> Confidentiality</h2>
+      <p>Each party agrees to keep the other's non-public business information confidential and use it only to perform under these Terms.</p>
+
+      <h2 class="sec" id="governing-law"><span class="no">12</span> Governing Law and Disputes</h2>
+      <p>These Terms are governed by the laws of the State of <span class="fill">[STATE OF INCORPORATION]</span>, without regard to conflict-of-law principles. Disputes will be resolved through binding arbitration on an individual basis, except where prohibited by law.</p>
+
+      <h2 class="sec" id="changes"><span class="no">13</span> Changes to These Terms</h2>
+      <p>We may update these Terms from time to time. Continued use of the service after changes take effect constitutes acceptance.</p>
+
+      <h2 class="sec" id="contact"><span class="no">14</span> Contact Us</h2>
+      <p>Questions about these Terms: <span class="fill">[CONTACT EMAIL]</span></p>
+      <p>Mailing address: <span class="fill">[BUSINESS ADDRESS]</span></p>
+
+      <a class="back" href="index.html">Back to home</a>
+    </article>
   </div>
 </main>
 <footer class="site-footer">
