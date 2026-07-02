@@ -35,6 +35,17 @@ Cloudflare Pages was serving the **repo root** (which has no `index.html`) inste
 - A random path (e.g. `/nope`) shows the styled 404.
 - Run https://pagespeed.web.dev/analysis?url=https://instant33.com and https://search.google.com/test/rich-results?url=https://instant33.com
 
+
+## Analytics & security (added 2026-07-02, post-launch)
+
+- **Google Analytics 4** (`G-95TQKGDL1Y`) installed on all pages via gtag.js (async).
+- **Content-Security-Policy** added in `_headers` (allows Google Fonts + GA, blocks framing/object/base-uri). Tested: no CSP violations, GA + fonts + funnel + pricing toggle all work.
+- **`/.well-known/security.txt`** (RFC 9116) added — update the contact address when email is live.
+- **Moved `COPY-NOTES.md` out of the deploy root** → `designs/COPY-NOTES.md`, so internal notes are no longer served publicly.
+
+### GDPR/consent note
+GA4 sets cookies. The site is US-focused (per the Privacy Policy), so this is common practice, but for EU/UK visitors a consent banner + Google Consent Mode is the compliant setup. Say the word and I'll add a lightweight, no-dependency consent banner wired to Consent Mode v2.
+
 ## Still owner-only (dashboard / DNS — cannot be automated from the coding env)
 
 - Google Search Console verification + sitemap submission (the get-ranked step).
