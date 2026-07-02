@@ -36,6 +36,10 @@ Cloudflare Pages was serving the **repo root** (which has no `index.html`) inste
 - Run https://pagespeed.web.dev/analysis?url=https://instant33.com and https://search.google.com/test/rich-results?url=https://instant33.com
 
 
+## Rebrand (2026-07-02)
+
+The site brand is **Instant33** (matches the domain). Name + logo (lightning bolt) applied across all pages, meta, OG image, icons, manifest, JSON-LD, llms.txt, and legal pages. Contact email set to hello@instant33.com; legal entity shown as "Instant33"; effective date July 2, 2026. Still to fill: [STATE OF INCORPORATION], [BUSINESS ADDRESS]. Internal folder stays `designs/01-dispatch/` so the Pages deploy path is unaffected.
+
 ## Analytics & security (added 2026-07-02, post-launch)
 
 - **Google Analytics 4** (`G-95TQKGDL1Y`) installed on all pages via gtag.js (async).

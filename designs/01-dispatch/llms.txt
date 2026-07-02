@@ -1,6 +1,6 @@
-# Dispatch
+# Instant33
 
-> Dispatch is a done-for-you AI appointment-setting and lead-response agency. We answer every inquiry a business receives within seconds — by SMS, WhatsApp Business, Instagram DMs, Facebook Messenger, or website forms — qualify the lead in conversation, and book the appointment straight into the business's calendar. A real person oversees every account. Guarantee: more booked, showed-up appointments in 30 days, or we work for free.
+> Instant33 is a done-for-you AI appointment-setting and lead-response agency. We answer every inquiry a business receives within seconds — by SMS, WhatsApp Business, Instagram DMs, Facebook Messenger, or website forms — qualify the lead in conversation, and book the appointment straight into the business's calendar. A real person oversees every account. Guarantee: more booked, showed-up appointments in 30 days, or we work for free.
 
 Key facts:
 - Instant AI response to every inquiry, 24/7, with real human oversight on every account
