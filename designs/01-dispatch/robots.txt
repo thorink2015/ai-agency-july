@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://instant33.com/sitemap.xml

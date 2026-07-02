@@ -54,6 +54,12 @@
 - Main-page FAQ Q8: "Details will live in the Privacy Policy." → "Details live in the Privacy Policy." (now true), linked; JSON-LD synced.
 - ⚠ Owner's own note, preserved here: this legal copy follows standard SMB SaaS/agency structure but needs a real lawyer review before launch — especially SMS/A2P wording (regulatory risk) and health-adjacent conversations (med spas, chiropractors).
 
+**Pass 5 (2026-07-02, launch prep for instant33.com):**
+- Domain purchased: **instant33.com** (on Cloudflare). Deploy root = `designs/01-dispatch/` via Cloudflare Pages (owner connects GitHub in dashboard — cannot be done headlessly).
+- Added production files to the deploy root: robots.txt, sitemap.xml (3 URLs), llms.txt, 404.html (noindex), `_headers` (security headers), `_redirects` (www → apex 301), og-image.png (1200×630, real brand fonts embedded at render).
+- index.html: canonical + Open Graph + Twitter-card tags for https://instant33.com/; privacy/terms: canonical tags.
+- ⚠ Open question: site brand says **Dispatch**, domain says **instant33.com** — owner to decide whether to rebrand the page to Instant33 (one find-and-replace + new mark) or keep Dispatch-on-instant33.
+
 ## Deferred by owner decision
 
 - Live AI chat demo widget (test-drive the agent on-page) — deliberately later; no placeholder.
